@@ -11,6 +11,7 @@ using System.Windows.Forms;
 //using
 using MaterialSkin;
 using MaterialSkin.Controls;
+using UI.Clientes;
 
 namespace UI
 {
@@ -77,6 +78,12 @@ namespace UI
         private void frmMainMenu_Deactivate(object sender, EventArgs e)
         {
             coloresDividers();
+        }
+
+        private void btnClientes_Click(object sender, EventArgs e)
+        {
+            frmClientes formularioClientes = new frmClientes();
+            formularioClientes.ShowDialog();
         }
     }
 }

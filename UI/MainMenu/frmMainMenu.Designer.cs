@@ -51,14 +51,14 @@
             this.btnTurnos = new System.Windows.Forms.Button();
             this.materialDivider1 = new MaterialSkin.Controls.MaterialDivider();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.materialFlatButton1 = new MaterialSkin.Controls.MaterialFlatButton();
+            this.lblUser = new System.Windows.Forms.Label();
+            this.lblDinero = new System.Windows.Forms.Label();
             this.btnTurnosReservados = new MaterialSkin.Controls.MaterialFlatButton();
             this.btnListaEspera = new MaterialSkin.Controls.MaterialFlatButton();
             this.btnCerrarSesion = new MaterialSkin.Controls.MaterialFlatButton();
             this.divider9 = new MaterialSkin.Controls.MaterialDivider();
             this.divider8 = new MaterialSkin.Controls.MaterialDivider();
-            this.lblDinero = new System.Windows.Forms.Label();
-            this.lblUser = new System.Windows.Forms.Label();
-            this.materialFlatButton1 = new MaterialSkin.Controls.MaterialFlatButton();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
@@ -340,6 +340,7 @@
             this.btnClientes.Text = "            CLIENTES";
             this.btnClientes.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnClientes.UseVisualStyleBackColor = true;
+            this.btnClientes.Click += new System.EventHandler(this.btnClientes_Click);
             // 
             // btnTurnos
             // 
@@ -391,6 +392,46 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(966, 688);
             this.panel2.TabIndex = 2;
+            // 
+            // materialFlatButton1
+            // 
+            this.materialFlatButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.materialFlatButton1.AutoSize = true;
+            this.materialFlatButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.materialFlatButton1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.materialFlatButton1.Depth = 0;
+            this.materialFlatButton1.Icon = null;
+            this.materialFlatButton1.Location = new System.Drawing.Point(284, 6);
+            this.materialFlatButton1.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.materialFlatButton1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialFlatButton1.Name = "materialFlatButton1";
+            this.materialFlatButton1.Primary = false;
+            this.materialFlatButton1.Size = new System.Drawing.Size(196, 36);
+            this.materialFlatButton1.TabIndex = 8;
+            this.materialFlatButton1.Text = "modificar dinero de caja";
+            this.materialFlatButton1.UseVisualStyleBackColor = true;
+            // 
+            // lblUser
+            // 
+            this.lblUser.AutoSize = true;
+            this.lblUser.Font = new System.Drawing.Font("Segoe UI Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUser.Location = new System.Drawing.Point(8, 14);
+            this.lblUser.Name = "lblUser";
+            this.lblUser.Size = new System.Drawing.Size(118, 25);
+            this.lblUser.TabIndex = 7;
+            this.lblUser.Text = "Lucas Ferrero";
+            // 
+            // lblDinero
+            // 
+            this.lblDinero.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblDinero.AutoSize = true;
+            this.lblDinero.Font = new System.Drawing.Font("Segoe UI Light", 60F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDinero.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.lblDinero.Location = new System.Drawing.Point(669, 579);
+            this.lblDinero.Name = "lblDinero";
+            this.lblDinero.Size = new System.Drawing.Size(297, 106);
+            this.lblDinero.TabIndex = 6;
+            this.lblDinero.Text = "$120,30";
             // 
             // btnTurnosReservados
             // 
@@ -473,49 +514,11 @@
             this.divider8.TabIndex = 0;
             this.divider8.Text = "materialDivider2";
             // 
-            // lblDinero
-            // 
-            this.lblDinero.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblDinero.AutoSize = true;
-            this.lblDinero.Font = new System.Drawing.Font("Segoe UI Light", 60F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDinero.Location = new System.Drawing.Point(669, 579);
-            this.lblDinero.Name = "lblDinero";
-            this.lblDinero.Size = new System.Drawing.Size(297, 106);
-            this.lblDinero.TabIndex = 6;
-            this.lblDinero.Text = "$120,30";
-            // 
-            // lblUser
-            // 
-            this.lblUser.AutoSize = true;
-            this.lblUser.Font = new System.Drawing.Font("Segoe UI Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUser.Location = new System.Drawing.Point(8, 14);
-            this.lblUser.Name = "lblUser";
-            this.lblUser.Size = new System.Drawing.Size(118, 25);
-            this.lblUser.TabIndex = 7;
-            this.lblUser.Text = "Lucas Ferrero";
-            // 
-            // materialFlatButton1
-            // 
-            this.materialFlatButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.materialFlatButton1.AutoSize = true;
-            this.materialFlatButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.materialFlatButton1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.materialFlatButton1.Depth = 0;
-            this.materialFlatButton1.Icon = null;
-            this.materialFlatButton1.Location = new System.Drawing.Point(284, 6);
-            this.materialFlatButton1.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.materialFlatButton1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialFlatButton1.Name = "materialFlatButton1";
-            this.materialFlatButton1.Primary = false;
-            this.materialFlatButton1.Size = new System.Drawing.Size(196, 36);
-            this.materialFlatButton1.TabIndex = 8;
-            this.materialFlatButton1.Text = "modificar dinero de caja";
-            this.materialFlatButton1.UseVisualStyleBackColor = true;
-            // 
             // frmMainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1249, 774);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.materialDivider1);
@@ -523,6 +526,7 @@
             this.Name = "frmMainMenu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Menu Principal";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Activated += new System.EventHandler(this.frmMainMenu_Activated);
             this.Deactivate += new System.EventHandler(this.frmMainMenu_Deactivate);
             this.VisibleChanged += new System.EventHandler(this.frmMainMenu_VisibleChanged);
