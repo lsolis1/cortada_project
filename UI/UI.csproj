@@ -55,7 +55,7 @@
     <Compile Include="Clientes\frmClientes.Designer.cs">
       <DependentUpon>frmClientes.cs</DependentUpon>
     </Compile>
-    <Compile Include="estilos.cs" />
+    <Compile Include="Controlador.cs" />
     <Compile Include="Turnos\frmTurnos.cs">
       <SubType>Form</SubType>
     </Compile>

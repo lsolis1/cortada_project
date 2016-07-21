@@ -29,7 +29,6 @@ namespace UI
             coloresDividers();
 
         }
-
         public void coloresDividers()
             {
                 divider1.BackColor = Color.Black;
@@ -43,41 +42,21 @@ namespace UI
                 divider9.BackColor = Color.FromArgb(110, 0, 0, 0);
             }
 
-        //eliminar
-        private void pictureBox6_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnTurnos_Click(object sender, EventArgs e)
         {
             frmTurnos formularioTurnos = new frmTurnos();
             formularioTurnos.ShowDialog();
         }
 
-        private void frmMainMenu_Enter(object sender, EventArgs e)
-        {
-          
-        }
-
-        private void frmMainMenu_VisibleChanged(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void frmMainMenu_Leave(object sender, EventArgs e)
-        {
-
-        }
-
-        private void frmMainMenu_Activated(object sender, EventArgs e)
-        {
-            //coloresDividers();
-        }
-
         private void frmMainMenu_Deactivate(object sender, EventArgs e)
         {
             coloresDividers();
+            btnTurnos.FlatAppearance.BorderColor = Color.FromArgb(51, 51, 51);
+            btnClientes.FlatAppearance.BorderColor = Color.FromArgb(51, 51, 51);
+            btnKiosco.FlatAppearance.BorderColor = Color.FromArgb(51, 51, 51);
+            btnInformes.FlatAppearance.BorderColor = Color.FromArgb(51, 51, 51);
+            btnAdmin.FlatAppearance.BorderColor = Color.FromArgb(51, 51, 51);
+            btnTema.FlatAppearance.BorderColor = Color.FromArgb(51, 51, 51);
         }
 
         private void btnClientes_Click(object sender, EventArgs e)

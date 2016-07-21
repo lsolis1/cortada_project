@@ -51,7 +51,7 @@
             this.btnTurnos = new System.Windows.Forms.Button();
             this.materialDivider1 = new MaterialSkin.Controls.MaterialDivider();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.materialFlatButton1 = new MaterialSkin.Controls.MaterialFlatButton();
+            this.btnModificarDinero = new MaterialSkin.Controls.MaterialFlatButton();
             this.lblUser = new System.Windows.Forms.Label();
             this.lblDinero = new System.Windows.Forms.Label();
             this.btnTurnosReservados = new MaterialSkin.Controls.MaterialFlatButton();
@@ -132,7 +132,6 @@
             this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox6.TabIndex = 22;
             this.pictureBox6.TabStop = false;
-            this.pictureBox6.Click += new System.EventHandler(this.pictureBox6_Click);
             // 
             // btnTema
             // 
@@ -380,7 +379,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(239)))));
-            this.panel2.Controls.Add(this.materialFlatButton1);
+            this.panel2.Controls.Add(this.btnModificarDinero);
             this.panel2.Controls.Add(this.lblUser);
             this.panel2.Controls.Add(this.lblDinero);
             this.panel2.Controls.Add(this.btnTurnosReservados);
@@ -393,23 +392,23 @@
             this.panel2.Size = new System.Drawing.Size(966, 688);
             this.panel2.TabIndex = 2;
             // 
-            // materialFlatButton1
+            // btnModificarDinero
             // 
-            this.materialFlatButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.materialFlatButton1.AutoSize = true;
-            this.materialFlatButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.materialFlatButton1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.materialFlatButton1.Depth = 0;
-            this.materialFlatButton1.Icon = null;
-            this.materialFlatButton1.Location = new System.Drawing.Point(284, 6);
-            this.materialFlatButton1.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.materialFlatButton1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialFlatButton1.Name = "materialFlatButton1";
-            this.materialFlatButton1.Primary = false;
-            this.materialFlatButton1.Size = new System.Drawing.Size(196, 36);
-            this.materialFlatButton1.TabIndex = 8;
-            this.materialFlatButton1.Text = "modificar dinero de caja";
-            this.materialFlatButton1.UseVisualStyleBackColor = true;
+            this.btnModificarDinero.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnModificarDinero.AutoSize = true;
+            this.btnModificarDinero.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnModificarDinero.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnModificarDinero.Depth = 0;
+            this.btnModificarDinero.Icon = null;
+            this.btnModificarDinero.Location = new System.Drawing.Point(284, 6);
+            this.btnModificarDinero.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnModificarDinero.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnModificarDinero.Name = "btnModificarDinero";
+            this.btnModificarDinero.Primary = false;
+            this.btnModificarDinero.Size = new System.Drawing.Size(196, 36);
+            this.btnModificarDinero.TabIndex = 8;
+            this.btnModificarDinero.Text = "modificar dinero de caja";
+            this.btnModificarDinero.UseVisualStyleBackColor = true;
             // 
             // lblUser
             // 
@@ -527,11 +526,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Menu Principal";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Activated += new System.EventHandler(this.frmMainMenu_Activated);
             this.Deactivate += new System.EventHandler(this.frmMainMenu_Deactivate);
-            this.VisibleChanged += new System.EventHandler(this.frmMainMenu_VisibleChanged);
-            this.Enter += new System.EventHandler(this.frmMainMenu_Enter);
-            this.Leave += new System.EventHandler(this.frmMainMenu_Leave);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
@@ -576,7 +571,7 @@
         private MaterialSkin.Controls.MaterialFlatButton btnTurnosReservados;
         private System.Windows.Forms.Label lblDinero;
         private System.Windows.Forms.Label lblUser;
-        private MaterialSkin.Controls.MaterialFlatButton materialFlatButton1;
+        private MaterialSkin.Controls.MaterialFlatButton btnModificarDinero;
     }
 }
 
