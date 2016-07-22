@@ -98,6 +98,7 @@
             this.tabPage1.Size = new System.Drawing.Size(1127, 515);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Registrar";
+            this.tabPage1.Leave += new System.EventHandler(this.tabPage1_Leave);
             // 
             // lblTitulo
             // 
@@ -107,7 +108,7 @@
             this.lblTitulo.Location = new System.Drawing.Point(438, 22);
             this.lblTitulo.Name = "lblTitulo";
             this.lblTitulo.Size = new System.Drawing.Size(320, 42);
-            this.lblTitulo.TabIndex = 6;
+            this.lblTitulo.TabIndex = 0;
             this.lblTitulo.Text = "Datos del nuevo cliente";
             // 
             // groupBox1
@@ -149,7 +150,7 @@
             this.txtCodigoPostal.SelectionLength = 0;
             this.txtCodigoPostal.SelectionStart = 0;
             this.txtCodigoPostal.Size = new System.Drawing.Size(265, 23);
-            this.txtCodigoPostal.TabIndex = 15;
+            this.txtCodigoPostal.TabIndex = 8;
             this.txtCodigoPostal.TabStop = false;
             this.txtCodigoPostal.UseSystemPasswordChar = false;
             // 
@@ -169,7 +170,7 @@
             this.cmbProvincia.Location = new System.Drawing.Point(159, 282);
             this.cmbProvincia.Name = "cmbProvincia";
             this.cmbProvincia.Size = new System.Drawing.Size(111, 21);
-            this.cmbProvincia.TabIndex = 13;
+            this.cmbProvincia.TabIndex = 7;
             // 
             // lblTipoDoc
             // 
@@ -194,7 +195,7 @@
             this.txtNumeroDocumento.SelectionLength = 0;
             this.txtNumeroDocumento.SelectionStart = 0;
             this.txtNumeroDocumento.Size = new System.Drawing.Size(265, 23);
-            this.txtNumeroDocumento.TabIndex = 11;
+            this.txtNumeroDocumento.TabIndex = 2;
             this.txtNumeroDocumento.TabStop = false;
             this.txtNumeroDocumento.UseSystemPasswordChar = false;
             this.txtNumeroDocumento.Leave += new System.EventHandler(this.txtNumeroDocumento_Leave);
@@ -205,7 +206,7 @@
             this.cmbTipoDocumento.Location = new System.Drawing.Point(159, 39);
             this.cmbTipoDocumento.Name = "cmbTipoDocumento";
             this.cmbTipoDocumento.Size = new System.Drawing.Size(111, 21);
-            this.cmbTipoDocumento.TabIndex = 10;
+            this.cmbTipoDocumento.TabIndex = 1;
             // 
             // btnRefrescarCampos
             // 
@@ -221,7 +222,8 @@
             this.btnRefrescarCampos.Name = "btnRefrescarCampos";
             this.btnRefrescarCampos.Primary = false;
             this.btnRefrescarCampos.Size = new System.Drawing.Size(148, 36);
-            this.btnRefrescarCampos.TabIndex = 9;
+            this.btnRefrescarCampos.TabIndex = 12;
+            this.btnRefrescarCampos.TabStop = false;
             this.btnRefrescarCampos.Text = "refrescar campos";
             this.btnRefrescarCampos.UseVisualStyleBackColor = true;
             this.btnRefrescarCampos.Click += new System.EventHandler(this.btnRefrescarCampos_Click);
@@ -239,7 +241,7 @@
             this.txtNombre.SelectionLength = 0;
             this.txtNombre.SelectionStart = 0;
             this.txtNombre.Size = new System.Drawing.Size(265, 23);
-            this.txtNombre.TabIndex = 0;
+            this.txtNombre.TabIndex = 3;
             this.txtNombre.TabStop = false;
             this.txtNombre.UseSystemPasswordChar = false;
             this.txtNombre.Leave += new System.EventHandler(this.txtNombre_Leave);
@@ -257,7 +259,8 @@
             this.btnRegistrarCliente.Name = "btnRegistrarCliente";
             this.btnRegistrarCliente.Primary = true;
             this.btnRegistrarCliente.Size = new System.Drawing.Size(143, 36);
-            this.btnRegistrarCliente.TabIndex = 5;
+            this.btnRegistrarCliente.TabIndex = 10;
+            this.btnRegistrarCliente.TabStop = false;
             this.btnRegistrarCliente.Text = "Registrar cliente";
             this.btnRegistrarCliente.UseCustomBackColor = false;
             this.btnRegistrarCliente.UseVisualStyleBackColor = true;
@@ -272,7 +275,7 @@
             this.materialDivider1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialDivider1.Name = "materialDivider1";
             this.materialDivider1.Size = new System.Drawing.Size(666, 48);
-            this.materialDivider1.TabIndex = 7;
+            this.materialDivider1.TabIndex = 11;
             this.materialDivider1.Text = "materialDivider1";
             // 
             // txtApellido
@@ -288,7 +291,7 @@
             this.txtApellido.SelectionLength = 0;
             this.txtApellido.SelectionStart = 0;
             this.txtApellido.Size = new System.Drawing.Size(265, 23);
-            this.txtApellido.TabIndex = 1;
+            this.txtApellido.TabIndex = 4;
             this.txtApellido.TabStop = false;
             this.txtApellido.UseSystemPasswordChar = false;
             // 
@@ -305,7 +308,7 @@
             this.txtMail.SelectionLength = 0;
             this.txtMail.SelectionStart = 0;
             this.txtMail.Size = new System.Drawing.Size(320, 23);
-            this.txtMail.TabIndex = 2;
+            this.txtMail.TabIndex = 9;
             this.txtMail.TabStop = false;
             this.txtMail.UseSystemPasswordChar = false;
             // 
@@ -322,7 +325,7 @@
             this.txtDomicilio.SelectionLength = 0;
             this.txtDomicilio.SelectionStart = 0;
             this.txtDomicilio.Size = new System.Drawing.Size(274, 23);
-            this.txtDomicilio.TabIndex = 4;
+            this.txtDomicilio.TabIndex = 5;
             this.txtDomicilio.TabStop = false;
             this.txtDomicilio.UseSystemPasswordChar = false;
             // 
@@ -339,7 +342,7 @@
             this.txtCelular.SelectionLength = 0;
             this.txtCelular.SelectionStart = 0;
             this.txtCelular.Size = new System.Drawing.Size(265, 23);
-            this.txtCelular.TabIndex = 3;
+            this.txtCelular.TabIndex = 6;
             this.txtCelular.TabStop = false;
             this.txtCelular.UseSystemPasswordChar = false;
             // 

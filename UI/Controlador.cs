@@ -70,5 +70,32 @@ namespace UI
             }
         }
 
+
+        public bool SoloLetrasYnumeros(string _cadena)
+        {
+            var ComprobarCadena = _cadena.ToCharArray();
+            var bandera = 0;
+            for (int i = 0; i < ComprobarCadena.Length; i++)
+            {
+                if (Char.IsLetter(ComprobarCadena[i])==true || Char.IsDigit(ComprobarCadena[i])==true)
+                {
+
+                }
+                else
+                {
+                    bandera = bandera + 1;
+                }
+            }
+
+            if (bandera>0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
     }
 }
