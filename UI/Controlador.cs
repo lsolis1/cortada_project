@@ -4,6 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
+using MaterialSkin.Controls;
+using System.Windows.Forms;
+
 namespace UI
 {
     public class Controlador
@@ -32,7 +36,7 @@ namespace UI
             }
 
             //Si es false indica que hay 1 o mas letras, si da true significa que la cadena contiene todos numeros 
-            if (bandera>0)
+            if (bandera > 0)
             {
                 return false;
             }
@@ -40,7 +44,7 @@ namespace UI
             {
                 return true;
             }
-            
+
         }
 
         public bool SoloLetras(string _cadena)
@@ -50,7 +54,7 @@ namespace UI
 
             for (int i = 0; i < ComprobarCadena.Length; i++)
             {
-                if (Char.IsLetter(ComprobarCadena[i])==true || Char.IsWhiteSpace(ComprobarCadena[i])==true)
+                if (Char.IsLetter(ComprobarCadena[i]) == true || Char.IsWhiteSpace(ComprobarCadena[i]) == true)
                 {
 
                 }
@@ -60,7 +64,7 @@ namespace UI
                 }
             }
 
-            if (bandera>0)
+            if (bandera > 0)
             {
                 return false;
             }
@@ -77,7 +81,7 @@ namespace UI
             var bandera = 0;
             for (int i = 0; i < ComprobarCadena.Length; i++)
             {
-                if (Char.IsLetter(ComprobarCadena[i])==true || Char.IsDigit(ComprobarCadena[i])==true)
+                if (Char.IsLetter(ComprobarCadena[i]) == true || Char.IsDigit(ComprobarCadena[i]) == true || Char.IsWhiteSpace(ComprobarCadena[i]) == true)
                 {
 
                 }
@@ -87,7 +91,7 @@ namespace UI
                 }
             }
 
-            if (bandera>0)
+            if (bandera > 0)
             {
                 return false;
             }
@@ -97,5 +101,32 @@ namespace UI
             }
         }
 
+        //1 espacio por palabra (keyPress)
+        public void EspaciosKeyPress(KeyPressEventArgs _letra, object sender)
+        {
+            TextBox tb = (TextBox)sender;
+            if ((_letra.KeyChar == ' ') && (tb.Text.Length > 0))
+            {
+                if (tb.Text[tb.Text.Length - 1] == ' ')
+                    _letra.Handled = true;
+            }
+        }
+
+
+        //controlar que los txtBox tengan valores
+        public bool TxtconValores(string _cadena)
+        {
+            if (!string.IsNullOrWhiteSpace(_cadena))
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+
+    
     }
 }

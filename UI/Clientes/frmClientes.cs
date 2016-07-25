@@ -45,6 +45,8 @@ namespace UI.Clientes
                 errorProvider.Clear();
                 successProvider.Clear();
                 //agregar los datos a la base de datos....
+
+                txtNombre.Text.Trim(); //Trim quita los espacios al comienzo y  final de un string.
             }
             else
             {
@@ -92,23 +94,32 @@ namespace UI.Clientes
                             successProvider.SetError(_control,"Este campo es correcto");
                         }
                         break;
+                    case "SoloLetrasYnumeros":
+                        if (controlador.SoloLetrasYnumeros(_control.Text)==false)
+                        {
+                            errorProvider.SetError(_control, textoError1);
+                        }
+                        else
+                        {
+
+                                successProvider.SetError(_control, "Este campo es correcto");
+                        }
+                        break;
                 }
             }
             else
             {
-                errorProvider.SetError(_control, "Este campo es obligatorio");
+                errorProvider.SetError(_control, "Campo vacio.");
             }
-            
-
         }
-
-        //controlar que sean numeros.
-        private void txtNumeroDocumento_Leave(object sender, EventArgs e)
+        //verificar si los texbox estan nulos
+        private void emptyOrnull(bool _funcionControladora,MaterialSingleLineTextField _txtBox)
         {
-            errorProvider.SetError(txtNumeroDocumento, "");
-            successProvider.SetError(txtNumeroDocumento, "");
-            ComprobarCampos(txtNumeroDocumento, "SoloNumeros", "Por favor ingrese un documento valido(solo se admiten numeros).");
-           
+            if (_funcionControladora==false)
+            {
+                errorProvider.SetError(_txtBox,"Este campo esta vacio");
+            }
+
         }
 
         //controlar que sea cadena de texto
@@ -118,6 +129,26 @@ namespace UI.Clientes
             successProvider.SetError(txtNombre, "");
             ComprobarCampos(txtNombre,"SoloLetras","Por favor ingrese un nombre  valido(no se admiten numeros)");
         }
+        private void txtApellido_Leave(object sender, EventArgs e)
+        {
+            errorProvider.SetError(txtApellido, "");
+            successProvider.SetError(txtApellido, "");
+            ComprobarCampos(txtApellido,"SoloLetras","Ingrese un apellido valido(solo letras)");
+        }
+
+        private void txtDomicilio_Leave(object sender, EventArgs e)
+        {
+            errorProvider.SetError(txtDomicilio, "");
+            successProvider.SetError(txtDomicilio, "");
+            ComprobarCampos(txtDomicilio, "SoloLetrasYnumeros", "Ingrese una direccion valida");
+        }
+
+        private void txtCelular_Leave(object sender, EventArgs e)
+        {
+            errorProvider.SetError(txtCelular, "");
+            successProvider.SetError(txtCelular, "");
+            ComprobarCampos(txtCelular,"SoloNumeros","Ingrese un celular valido.");
+        }
 
         private void tabPage1_Leave(object sender, EventArgs e)
         {
@@ -125,5 +156,46 @@ namespace UI.Clientes
             errorProvider.Clear();
             successProvider.Clear();
         }
+
+        private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            controlador.EspaciosKeyPress(e,sender);
+        }
+
+        private void txtApellido_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            controlador.EspaciosKeyPress(e, sender);
+        }
+
+        private void txtDomicilio_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            controlador.EspaciosKeyPress(e,sender);
+        }
+
+        private void txtNumeroDocumento_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtCodigoPostal_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtCelular_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true;
+            }
+        }
+
+      
     }
 }

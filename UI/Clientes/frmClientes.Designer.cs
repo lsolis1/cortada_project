@@ -153,6 +153,7 @@
             this.txtCodigoPostal.TabIndex = 8;
             this.txtCodigoPostal.TabStop = false;
             this.txtCodigoPostal.UseSystemPasswordChar = false;
+            this.txtCodigoPostal.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCodigoPostal_KeyPress);
             // 
             // lblProvincia
             // 
@@ -198,7 +199,7 @@
             this.txtNumeroDocumento.TabIndex = 2;
             this.txtNumeroDocumento.TabStop = false;
             this.txtNumeroDocumento.UseSystemPasswordChar = false;
-            this.txtNumeroDocumento.Leave += new System.EventHandler(this.txtNumeroDocumento_Leave);
+            this.txtNumeroDocumento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumeroDocumento_KeyPress);
             // 
             // cmbTipoDocumento
             // 
@@ -244,6 +245,7 @@
             this.txtNombre.TabIndex = 3;
             this.txtNombre.TabStop = false;
             this.txtNombre.UseSystemPasswordChar = false;
+            this.txtNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNombre_KeyPress);
             this.txtNombre.Leave += new System.EventHandler(this.txtNombre_Leave);
             // 
             // btnRegistrarCliente
@@ -294,6 +296,8 @@
             this.txtApellido.TabIndex = 4;
             this.txtApellido.TabStop = false;
             this.txtApellido.UseSystemPasswordChar = false;
+            this.txtApellido.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtApellido_KeyPress);
+            this.txtApellido.Leave += new System.EventHandler(this.txtApellido_Leave);
             // 
             // txtMail
             // 
@@ -328,6 +332,8 @@
             this.txtDomicilio.TabIndex = 5;
             this.txtDomicilio.TabStop = false;
             this.txtDomicilio.UseSystemPasswordChar = false;
+            this.txtDomicilio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDomicilio_KeyPress);
+            this.txtDomicilio.Leave += new System.EventHandler(this.txtDomicilio_Leave);
             // 
             // txtCelular
             // 
@@ -345,6 +351,8 @@
             this.txtCelular.TabIndex = 6;
             this.txtCelular.TabStop = false;
             this.txtCelular.UseSystemPasswordChar = false;
+            this.txtCelular.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCelular_KeyPress);
+            this.txtCelular.Leave += new System.EventHandler(this.txtCelular_Leave);
             // 
             // tabPage2
             // 
