@@ -69,7 +69,7 @@ namespace UI.Clientes
         //En nombreFuncion debera ir el nombre de la funcion que querramos ejecutar de la clase Controlador.
         private void ComprobarCampos(MaterialSingleLineTextField _control, string nombreFuncion, string textoError1)
         {
-            if (_control.Text !="")
+            if (!string.IsNullOrWhiteSpace(_control.Text))
             {
                 switch (nombreFuncion)
                 {
