@@ -32,7 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmClientes));
             this.materialTabSelector1 = new MaterialSkin.Controls.MaterialTabSelector();
             this.tabControlClientes = new MaterialSkin.Controls.MaterialTabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabRegistrar = new System.Windows.Forms.TabPage();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtCodigoPostal = new MaterialSkin.Controls.MaterialSingleLineTextField();
@@ -49,11 +49,11 @@
             this.txtMail = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.txtDomicilio = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.txtCelular = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabBuscarClientes = new System.Windows.Forms.TabPage();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.successProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.tabControlClientes.SuspendLayout();
-            this.tabPage1.SuspendLayout();
+            this.tabRegistrar.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.successProvider)).BeginInit();
@@ -77,8 +77,8 @@
             this.tabControlClientes.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabControlClientes.Controls.Add(this.tabPage1);
-            this.tabControlClientes.Controls.Add(this.tabPage2);
+            this.tabControlClientes.Controls.Add(this.tabRegistrar);
+            this.tabControlClientes.Controls.Add(this.tabBuscarClientes);
             this.tabControlClientes.Depth = 0;
             this.tabControlClientes.Location = new System.Drawing.Point(0, 114);
             this.tabControlClientes.MouseState = MaterialSkin.MouseState.HOVER;
@@ -87,18 +87,18 @@
             this.tabControlClientes.Size = new System.Drawing.Size(1135, 541);
             this.tabControlClientes.TabIndex = 1;
             // 
-            // tabPage1
+            // tabRegistrar
             // 
-            this.tabPage1.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPage1.Controls.Add(this.lblTitulo);
-            this.tabPage1.Controls.Add(this.groupBox1);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1127, 515);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Registrar";
-            this.tabPage1.Leave += new System.EventHandler(this.tabPage1_Leave);
+            this.tabRegistrar.BackColor = System.Drawing.SystemColors.Control;
+            this.tabRegistrar.Controls.Add(this.lblTitulo);
+            this.tabRegistrar.Controls.Add(this.groupBox1);
+            this.tabRegistrar.Location = new System.Drawing.Point(4, 22);
+            this.tabRegistrar.Name = "tabRegistrar";
+            this.tabRegistrar.Padding = new System.Windows.Forms.Padding(3);
+            this.tabRegistrar.Size = new System.Drawing.Size(1127, 515);
+            this.tabRegistrar.TabIndex = 0;
+            this.tabRegistrar.Text = "Registrar";
+            this.tabRegistrar.Leave += new System.EventHandler(this.tabPage1_Leave);
             // 
             // lblTitulo
             // 
@@ -354,15 +354,15 @@
             this.txtCelular.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCelular_KeyPress);
             this.txtCelular.Leave += new System.EventHandler(this.txtCelular_Leave);
             // 
-            // tabPage2
+            // tabBuscarClientes
             // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1127, 515);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.tabBuscarClientes.Location = new System.Drawing.Point(4, 22);
+            this.tabBuscarClientes.Name = "tabBuscarClientes";
+            this.tabBuscarClientes.Padding = new System.Windows.Forms.Padding(3);
+            this.tabBuscarClientes.Size = new System.Drawing.Size(1127, 515);
+            this.tabBuscarClientes.TabIndex = 1;
+            this.tabBuscarClientes.Text = "Buscar";
+            this.tabBuscarClientes.UseVisualStyleBackColor = true;
             // 
             // errorProvider
             // 
@@ -387,8 +387,8 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Clientes";
             this.tabControlClientes.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
+            this.tabRegistrar.ResumeLayout(false);
+            this.tabRegistrar.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
@@ -401,8 +401,8 @@
 
         private MaterialSkin.Controls.MaterialTabSelector materialTabSelector1;
         private MaterialSkin.Controls.MaterialTabControl tabControlClientes;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage tabRegistrar;
+        private System.Windows.Forms.TabPage tabBuscarClientes;
         private MaterialSkin.Controls.MaterialSingleLineTextField txtDomicilio;
         private MaterialSkin.Controls.MaterialSingleLineTextField txtCelular;
         private MaterialSkin.Controls.MaterialSingleLineTextField txtMail;
