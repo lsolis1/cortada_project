@@ -59,6 +59,7 @@
             this.btnCerrarSesion = new MaterialSkin.Controls.MaterialFlatButton();
             this.divider9 = new MaterialSkin.Controls.MaterialDivider();
             this.divider8 = new MaterialSkin.Controls.MaterialDivider();
+            this.pictureAvatar = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
@@ -67,6 +68,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureAvatar)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -379,6 +381,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(239)))));
+            this.panel2.Controls.Add(this.pictureAvatar);
             this.panel2.Controls.Add(this.btnModificarDinero);
             this.panel2.Controls.Add(this.lblUser);
             this.panel2.Controls.Add(this.lblDinero);
@@ -413,10 +416,11 @@
             // lblUser
             // 
             this.lblUser.AutoSize = true;
-            this.lblUser.Font = new System.Drawing.Font("Segoe UI Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUser.Location = new System.Drawing.Point(8, 14);
+            this.lblUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.lblUser.Font = new System.Drawing.Font("Segoe UI Light", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUser.Location = new System.Drawing.Point(66, 12);
             this.lblUser.Name = "lblUser";
-            this.lblUser.Size = new System.Drawing.Size(118, 25);
+            this.lblUser.Size = new System.Drawing.Size(136, 30);
             this.lblUser.TabIndex = 7;
             this.lblUser.Text = "Lucas Ferrero";
             // 
@@ -513,6 +517,17 @@
             this.divider8.TabIndex = 0;
             this.divider8.Text = "materialDivider2";
             // 
+            // pictureAvatar
+            // 
+            this.pictureAvatar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.pictureAvatar.Image = ((System.Drawing.Image)(resources.GetObject("pictureAvatar.Image")));
+            this.pictureAvatar.Location = new System.Drawing.Point(3, 6);
+            this.pictureAvatar.Name = "pictureAvatar";
+            this.pictureAvatar.Size = new System.Drawing.Size(64, 42);
+            this.pictureAvatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureAvatar.TabIndex = 9;
+            this.pictureAvatar.TabStop = false;
+            // 
             // frmMainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -536,6 +551,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureAvatar)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -572,6 +588,7 @@
         private System.Windows.Forms.Label lblDinero;
         private System.Windows.Forms.Label lblUser;
         private MaterialSkin.Controls.MaterialFlatButton btnModificarDinero;
+        private System.Windows.Forms.PictureBox pictureAvatar;
     }
 }
 

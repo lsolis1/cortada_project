@@ -25,7 +25,7 @@ namespace UI.Clientes
             materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
             materialSkinManager.ColorScheme = new ColorScheme(Primary.Teal600, Primary.Teal700, Primary.Teal500, Accent.DeepOrange100, TextShade.WHITE);
         }
-
+        #region Registrar Tab
         private void refrescarCamposRegistrarTab()
         {
             txtNumeroDocumento.Text = "";
@@ -43,7 +43,6 @@ namespace UI.Clientes
             if (txtNumeroDocumento.Text !="" && controlador.SoloNumeros(txtNumeroDocumento.Text)==true && txtNombre.Text !="" && controlador.SoloLetras(txtNombre.Text)==true && txtApellido.Text !="" && controlador.SoloLetras(txtApellido.Text)==true && txtDomicilio.Text !="" && controlador.SoloLetrasYnumeros(txtDomicilio.Text) == true && txtCelular.Text!="" && controlador.SoloNumeros(txtCelular.Text)==true && txtCodigoPostal.Text!="" && controlador.SoloNumeros(txtCodigoPostal.Text)==true)
             {
                 errorProvider.Clear();
-                successProvider.Clear();
                 //agregar los datos a la base de datos....
 
                 txtNombre.Text.Trim(); //Trim quita los espacios al comienzo y  final de un string.
@@ -60,58 +59,10 @@ namespace UI.Clientes
         private void btnRefrescarCampos_Click(object sender, EventArgs e)
         {
             errorProvider.Clear();
-            successProvider.Clear();
             refrescarCamposRegistrarTab();
         }
 
-        //En el texto error 1 debera ir el texto dependiendo el caso. Por ejemplo: si es solo numeros, se debera ingresar el texto en caso de que se
-        //encuentre 1 valor que no sea numero.
-        //En nombreFuncion debera ir el nombre de la funcion que querramos ejecutar de la clase Controlador.
-        private void ComprobarCampos(MaterialSingleLineTextField _control, string nombreFuncion, string textoError1)
-        {
-            if (!string.IsNullOrWhiteSpace(_control.Text))
-            {
-                switch (nombreFuncion)
-                {
-                    case "SoloNumeros":
-                        if (controlador.SoloNumeros(_control.Text)==false)
-                        {
-                            errorProvider.SetError(_control, textoError1);
-                        }
-                        else
-                        {
-                            successProvider.SetError(_control, "Este campo es correcto.");
-                        }
-                        break;
-
-                    case "SoloLetras":
-                        if (controlador.SoloLetras(_control.Text)==false)
-                        {
-                            errorProvider.SetError(_control,textoError1);
-                        }
-                        else
-                        {
-                            successProvider.SetError(_control,"Este campo es correcto");
-                        }
-                        break;
-                    case "SoloLetrasYnumeros":
-                        if (controlador.SoloLetrasYnumeros(_control.Text)==false)
-                        {
-                            errorProvider.SetError(_control, textoError1);
-                        }
-                        else
-                        {
-
-                                successProvider.SetError(_control, "Este campo es correcto");
-                        }
-                        break;
-                }
-            }
-            else
-            {
-                errorProvider.SetError(_control, "Campo vacio.");
-            }
-        }
+        
         //verificar si los texbox estan nulos
         private void emptyOrnull(bool _funcionControladora,MaterialSingleLineTextField _txtBox)
         {
@@ -126,27 +77,23 @@ namespace UI.Clientes
         private void txtNombre_Leave(object sender, EventArgs e)
         {
             errorProvider.SetError(txtNombre, "");
-            successProvider.SetError(txtNombre, "");
             ComprobarCampos(txtNombre,"SoloLetras","Por favor ingrese un nombre  valido(no se admiten numeros)");
         }
         private void txtApellido_Leave(object sender, EventArgs e)
         {
             errorProvider.SetError(txtApellido, "");
-            successProvider.SetError(txtApellido, "");
             ComprobarCampos(txtApellido,"SoloLetras","Ingrese un apellido valido(solo letras)");
         }
 
         private void txtDomicilio_Leave(object sender, EventArgs e)
         {
             errorProvider.SetError(txtDomicilio, "");
-            successProvider.SetError(txtDomicilio, "");
             ComprobarCampos(txtDomicilio, "SoloLetrasYnumeros", "Ingrese una direccion valida");
         }
 
         private void txtCelular_Leave(object sender, EventArgs e)
         {
             errorProvider.SetError(txtCelular, "");
-            successProvider.SetError(txtCelular, "");
             ComprobarCampos(txtCelular,"SoloNumeros","Ingrese un celular valido.");
         }
 
@@ -154,7 +101,6 @@ namespace UI.Clientes
         {
             refrescarCamposRegistrarTab();
             errorProvider.Clear();
-            successProvider.Clear();
         }
 
         private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
@@ -196,6 +142,42 @@ namespace UI.Clientes
             }
         }
 
-      
+        #endregion Fin RegistrarTab
+
+        //En el texto error 1 debera ir el texto dependiendo el caso. Por ejemplo: si es solo numeros, se debera ingresar el texto en caso de que se
+        //encuentre 1 valor que no sea numero.
+        //En nombreFuncion debera ir el nombre de la funcion que querramos ejecutar de la clase Controlador.
+        private void ComprobarCampos(MaterialSingleLineTextField _control, string nombreFuncion, string textoError1)
+        {
+            if (!string.IsNullOrWhiteSpace(_control.Text))
+            {
+                switch (nombreFuncion)
+                {
+                    case "SoloNumeros":
+                        if (controlador.SoloNumeros(_control.Text) == false)
+                        {
+                            errorProvider.SetError(_control, textoError1);
+                        }
+                        break;
+
+                    case "SoloLetras":
+                        if (controlador.SoloLetras(_control.Text) == false)
+                        {
+                            errorProvider.SetError(_control, textoError1);
+                        }
+                        break;
+                    case "SoloLetrasYnumeros":
+                        if (controlador.SoloLetrasYnumeros(_control.Text) == false)
+                        {
+                            errorProvider.SetError(_control, textoError1);
+                        }
+                        break;
+                }
+            }
+            else
+            {
+                errorProvider.SetError(_control, "Campo vacio.");
+            }
+        }
     }
 }

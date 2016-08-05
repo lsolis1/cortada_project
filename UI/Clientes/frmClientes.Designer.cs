@@ -51,12 +51,10 @@
             this.txtCelular = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.tabBuscarClientes = new System.Windows.Forms.TabPage();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.successProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.tabControlClientes.SuspendLayout();
             this.tabRegistrar.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.successProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // materialTabSelector1
@@ -167,6 +165,8 @@
             // 
             // cmbProvincia
             // 
+            this.cmbProvincia.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cmbProvincia.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbProvincia.FormattingEnabled = true;
             this.cmbProvincia.Location = new System.Drawing.Point(159, 282);
             this.cmbProvincia.Name = "cmbProvincia";
@@ -203,6 +203,8 @@
             // 
             // cmbTipoDocumento
             // 
+            this.cmbTipoDocumento.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cmbTipoDocumento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTipoDocumento.FormattingEnabled = true;
             this.cmbTipoDocumento.Location = new System.Drawing.Point(159, 39);
             this.cmbTipoDocumento.Name = "cmbTipoDocumento";
@@ -370,12 +372,6 @@
             this.errorProvider.ContainerControl = this;
             this.errorProvider.Icon = ((System.Drawing.Icon)(resources.GetObject("errorProvider.Icon")));
             // 
-            // successProvider
-            // 
-            this.successProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
-            this.successProvider.ContainerControl = this;
-            this.successProvider.Icon = ((System.Drawing.Icon)(resources.GetObject("successProvider.Icon")));
-            // 
             // frmClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -392,7 +388,6 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.successProvider)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -420,6 +415,5 @@
         private System.Windows.Forms.Label lblProvincia;
         private System.Windows.Forms.ComboBox cmbProvincia;
         private System.Windows.Forms.ErrorProvider errorProvider;
-        private System.Windows.Forms.ErrorProvider successProvider;
     }
 }

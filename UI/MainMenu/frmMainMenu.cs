@@ -30,7 +30,7 @@ namespace UI
             coloresDividers();
 
         }
-        public void coloresDividers()
+        private void coloresDividers()
             {
                 divider1.BackColor = Color.Black;
                 divider2.BackColor = Color.Black;
@@ -66,7 +66,5 @@ namespace UI
             formularioClientes.ShowDialog();
         }
 
-
-       
     }
 }

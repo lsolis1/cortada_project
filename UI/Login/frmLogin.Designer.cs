@@ -71,7 +71,7 @@
             this.materialSingleLineTextField2.Size = new System.Drawing.Size(487, 23);
             this.materialSingleLineTextField2.TabIndex = 3;
             this.materialSingleLineTextField2.TabStop = false;
-            this.materialSingleLineTextField2.UseSystemPasswordChar = false;
+            this.materialSingleLineTextField2.UseSystemPasswordChar = true;
             // 
             // materialRaisedButton1
             // 
