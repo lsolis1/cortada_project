@@ -46,7 +46,7 @@ namespace UI
             }
 
         }
-
+        //asdasd
         public bool SoloLetras(string _cadena)
         {
             var ComprobarCadena = _cadena.ToCharArray();

@@ -51,6 +51,7 @@
             this.btnTurnos = new System.Windows.Forms.Button();
             this.materialDivider1 = new MaterialSkin.Controls.MaterialDivider();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.pictureAvatar = new System.Windows.Forms.PictureBox();
             this.btnModificarDinero = new MaterialSkin.Controls.MaterialFlatButton();
             this.lblUser = new System.Windows.Forms.Label();
             this.lblDinero = new System.Windows.Forms.Label();
@@ -59,7 +60,6 @@
             this.btnCerrarSesion = new MaterialSkin.Controls.MaterialFlatButton();
             this.divider9 = new MaterialSkin.Controls.MaterialDivider();
             this.divider8 = new MaterialSkin.Controls.MaterialDivider();
-            this.pictureAvatar = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
@@ -395,6 +395,17 @@
             this.panel2.Size = new System.Drawing.Size(966, 688);
             this.panel2.TabIndex = 2;
             // 
+            // pictureAvatar
+            // 
+            this.pictureAvatar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.pictureAvatar.Image = ((System.Drawing.Image)(resources.GetObject("pictureAvatar.Image")));
+            this.pictureAvatar.Location = new System.Drawing.Point(3, 6);
+            this.pictureAvatar.Name = "pictureAvatar";
+            this.pictureAvatar.Size = new System.Drawing.Size(64, 42);
+            this.pictureAvatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureAvatar.TabIndex = 9;
+            this.pictureAvatar.TabStop = false;
+            // 
             // btnModificarDinero
             // 
             this.btnModificarDinero.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -517,17 +528,6 @@
             this.divider8.TabIndex = 0;
             this.divider8.Text = "materialDivider2";
             // 
-            // pictureAvatar
-            // 
-            this.pictureAvatar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.pictureAvatar.Image = ((System.Drawing.Image)(resources.GetObject("pictureAvatar.Image")));
-            this.pictureAvatar.Location = new System.Drawing.Point(3, 6);
-            this.pictureAvatar.Name = "pictureAvatar";
-            this.pictureAvatar.Size = new System.Drawing.Size(64, 42);
-            this.pictureAvatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureAvatar.TabIndex = 9;
-            this.pictureAvatar.TabStop = false;
-            // 
             // frmMainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -540,7 +540,6 @@
             this.Name = "frmMainMenu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Menu Principal";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Deactivate += new System.EventHandler(this.frmMainMenu_Deactivate);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
