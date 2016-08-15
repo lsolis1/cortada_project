@@ -167,10 +167,11 @@
             // 
             this.cmbProvincia.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cmbProvincia.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbProvincia.Font = new System.Drawing.Font("Segoe UI Light", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbProvincia.FormattingEnabled = true;
             this.cmbProvincia.Location = new System.Drawing.Point(159, 282);
             this.cmbProvincia.Name = "cmbProvincia";
-            this.cmbProvincia.Size = new System.Drawing.Size(111, 21);
+            this.cmbProvincia.Size = new System.Drawing.Size(111, 28);
             this.cmbProvincia.TabIndex = 7;
             // 
             // lblTipoDoc
@@ -205,10 +206,11 @@
             // 
             this.cmbTipoDocumento.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cmbTipoDocumento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbTipoDocumento.Font = new System.Drawing.Font("Segoe UI Light", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbTipoDocumento.FormattingEnabled = true;
             this.cmbTipoDocumento.Location = new System.Drawing.Point(159, 39);
             this.cmbTipoDocumento.Name = "cmbTipoDocumento";
-            this.cmbTipoDocumento.Size = new System.Drawing.Size(111, 21);
+            this.cmbTipoDocumento.Size = new System.Drawing.Size(111, 28);
             this.cmbTipoDocumento.TabIndex = 1;
             // 
             // btnRefrescarCampos

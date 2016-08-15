@@ -11,13 +11,13 @@ using System.Windows.Forms;
 //using
 using MaterialSkin;
 using MaterialSkin.Controls;
+using Dominio;
+using LogicaDeNegocio;
 
 namespace UI.Login
 {
     public partial class frmLogin : MaterialForm
     {
-        private int Ypos;
-        private int Xpos;
         public frmLogin()
         {
             InitializeComponent();
@@ -32,5 +32,35 @@ namespace UI.Login
         {
             this.Close();
         }
+
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            var manejadorEmpleados = new ManejadorEmpleados();
+            if (manejadorEmpleados.VerificarLogin(txtUser.Text, txtPassword.Text) == true)
+            {
+                this.DialogResult = DialogResult.OK;
+            }
+            else
+            {
+                MessageBox.Show("Usuario o password incorrecta.", "Verifique sus datos",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
+            }
+        }
+
+        public string getApellido {
+            get
+            {
+                return txtUser.Text;
+            }
+            
+        }
+
+        public string getDocumento {
+            get
+            {
+                return txtPassword.Text;
+            }
+         }
+
+
     }
 }

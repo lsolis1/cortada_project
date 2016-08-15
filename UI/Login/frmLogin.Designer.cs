@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLogin));
-            this.materialSingleLineTextField1 = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.materialSingleLineTextField2 = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.materialRaisedButton1 = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.txtUser = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.txtPassword = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.btnLogin = new MaterialSkin.Controls.MaterialRaisedButton();
             this.btnCerrar = new MaterialSkin.Controls.MaterialRaisedButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -39,56 +39,57 @@
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // materialSingleLineTextField1
+            // txtUser
             // 
-            this.materialSingleLineTextField1.Depth = 0;
-            this.materialSingleLineTextField1.Hint = "Usuario";
-            this.materialSingleLineTextField1.Location = new System.Drawing.Point(25, 38);
-            this.materialSingleLineTextField1.MaxLength = 32767;
-            this.materialSingleLineTextField1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialSingleLineTextField1.Name = "materialSingleLineTextField1";
-            this.materialSingleLineTextField1.PasswordChar = '\0';
-            this.materialSingleLineTextField1.SelectedText = "";
-            this.materialSingleLineTextField1.SelectionLength = 0;
-            this.materialSingleLineTextField1.SelectionStart = 0;
-            this.materialSingleLineTextField1.Size = new System.Drawing.Size(487, 23);
-            this.materialSingleLineTextField1.TabIndex = 2;
-            this.materialSingleLineTextField1.TabStop = false;
-            this.materialSingleLineTextField1.UseSystemPasswordChar = false;
+            this.txtUser.Depth = 0;
+            this.txtUser.Hint = "Usuario";
+            this.txtUser.Location = new System.Drawing.Point(25, 38);
+            this.txtUser.MaxLength = 32767;
+            this.txtUser.MouseState = MaterialSkin.MouseState.HOVER;
+            this.txtUser.Name = "txtUser";
+            this.txtUser.PasswordChar = '\0';
+            this.txtUser.SelectedText = "";
+            this.txtUser.SelectionLength = 0;
+            this.txtUser.SelectionStart = 0;
+            this.txtUser.Size = new System.Drawing.Size(487, 23);
+            this.txtUser.TabIndex = 2;
+            this.txtUser.TabStop = false;
+            this.txtUser.UseSystemPasswordChar = false;
             // 
-            // materialSingleLineTextField2
+            // txtPassword
             // 
-            this.materialSingleLineTextField2.Depth = 0;
-            this.materialSingleLineTextField2.Hint = "Password";
-            this.materialSingleLineTextField2.Location = new System.Drawing.Point(25, 67);
-            this.materialSingleLineTextField2.MaxLength = 32767;
-            this.materialSingleLineTextField2.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialSingleLineTextField2.Name = "materialSingleLineTextField2";
-            this.materialSingleLineTextField2.PasswordChar = '\0';
-            this.materialSingleLineTextField2.SelectedText = "";
-            this.materialSingleLineTextField2.SelectionLength = 0;
-            this.materialSingleLineTextField2.SelectionStart = 0;
-            this.materialSingleLineTextField2.Size = new System.Drawing.Size(487, 23);
-            this.materialSingleLineTextField2.TabIndex = 3;
-            this.materialSingleLineTextField2.TabStop = false;
-            this.materialSingleLineTextField2.UseSystemPasswordChar = true;
+            this.txtPassword.Depth = 0;
+            this.txtPassword.Hint = "Password";
+            this.txtPassword.Location = new System.Drawing.Point(25, 67);
+            this.txtPassword.MaxLength = 32767;
+            this.txtPassword.MouseState = MaterialSkin.MouseState.HOVER;
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '\0';
+            this.txtPassword.SelectedText = "";
+            this.txtPassword.SelectionLength = 0;
+            this.txtPassword.SelectionStart = 0;
+            this.txtPassword.Size = new System.Drawing.Size(487, 23);
+            this.txtPassword.TabIndex = 3;
+            this.txtPassword.TabStop = false;
+            this.txtPassword.UseSystemPasswordChar = true;
             // 
-            // materialRaisedButton1
+            // btnLogin
             // 
-            this.materialRaisedButton1.AutoSize = true;
-            this.materialRaisedButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.materialRaisedButton1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.materialRaisedButton1.Depth = 0;
-            this.materialRaisedButton1.Icon = null;
-            this.materialRaisedButton1.Location = new System.Drawing.Point(253, 109);
-            this.materialRaisedButton1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialRaisedButton1.Name = "materialRaisedButton1";
-            this.materialRaisedButton1.Primary = true;
-            this.materialRaisedButton1.Size = new System.Drawing.Size(112, 36);
-            this.materialRaisedButton1.TabIndex = 0;
-            this.materialRaisedButton1.Text = "Iniciar sesion";
-            this.materialRaisedButton1.UseCustomBackColor = false;
-            this.materialRaisedButton1.UseVisualStyleBackColor = true;
+            this.btnLogin.AutoSize = true;
+            this.btnLogin.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnLogin.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnLogin.Depth = 0;
+            this.btnLogin.Icon = null;
+            this.btnLogin.Location = new System.Drawing.Point(253, 109);
+            this.btnLogin.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnLogin.Name = "btnLogin";
+            this.btnLogin.Primary = true;
+            this.btnLogin.Size = new System.Drawing.Size(112, 36);
+            this.btnLogin.TabIndex = 0;
+            this.btnLogin.Text = "Iniciar sesion";
+            this.btnLogin.UseCustomBackColor = false;
+            this.btnLogin.UseVisualStyleBackColor = true;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // btnCerrar
             // 
@@ -120,9 +121,9 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.materialSingleLineTextField2);
-            this.groupBox1.Controls.Add(this.materialSingleLineTextField1);
-            this.groupBox1.Controls.Add(this.materialRaisedButton1);
+            this.groupBox1.Controls.Add(this.txtPassword);
+            this.groupBox1.Controls.Add(this.txtUser);
+            this.groupBox1.Controls.Add(this.btnLogin);
             this.groupBox1.Controls.Add(this.btnCerrar);
             this.groupBox1.Location = new System.Drawing.Point(390, 111);
             this.groupBox1.Name = "groupBox1";
@@ -153,9 +154,9 @@
 
         #endregion
 
-        private MaterialSkin.Controls.MaterialSingleLineTextField materialSingleLineTextField1;
-        private MaterialSkin.Controls.MaterialSingleLineTextField materialSingleLineTextField2;
-        private MaterialSkin.Controls.MaterialRaisedButton materialRaisedButton1;
+        private MaterialSkin.Controls.MaterialSingleLineTextField txtUser;
+        private MaterialSkin.Controls.MaterialSingleLineTextField txtPassword;
+        private MaterialSkin.Controls.MaterialRaisedButton btnLogin;
         private MaterialSkin.Controls.MaterialRaisedButton btnCerrar;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.GroupBox groupBox1;

@@ -13,18 +13,25 @@ using MaterialSkin;
 using MaterialSkin.Controls;
 using UI.Clientes;
 using UI.Login;
+using LogicaDeNegocio;
 
 namespace UI
 {
     public partial class frmMainMenu : MaterialForm
     {
-        public frmMainMenu()
+        public frmMainMenu(string documento,string apellido)
         {
             InitializeComponent();
             var materialSkinManager = MaterialSkinManager.Instance;
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
             materialSkinManager.ColorScheme = new ColorScheme(Primary.Teal600, Primary.Teal700, Primary.Teal500, Accent.DeepOrange100, TextShade.WHITE);
+
+            //obtener nombre y apellido.
+            ManejadorEmpleados empleado = new ManejadorEmpleados();
+            lblUser.Text = empleado.ObtenerNombreApellido(documento, apellido);
+
+
 
             //divider colors
             coloresDividers();

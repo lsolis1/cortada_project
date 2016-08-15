@@ -11,6 +11,8 @@ using System.Windows.Forms;
 //using
 using MaterialSkin;
 using MaterialSkin.Controls;
+using Dominio;
+using LogicaDeNegocio;
 
 namespace UI.Clientes
 {
@@ -24,6 +26,9 @@ namespace UI.Clientes
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
             materialSkinManager.ColorScheme = new ColorScheme(Primary.Teal600, Primary.Teal700, Primary.Teal500, Accent.DeepOrange100, TextShade.WHITE);
+
+            CargarComboTipoDNI();
+            
         }
         #region Registrar Tab
         private void refrescarCamposRegistrarTab()
@@ -144,6 +149,23 @@ namespace UI.Clientes
 
         #endregion Fin RegistrarTab
 
+
+        #region Funciones_Registrar_Tab
+
+        private void CargarComboTipoDNI()
+        {
+            //Cargamos los combos de tipo DNI de la pestaña Registrar
+            cmbTipoDocumento.DataSource = new ManejadorDNI().ListarDocumentos();
+            cmbTipoDocumento.DisplayMember = "Descripcion";
+            cmbTipoDocumento.ValueMember = "Tipo_Doc";
+        }
+
+
+
+
+        #endregion Fin_Funciones_Registrar_Tab
+
+
         //En el texto error 1 debera ir el texto dependiendo el caso. Por ejemplo: si es solo numeros, se debera ingresar el texto en caso de que se
         //encuentre 1 valor que no sea numero.
         //En nombreFuncion debera ir el nombre de la funcion que querramos ejecutar de la clase Controlador.
@@ -179,5 +201,7 @@ namespace UI.Clientes
                 errorProvider.SetError(_control, "Campo vacio.");
             }
         }
+
+
     }
 }

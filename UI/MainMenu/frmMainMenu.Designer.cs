@@ -60,6 +60,7 @@
             this.btnCerrarSesion = new MaterialSkin.Controls.MaterialFlatButton();
             this.divider9 = new MaterialSkin.Controls.MaterialDivider();
             this.divider8 = new MaterialSkin.Controls.MaterialDivider();
+            this.listviewMainMenu = new System.Windows.Forms.ListView();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
@@ -381,6 +382,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(239)))));
+            this.panel2.Controls.Add(this.listviewMainMenu);
             this.panel2.Controls.Add(this.pictureAvatar);
             this.panel2.Controls.Add(this.btnModificarDinero);
             this.panel2.Controls.Add(this.lblUser);
@@ -528,6 +530,21 @@
             this.divider8.TabIndex = 0;
             this.divider8.Text = "materialDivider2";
             // 
+            // listviewMainMenu
+            // 
+            this.listviewMainMenu.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.listviewMainMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(239)))));
+            this.listviewMainMenu.FullRowSelect = true;
+            this.listviewMainMenu.Location = new System.Drawing.Point(12, 75);
+            this.listviewMainMenu.MultiSelect = false;
+            this.listviewMainMenu.Name = "listviewMainMenu";
+            this.listviewMainMenu.Size = new System.Drawing.Size(942, 461);
+            this.listviewMainMenu.TabIndex = 10;
+            this.listviewMainMenu.UseCompatibleStateImageBehavior = false;
+            this.listviewMainMenu.View = System.Windows.Forms.View.Details;
+            // 
             // frmMainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -588,6 +605,7 @@
         private System.Windows.Forms.Label lblUser;
         private MaterialSkin.Controls.MaterialFlatButton btnModificarDinero;
         private System.Windows.Forms.PictureBox pictureAvatar;
+        private System.Windows.Forms.ListView listviewMainMenu;
     }
 }
 
