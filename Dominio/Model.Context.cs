@@ -46,5 +46,6 @@ namespace Dominio
         public virtual DbSet<Turno> Turnos { get; set; }
         public virtual DbSet<Venta> Ventas { get; set; }
         public virtual DbSet<Ventas_Lineas> Ventas_Lineas { get; set; }
+        public virtual DbSet<Login> Logins { get; set; }
     }
 }

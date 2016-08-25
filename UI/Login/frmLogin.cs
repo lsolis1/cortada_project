@@ -33,7 +33,7 @@ namespace UI.Login
             this.Close();
         }
 
-        private void btnLogin_Click(object sender, EventArgs e)
+        private void VerificarLogin()
         {
             var manejadorEmpleados = new ManejadorEmpleados();
             if (manejadorEmpleados.VerificarLogin(txtUser.Text, txtPassword.Text) == true)
@@ -42,11 +42,16 @@ namespace UI.Login
             }
             else
             {
-                MessageBox.Show("Usuario o password incorrecta.", "Verifique sus datos",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
+                MessageBox.Show("Usuario o password incorrecta.", "Verifique sus datos", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
 
-        public string getApellido {
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            VerificarLogin();
+        }
+
+        public string getUsuario {
             get
             {
                 return txtUser.Text;
@@ -54,13 +59,19 @@ namespace UI.Login
             
         }
 
-        public string getDocumento {
+        public string getPassword {
             get
             {
                 return txtPassword.Text;
             }
          }
 
-
+        private void txtPassword_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                VerificarLogin();
+            }
+        }
     }
 }

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using UI.Login;
+using LogicaDeNegocio;
 
 namespace UI
 {
@@ -24,8 +25,10 @@ namespace UI
             frmLogin nuevoLogin = new frmLogin();
             if (nuevoLogin.ShowDialog()==DialogResult.OK)
             {
-                //mandamos el apellido y documento al main form.
-                Application.Run(new frmMainMenu(nuevoLogin.getDocumento,nuevoLogin.getApellido));
+                //obtenemos el nombre,apellido y lo mandamos al main
+                ManejadorEmpleados manejador_empleado = new ManejadorEmpleados();
+                
+                Application.Run(new frmMainMenu(manejador_empleado.ObtenerNombreApellido(nuevoLogin.getUsuario,nuevoLogin.getPassword)));
             }
             else
             {

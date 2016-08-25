@@ -52,6 +52,8 @@
         <AssociationConnector Association="LaCortadaModel.FK_Turnos_Tipos_Documento" ManuallyRouted="false" />
         <AssociationConnector Association="LaCortadaModel.FK_Turnos_Tipos_Turno" ManuallyRouted="false" />
         <AssociationConnector Association="LaCortadaModel.FK_Ventas_Lineas_Ventas" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="LaCortadaModel.Login" Width="1.5" PointX="8.25" PointY="5.25" />
+        <AssociationConnector Association="LaCortadaModel.FK_Login_Empleados" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

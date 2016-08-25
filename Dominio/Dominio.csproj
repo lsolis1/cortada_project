@@ -78,6 +78,9 @@
     <Compile Include="Lista_Espera.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Login.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Marca.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>

@@ -51,6 +51,7 @@
             this.btnTurnos = new System.Windows.Forms.Button();
             this.materialDivider1 = new MaterialSkin.Controls.MaterialDivider();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.listviewMainMenu = new System.Windows.Forms.ListView();
             this.pictureAvatar = new System.Windows.Forms.PictureBox();
             this.btnModificarDinero = new MaterialSkin.Controls.MaterialFlatButton();
             this.lblUser = new System.Windows.Forms.Label();
@@ -60,7 +61,6 @@
             this.btnCerrarSesion = new MaterialSkin.Controls.MaterialFlatButton();
             this.divider9 = new MaterialSkin.Controls.MaterialDivider();
             this.divider8 = new MaterialSkin.Controls.MaterialDivider();
-            this.listviewMainMenu = new System.Windows.Forms.ListView();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
@@ -135,6 +135,7 @@
             this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox6.TabIndex = 22;
             this.pictureBox6.TabStop = false;
+            this.pictureBox6.Visible = false;
             // 
             // btnTema
             // 
@@ -154,6 +155,7 @@
             this.btnTema.Text = "            TEMA";
             this.btnTema.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnTema.UseVisualStyleBackColor = true;
+            this.btnTema.Visible = false;
             // 
             // divider5
             // 
@@ -397,6 +399,22 @@
             this.panel2.Size = new System.Drawing.Size(966, 688);
             this.panel2.TabIndex = 2;
             // 
+            // listviewMainMenu
+            // 
+            this.listviewMainMenu.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.listviewMainMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(247)))), ((int)(((byte)(243)))));
+            this.listviewMainMenu.Font = new System.Drawing.Font("Segoe UI Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listviewMainMenu.FullRowSelect = true;
+            this.listviewMainMenu.Location = new System.Drawing.Point(12, 75);
+            this.listviewMainMenu.MultiSelect = false;
+            this.listviewMainMenu.Name = "listviewMainMenu";
+            this.listviewMainMenu.Size = new System.Drawing.Size(942, 443);
+            this.listviewMainMenu.TabIndex = 10;
+            this.listviewMainMenu.UseCompatibleStateImageBehavior = false;
+            this.listviewMainMenu.View = System.Windows.Forms.View.Details;
+            // 
             // pictureAvatar
             // 
             this.pictureAvatar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
@@ -425,6 +443,7 @@
             this.btnModificarDinero.TabIndex = 8;
             this.btnModificarDinero.Text = "modificar dinero de caja";
             this.btnModificarDinero.UseVisualStyleBackColor = true;
+            this.btnModificarDinero.Click += new System.EventHandler(this.btnModificarDinero_Click);
             // 
             // lblUser
             // 
@@ -443,11 +462,11 @@
             this.lblDinero.AutoSize = true;
             this.lblDinero.Font = new System.Drawing.Font("Segoe UI Light", 60F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDinero.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.lblDinero.Location = new System.Drawing.Point(669, 579);
+            this.lblDinero.Location = new System.Drawing.Point(656, 579);
             this.lblDinero.Name = "lblDinero";
-            this.lblDinero.Size = new System.Drawing.Size(297, 106);
+            this.lblDinero.Size = new System.Drawing.Size(299, 106);
             this.lblDinero.TabIndex = 6;
-            this.lblDinero.Text = "$120,30";
+            this.lblDinero.Text = "$dinero";
             // 
             // btnTurnosReservados
             // 
@@ -466,6 +485,7 @@
             this.btnTurnosReservados.TabIndex = 5;
             this.btnTurnosReservados.Text = "VER TURNOS RESERVADOS";
             this.btnTurnosReservados.UseVisualStyleBackColor = true;
+            this.btnTurnosReservados.Click += new System.EventHandler(this.btnTurnosReservados_Click);
             // 
             // btnListaEspera
             // 
@@ -484,6 +504,7 @@
             this.btnListaEspera.TabIndex = 4;
             this.btnListaEspera.Text = "VER LISTA DE ESPERA";
             this.btnListaEspera.UseVisualStyleBackColor = true;
+            this.btnListaEspera.Click += new System.EventHandler(this.btnListaEspera_Click);
             // 
             // btnCerrarSesion
             // 
@@ -530,21 +551,6 @@
             this.divider8.TabIndex = 0;
             this.divider8.Text = "materialDivider2";
             // 
-            // listviewMainMenu
-            // 
-            this.listviewMainMenu.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.listviewMainMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(239)))));
-            this.listviewMainMenu.FullRowSelect = true;
-            this.listviewMainMenu.Location = new System.Drawing.Point(12, 75);
-            this.listviewMainMenu.MultiSelect = false;
-            this.listviewMainMenu.Name = "listviewMainMenu";
-            this.listviewMainMenu.Size = new System.Drawing.Size(942, 461);
-            this.listviewMainMenu.TabIndex = 10;
-            this.listviewMainMenu.UseCompatibleStateImageBehavior = false;
-            this.listviewMainMenu.View = System.Windows.Forms.View.Details;
-            // 
             // frmMainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -556,7 +562,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "frmMainMenu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Menu Principal";
+            this.Text = "Menu principal - LA CORTADA";
             this.Deactivate += new System.EventHandler(this.frmMainMenu_Deactivate);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();

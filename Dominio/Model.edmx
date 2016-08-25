@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="LaCortadaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="LaCortadaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Cajas">
           <Key>
             <PropertyRef Name="Nro_Movimiento" />
@@ -13,9 +13,9 @@
           <Property Name="Nro_Empleado" Type="tinyint" Nullable="false" />
           <Property Name="Fecha" Type="date" Nullable="false" />
           <Property Name="Hora_Inicio" Type="time" Precision="7" Nullable="false" />
-          <Property Name="Hora_Fin" Type="time" Precision="7" Nullable="false" />
+          <Property Name="Hora_Fin" Type="time" Precision="7" />
           <Property Name="Importe_Inicio" Type="decimal" Precision="8" Scale="2" Nullable="false" />
-          <Property Name="Importe_Retiro" Type="decimal" Precision="8" Scale="2" Nullable="false" />
+          <Property Name="Importe_Retiro" Type="decimal" Precision="8" Scale="2" />
         </EntityType>
         <EntityType Name="Canchas">
           <Key>
@@ -38,11 +38,11 @@
             <PropertyRef Name="Nro_Doc" />
           </Key>
           <Property Name="Tipo_Doc" Type="tinyint" Nullable="false" />
-          <Property Name="Nro_Doc" Type="int" Nullable="false" />
+          <Property Name="Nro_Doc" Type="bigint" Nullable="false" />
           <Property Name="Nombre" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="Apellido" Type="nvarchar" MaxLength="15" Nullable="false" />
           <Property Name="Mail" Type="nvarchar" MaxLength="30" />
-          <Property Name="Celular" Type="int" Nullable="false" />
+          <Property Name="Celular" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Domicilio" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="Cod_Postal" Type="smallint" Nullable="false" />
           <Property Name="Cod_Provincia" Type="tinyint" Nullable="false" />
@@ -92,13 +92,13 @@
             <PropertyRef Name="Nro_Empleado" />
           </Key>
           <Property Name="Nro_Empleado" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Nro_Doc" Type="int" Nullable="false" />
+          <Property Name="Nro_Doc" Type="bigint" Nullable="false" />
           <Property Name="Tipo_Doc" Type="tinyint" Nullable="false" />
           <Property Name="Nombre" Type="nvarchar" MaxLength="15" Nullable="false" />
           <Property Name="Apellido" Type="nvarchar" MaxLength="15" Nullable="false" />
-          <Property Name="Telefono" Type="int" />
-          <Property Name="Celular" Type="int" />
-          <Property Name="Mail" Type="nvarchar" MaxLength="25" />
+          <Property Name="Telefono" Type="nvarchar" MaxLength="50" />
+          <Property Name="Celular" Type="nvarchar" MaxLength="50" />
+          <Property Name="Mail" Type="nvarchar" MaxLength="35" />
           <Property Name="Domicilio" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="Cod_Provincia" Type="tinyint" Nullable="false" />
           <Property Name="Cod_Postal" Type="smallint" Nullable="false" />
@@ -118,11 +118,20 @@
             <PropertyRef Name="Hora" />
           </Key>
           <Property Name="Tipo_Doc" Type="tinyint" Nullable="false" />
-          <Property Name="Nro_Doc" Type="int" Nullable="false" />
+          <Property Name="Nro_Doc" Type="bigint" Nullable="false" />
           <Property Name="Fecha" Type="date" Nullable="false" />
           <Property Name="Hora" Type="time" Precision="7" Nullable="false" />
           <Property Name="Nro_Movimiento" Type="int" Nullable="false" />
           <Property Name="Fecha_baja" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Login">
+          <Key>
+            <PropertyRef Name="username" />
+            <PropertyRef Name="password" />
+          </Key>
+          <Property Name="username" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Nro_Empleado" Type="tinyint" Nullable="false" />
         </EntityType>
         <EntityType Name="Marcas">
           <Key>
@@ -150,7 +159,7 @@
           </Key>
           <Property Name="CUIT_Proveedor" Type="nvarchar" MaxLength="13" Nullable="false" />
           <Property Name="Nombre" Type="nvarchar" MaxLength="25" Nullable="false" />
-          <Property Name="Telefono" Type="int" Nullable="false" />
+          <Property Name="Telefono" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Mail" Type="nvarchar" MaxLength="30" />
           <Property Name="Domicilio" Type="nvarchar" MaxLength="20" />
           <Property Name="Cod_Postal" Type="smallint" Nullable="false" />
@@ -211,7 +220,7 @@
             <PropertyRef Name="Hora" />
           </Key>
           <Property Name="Tipo_Doc" Type="tinyint" Nullable="false" />
-          <Property Name="Nro_Doc" Type="int" Nullable="false" />
+          <Property Name="Nro_Doc" Type="bigint" Nullable="false" />
           <Property Name="Fecha" Type="date" Nullable="false" />
           <Property Name="Hora" Type="time" Precision="7" Nullable="false" />
           <Property Name="Nro_Empleado" Type="tinyint" Nullable="false" />
@@ -229,7 +238,7 @@
           <Property Name="Nro_Movimiento" Type="int" Nullable="false" />
           <Property Name="Fecha" Type="date" Nullable="false" />
           <Property Name="Tipo_Doc" Type="tinyint" Nullable="false" />
-          <Property Name="Nro_Doc" Type="int" Nullable="false" />
+          <Property Name="Nro_Doc" Type="bigint" Nullable="false" />
           <Property Name="Porcentaje_Descuento" Type="smallint" />
           <Property Name="Total_Descuento" Type="int" />
           <Property Name="Total_General" Type="int" Nullable="false" />
@@ -398,6 +407,18 @@
             <Dependent Role="Lista_Espera">
               <PropertyRef Name="Tipo_Doc" />
               <PropertyRef Name="Nro_Doc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Login_Empleados">
+          <End Role="Empleados" Type="Self.Empleados" Multiplicity="1" />
+          <End Role="Login" Type="Self.Login" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleados">
+              <PropertyRef Name="Nro_Empleado" />
+            </Principal>
+            <Dependent Role="Login">
+              <PropertyRef Name="Nro_Empleado" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -585,6 +606,7 @@
           <EntitySet Name="Empleados" EntityType="Self.Empleados" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Estado_Turno" EntityType="Self.Estado_Turno" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Lista_Espera" EntityType="Self.Lista_Espera" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Login" EntityType="Self.Login" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Marcas" EntityType="Self.Marcas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Productos" EntityType="Self.Productos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Proveedores" EntityType="Self.Proveedores" Schema="dbo" store:Type="Tables" />
@@ -645,6 +667,10 @@
             <End Role="Clientes" EntitySet="Clientes" />
             <End Role="Lista_Espera" EntitySet="Lista_Espera" />
           </AssociationSet>
+          <AssociationSet Name="FK_Login_Empleados" Association="Self.FK_Login_Empleados">
+            <End Role="Empleados" EntitySet="Empleados" />
+            <End Role="Login" EntitySet="Login" />
+          </AssociationSet>
           <AssociationSet Name="FK_Productos_Marcas" Association="Self.FK_Productos_Marcas">
             <End Role="Marcas" EntitySet="Marcas" />
             <End Role="Productos" EntitySet="Productos" />
@@ -702,8 +728,7 @@
             <End Role="Ventas" EntitySet="Ventas" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="LaCortadaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -715,9 +740,9 @@
           <Property Name="Nro_Empleado" Type="Byte" Nullable="false" />
           <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Hora_Inicio" Type="Time" Nullable="false" Precision="7" />
-          <Property Name="Hora_Fin" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="Hora_Fin" Type="Time" Precision="7" />
           <Property Name="Importe_Inicio" Type="Decimal" Precision="8" Scale="2" Nullable="false" />
-          <Property Name="Importe_Retiro" Type="Decimal" Precision="8" Scale="2" Nullable="false" />
+          <Property Name="Importe_Retiro" Type="Decimal" Precision="8" Scale="2" />
           <NavigationProperty Name="Empleado" Relationship="Self.FK_Cajas_Empleados" FromRole="Cajas" ToRole="Empleados" />
           <NavigationProperty Name="Compras" Relationship="Self.FK_Compras_Cajas" FromRole="Cajas" ToRole="Compras" />
           <NavigationProperty Name="Lista_Espera" Relationship="Self.FK_Lista_Espera_Cajas" FromRole="Cajas" ToRole="Lista_Espera" />
@@ -752,7 +777,7 @@
           <Property Name="Nombre" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Apellido" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Mail" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="Celular" Type="Int32" Nullable="false" />
+          <Property Name="Celular" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="Domicilio" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Cod_Postal" Type="Int16" Nullable="false" />
           <Property Name="Cod_Provincia" Type="Byte" Nullable="false" />
@@ -812,13 +837,13 @@
             <PropertyRef Name="Nro_Empleado" />
           </Key>
           <Property Name="Nro_Empleado" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Nro_Doc" Type="Int32" Nullable="false" />
+          <Property Name="Nro_Doc" Type="Int64" Nullable="false" />
           <Property Name="Tipo_Doc" Type="Byte" Nullable="false" />
           <Property Name="Nombre" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Apellido" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Telefono" Type="Int32" />
-          <Property Name="Celular" Type="Int32" />
-          <Property Name="Mail" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="Telefono" Type="String" Nullable="true" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Celular" Type="String" Nullable="true" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Mail" Type="String" MaxLength="35" FixedLength="false" Unicode="true" />
           <Property Name="Domicilio" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Cod_Provincia" Type="Byte" Nullable="false" />
           <Property Name="Cod_Postal" Type="Int16" Nullable="false" />
@@ -827,6 +852,7 @@
           <NavigationProperty Name="Tipos_Documento" Relationship="Self.FK_Empleados_Tipos_Documento" FromRole="Empleados" ToRole="Tipos_Documento" />
           <NavigationProperty Name="Temas" Relationship="Self.FK_Temas_Empleados" FromRole="Empleados" ToRole="Temas" />
           <NavigationProperty Name="Turnos" Relationship="Self.FK_Turnos_Empleados" FromRole="Empleados" ToRole="Turnos" />
+          <NavigationProperty Name="Logins" Relationship="LaCortadaModel.FK_Login_Empleados" FromRole="Empleado" ToRole="Login" />
         </EntityType>
         <EntityType Name="Estado_Turno">
           <Key>
@@ -882,7 +908,7 @@
           </Key>
           <Property Name="CUIT_Proveedor" Type="String" MaxLength="13" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Nombre" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Telefono" Type="Int32" Nullable="false" />
+          <Property Name="Telefono" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="Mail" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
           <Property Name="Domicilio" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="Cod_Postal" Type="Int16" Nullable="false" />
@@ -1455,7 +1481,34 @@
             <End Role="Ventas" EntitySet="Ventas" />
             <End Role="Ventas_Lineas" EntitySet="Ventas_Lineas" />
           </AssociationSet>
+          <EntitySet Name="Logins" EntityType="LaCortadaModel.Login" />
+          <AssociationSet Name="FK_Login_Empleados" Association="LaCortadaModel.FK_Login_Empleados">
+            <End Role="Empleado" EntitySet="Empleados" />
+            <End Role="Login" EntitySet="Logins" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Login">
+          <Key>
+            <PropertyRef Name="username" />
+            <PropertyRef Name="password" />
+          </Key>
+          <Property Name="username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Nro_Empleado" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="Empleado" Relationship="LaCortadaModel.FK_Login_Empleados" FromRole="Login" ToRole="Empleado" />
+        </EntityType>
+        <Association Name="FK_Login_Empleados">
+          <End Type="LaCortadaModel.Empleado" Role="Empleado" Multiplicity="1" />
+          <End Type="LaCortadaModel.Login" Role="Login" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="Nro_Empleado" />
+            </Principal>
+            <Dependent Role="Login">
+              <PropertyRef Name="Nro_Empleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1706,6 +1759,15 @@
                 <ScalarProperty Name="Porcentaje_Descuento" ColumnName="Porcentaje_Descuento" />
                 <ScalarProperty Name="Importe_Descuento" ColumnName="Importe_Descuento" />
                 <ScalarProperty Name="Importe_Total" ColumnName="Importe_Total" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Logins">
+            <EntityTypeMapping TypeName="LaCortadaModel.Login">
+              <MappingFragment StoreEntitySet="Login">
+                <ScalarProperty Name="Nro_Empleado" ColumnName="Nro_Empleado" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="username" ColumnName="username" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

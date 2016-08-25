@@ -49,9 +49,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ManejadorCaja.cs" />
     <Compile Include="ManejadorCanchas.cs" />
     <Compile Include="ManejadorDNI.cs" />
     <Compile Include="ManejadorEmpleados.cs" />
+    <Compile Include="ManejadorListaDeEspera.cs" />
+    <Compile Include="ManejadorTurnos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

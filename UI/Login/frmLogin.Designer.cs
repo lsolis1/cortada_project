@@ -72,6 +72,7 @@
             this.txtPassword.TabIndex = 3;
             this.txtPassword.TabStop = false;
             this.txtPassword.UseSystemPasswordChar = true;
+            this.txtPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPassword_KeyPress);
             // 
             // btnLogin
             // 
@@ -142,6 +143,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.pictureBox1);
             this.Name = "frmLogin";
+            this.ShowInTaskbar = false;
             this.Sizable = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";

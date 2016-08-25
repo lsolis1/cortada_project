@@ -26,9 +26,9 @@ namespace Dominio
         public byte Nro_Empleado { get; set; }
         public System.DateTime Fecha { get; set; }
         public System.TimeSpan Hora_Inicio { get; set; }
-        public System.TimeSpan Hora_Fin { get; set; }
+        public Nullable<System.TimeSpan> Hora_Fin { get; set; }
         public decimal Importe_Inicio { get; set; }
-        public decimal Importe_Retiro { get; set; }
+        public Nullable<decimal> Importe_Retiro { get; set; }
     
         public virtual Empleado Empleado { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

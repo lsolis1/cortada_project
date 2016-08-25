@@ -20,15 +20,16 @@ namespace Dominio
             this.Cajas = new HashSet<Caja>();
             this.Temas = new HashSet<Tema>();
             this.Turnos = new HashSet<Turno>();
+            this.Logins = new HashSet<Login>();
         }
     
         public byte Nro_Empleado { get; set; }
-        public int Nro_Doc { get; set; }
+        public long Nro_Doc { get; set; }
         public byte Tipo_Doc { get; set; }
         public string Nombre { get; set; }
         public string Apellido { get; set; }
-        public Nullable<int> Telefono { get; set; }
-        public Nullable<int> Celular { get; set; }
+        public string Telefono { get; set; }
+        public string Celular { get; set; }
         public string Mail { get; set; }
         public string Domicilio { get; set; }
         public byte Cod_Provincia { get; set; }
@@ -42,5 +43,7 @@ namespace Dominio
         public virtual ICollection<Tema> Temas { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Turno> Turnos { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Login> Logins { get; set; }
     }
 }

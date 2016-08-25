@@ -14,7 +14,7 @@ namespace LogicaDeNegocio
             //Verificar el logeo de un empleado.
             using (var db = new DB_LaCortadaEntities())
             {
-                var login = db.Empleados.SingleOrDefault(x => x.Apellido == usuario && x.Nro_Doc.ToString() == password);
+                var login = db.Logins.SingleOrDefault(x=>x.username == usuario && x.password == password);
                 if (login != null)
                 {
                     return true;
@@ -27,12 +27,12 @@ namespace LogicaDeNegocio
             
         }
        
-        public string ObtenerNombreApellido(string documento,string apellido)
+        public string ObtenerNombreApellido(string usuario,string password)
         {
             using (var db = new DB_LaCortadaEntities())
             {
-                Empleado empleado = db.Empleados.SingleOrDefault(x=> x.Apellido == apellido && x.Nro_Doc.ToString() == documento);
-                return empleado.Nombre + " " + empleado.Apellido;
+                Login login = db.Logins.SingleOrDefault(x => x.username == usuario && x.password == password);
+                return login.Empleado.Nombre + " " +login.Empleado.Apellido;
 
             }
         }

@@ -27,7 +27,7 @@ namespace Dominio
         public string Nombre { get; set; }
         public string Apellido { get; set; }
         public string Mail { get; set; }
-        public int Celular { get; set; }
+        public string Celular { get; set; }
         public string Domicilio { get; set; }
         public short Cod_Postal { get; set; }
         public byte Cod_Provincia { get; set; }
