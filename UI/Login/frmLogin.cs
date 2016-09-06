@@ -18,6 +18,7 @@ namespace UI.Login
 {
     public partial class frmLogin : MaterialForm
     {
+        
         public frmLogin()
         {
             InitializeComponent();
@@ -36,9 +37,13 @@ namespace UI.Login
         private void VerificarLogin()
         {
             var manejadorEmpleados = new ManejadorEmpleados();
-            if (manejadorEmpleados.VerificarLogin(txtUser.Text, txtPassword.Text) == true)
+            var login = manejadorEmpleados.VerificarLogin(txtUser.Text, txtPassword.Text);
+            if (login != null)
             {
                 this.DialogResult = DialogResult.OK;
+                Sesion.nombre_apellido = login.Empleado.Apellido + ", " + login.Empleado.Nombre;
+                Sesion.monto_inicial = 0;
+                Sesion.id_empleado = login.Nro_Empleado;
             }
             else
             {
@@ -59,12 +64,14 @@ namespace UI.Login
             
         }
 
+
         public string getPassword {
             get
             {
                 return txtPassword.Text;
             }
          }
+
 
         private void txtPassword_KeyPress(object sender, KeyPressEventArgs e)
         {

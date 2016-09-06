@@ -32,64 +32,12 @@ namespace UI.MainMenu
 
         public void AgregarDinero(string monto)
         {
-            if (monto != "")
-            {
-
-                if (radioAgregar.Checked == true)
-                {
-                    try
-                    {
-                        var casteoMonto = decimal.Parse(monto);
-                        if (manejadorCaja.AgregarDineroCaja(casteoMonto))
-                        {
-                            MessageBox.Show("El saldo en caja se actualizo correctamente", "La cortada", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            this.DialogResult = DialogResult.OK;
-                            this.Close();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Al parecer no se encontro la caja", "La cortada", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                    }
-                    catch (FormatException)
-                    {
-                        MessageBox.Show("Por favor ingrese un formato correcto");
-                    }
-                }
-                else if (radioQuitar.Checked == true)
-                {
-                    try
-                    {
-                        var castearMonto = decimal.Parse(monto);
-                        if (manejadorCaja.QuitarDineroCaja(castearMonto))
-                        {
-                            MessageBox.Show("El saldo en caja se actualizo correctamente", "La cortada", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            this.DialogResult = DialogResult.OK;
-                            this.Close();
-                        }
-                        else
-                        {
-                            MessageBox.Show("El monto ingresado es mayor o igual al de la caja!", "La cortada", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        }
-                    }
-                    catch (Exception)
-                    {
-
-                        MessageBox.Show("Por favor ingrese un formato correcto");
-                    }
-
-                }
-            }
-            else
-            {
-                MessageBox.Show("Por favor ingrese un valor", "La cortada", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
             
 
         }
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            AgregarDinero(txtAgregarDinero.Text.Trim());
+            
         }
 
         private void txtAgregarDinero_KeyPress(object sender, KeyPressEventArgs e)

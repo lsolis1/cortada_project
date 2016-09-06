@@ -14,9 +14,10 @@ namespace Dominio
     
     public partial class Login
     {
+        public int id_login { get; set; }
+        public byte Nro_Empleado { get; set; }
         public string username { get; set; }
         public string password { get; set; }
-        public byte Nro_Empleado { get; set; }
     
         public virtual Empleado Empleado { get; set; }
     }

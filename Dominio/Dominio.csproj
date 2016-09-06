@@ -52,113 +52,110 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Caja.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>LaCortada.tt</DependentUpon>
     </Compile>
     <Compile Include="Cancha.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>LaCortada.tt</DependentUpon>
     </Compile>
     <Compile Include="Ciudade.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>LaCortada.tt</DependentUpon>
     </Compile>
     <Compile Include="Cliente.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>LaCortada.tt</DependentUpon>
     </Compile>
     <Compile Include="Compra.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>LaCortada.tt</DependentUpon>
     </Compile>
     <Compile Include="Compras_Renglones.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>LaCortada.tt</DependentUpon>
     </Compile>
     <Compile Include="Empleado.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>LaCortada.tt</DependentUpon>
     </Compile>
     <Compile Include="Estado_Turno.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>LaCortada.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LaCortada.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LaCortada.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LaCortada.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LaCortada.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LaCortada.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LaCortada.edmx</DependentUpon>
     </Compile>
     <Compile Include="Lista_Espera.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>LaCortada.tt</DependentUpon>
     </Compile>
     <Compile Include="Login.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>LaCortada.tt</DependentUpon>
     </Compile>
     <Compile Include="Marca.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model.edmx</DependentUpon>
+      <DependentUpon>LaCortada.tt</DependentUpon>
     </Compile>
     <Compile Include="Producto.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>LaCortada.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Proveedore.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>LaCortada.tt</DependentUpon>
     </Compile>
     <Compile Include="Provincia.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>LaCortada.tt</DependentUpon>
     </Compile>
     <Compile Include="sysdiagram.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Tema.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>LaCortada.tt</DependentUpon>
     </Compile>
     <Compile Include="Tipos_Documento.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>LaCortada.tt</DependentUpon>
     </Compile>
     <Compile Include="Tipos_Turno.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>LaCortada.tt</DependentUpon>
     </Compile>
     <Compile Include="Tipo_Comprobante.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>LaCortada.tt</DependentUpon>
     </Compile>
     <Compile Include="Turno.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>LaCortada.tt</DependentUpon>
     </Compile>
     <Compile Include="Venta.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>LaCortada.tt</DependentUpon>
     </Compile>
     <Compile Include="Ventas_Lineas.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>LaCortada.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <EntityDeploy Include="Model.edmx">
+    <EntityDeploy Include="LaCortada.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model.Designer.cs</LastGenOutput>
+      <LastGenOutput>LaCortada.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Model.edmx.diagram">
-      <DependentUpon>Model.edmx</DependentUpon>
+    <None Include="LaCortada.edmx.diagram">
+      <DependentUpon>LaCortada.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Model.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model.edmx</DependentUpon>
-      <LastGenOutput>Model.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Model.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model.edmx</DependentUpon>
-      <LastGenOutput>Model.cs</LastGenOutput>
-    </Content>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Content Include="LaCortada.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>LaCortada.edmx</DependentUpon>
+      <LastGenOutput>LaCortada.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="LaCortada.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>LaCortada.edmx</DependentUpon>
+      <LastGenOutput>LaCortada.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

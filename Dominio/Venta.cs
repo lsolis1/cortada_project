@@ -20,12 +20,12 @@ namespace Dominio
             this.Ventas_Lineas = new HashSet<Ventas_Lineas>();
         }
     
+        public int id_venta { get; set; }
+        public int id_cliente { get; set; }
         public short Tipo_Comprobante { get; set; }
         public int Nro_Comprobante { get; set; }
         public int Nro_Movimiento { get; set; }
         public System.DateTime Fecha { get; set; }
-        public byte Tipo_Doc { get; set; }
-        public int Nro_Doc { get; set; }
         public Nullable<short> Porcentaje_Descuento { get; set; }
         public Nullable<int> Total_Descuento { get; set; }
         public int Total_General { get; set; }

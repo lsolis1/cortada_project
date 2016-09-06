@@ -14,9 +14,9 @@ namespace Dominio
     
     public partial class Ventas_Lineas
     {
-        public int Nro_Comprobante { get; set; }
-        public short Tipo_Comprobante { get; set; }
-        public int Nro_Linea { get; set; }
+        public int id_ventasLineas { get; set; }
+        public int id_venta { get; set; }
+        public short Nro_Linea { get; set; }
         public int Cod_Producto { get; set; }
         public short Cantidad { get; set; }
         public Nullable<short> Porcentaje_Descuento { get; set; }

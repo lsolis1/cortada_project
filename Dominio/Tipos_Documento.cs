@@ -19,7 +19,6 @@ namespace Dominio
         {
             this.Clientes = new HashSet<Cliente>();
             this.Empleados = new HashSet<Empleado>();
-            this.Turnos = new HashSet<Turno>();
         }
     
         public byte Tipo_Doc { get; set; }
@@ -29,7 +28,5 @@ namespace Dominio
         public virtual ICollection<Cliente> Clientes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Empleado> Empleados { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Turno> Turnos { get; set; }
     }
 }

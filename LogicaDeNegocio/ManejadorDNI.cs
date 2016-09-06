@@ -10,12 +10,12 @@ namespace LogicaDeNegocio
 {
     public class ManejadorDNI
     {
-        public List<Tipos_Documento> ListarDocumentos()
-        {
-            using (var db = new DB_LaCortadaEntities())
-            {
-                return db.Tipos_Documento.ToList();
-            }
-        }
+        //public List<Tipos_Documento> ListarDocumentos()
+        //{
+        //    using (var db = new DB_LaCortadaEntities())
+        //    {
+        //        return db.Tipos_Documento.ToList();
+        //    }
+        //}
     }
 }

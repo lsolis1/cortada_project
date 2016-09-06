@@ -18,9 +18,8 @@ namespace Dominio
         public Empleado()
         {
             this.Cajas = new HashSet<Caja>();
-            this.Temas = new HashSet<Tema>();
-            this.Turnos = new HashSet<Turno>();
             this.Logins = new HashSet<Login>();
+            this.Turnos = new HashSet<Turno>();
         }
     
         public byte Nro_Empleado { get; set; }
@@ -32,7 +31,6 @@ namespace Dominio
         public string Celular { get; set; }
         public string Mail { get; set; }
         public string Domicilio { get; set; }
-        public byte Cod_Provincia { get; set; }
         public short Cod_Postal { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -40,10 +38,8 @@ namespace Dominio
         public virtual Ciudade Ciudade { get; set; }
         public virtual Tipos_Documento Tipos_Documento { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Tema> Temas { get; set; }
+        public virtual ICollection<Login> Logins { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Turno> Turnos { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Login> Logins { get; set; }
     }
 }

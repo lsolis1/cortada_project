@@ -11,7 +11,7 @@ using System.Windows.Forms;
 //using
 using MaterialSkin;
 using MaterialSkin.Controls;
-using UI.Clientes;
+//using UI.Clientes;
 using UI.Login;
 using LogicaDeNegocio;
 using Dominio;
@@ -21,7 +21,8 @@ namespace UI
 {
     public partial class frmMainMenu : MaterialForm
     {
-        public frmMainMenu(string nombre_apellido)
+
+        public frmMainMenu()
         {
             InitializeComponent();
             var materialSkinManager = MaterialSkinManager.Instance;
@@ -30,15 +31,27 @@ namespace UI
             materialSkinManager.ColorScheme = new ColorScheme(Primary.Teal600, Primary.Teal700, Primary.Teal500, Accent.DeepOrange100, TextShade.WHITE);
 
             //obtener nombre y apellido.
-            lblUser.Text = nombre_apellido;
-
-            //mostrar dinero en caja
-            lblDinero.Text = "$"+ManejadorCaja.ObtenerDineroEnCaja().ToString();
+            lblUser.Text = Sesion.nombre_apellido;
 
             //divider colors
             coloresDividers();
 
+            //Agrego una nueva caja
+            Caja nuevaCaja = new Caja
+            {
+                Nro_Empleado = Sesion.id_empleado,
+                Fecha=DateTime.Now.Date,
+                Hora_Inicio=DateTime.Now.TimeOfDay,
+                Importe_Inicio= Sesion.monto_inicial
+            };
+            ManejadorCaja manejador_caja = new ManejadorCaja();
+            manejador_caja.CargarCaja(nuevaCaja);
+
+            //mostrar dinero en caja
+            lblDinero.Text = "$" + ManejadorCaja.ObtenerDineroEnCaja().ToString();
         }
+
+
         private void coloresDividers()
             {
                 divider1.BackColor = Color.Black;
@@ -54,8 +67,7 @@ namespace UI
 
         private void btnTurnos_Click(object sender, EventArgs e)
         {
-            frmTurnos formularioTurnos = new frmTurnos();
-            formularioTurnos.ShowDialog();
+            //formulario turnos
 
         }
 
@@ -73,93 +85,113 @@ namespace UI
 
         private void btnClientes_Click(object sender, EventArgs e)
         {
-            frmClientes formularioClientes = new frmClientes();
-            formularioClientes.ShowDialog();
+            //frmClientes formularioClientes = new frmClientes();
+            //formularioClientes.ShowDialog();
         }
 
         private void btnModificarDinero_Click(object sender, EventArgs e)
         {
-            frmModificarDinero modificarDinero = new frmModificarDinero();
-            modificarDinero.ShowDialog();
-            if (modificarDinero.DialogResult== DialogResult.OK)
-            {
-                lblDinero.Text = "$"+ManejadorCaja.ObtenerDineroEnCaja().ToString();
-            }
+            //frmModificarDinero modificarDinero = new frmModificarDinero();
+            //modificarDinero.ShowDialog();
+            //if (modificarDinero.DialogResult== DialogResult.OK)
+            //{
+            //    lblDinero.Text = "$"+ManejadorCaja.ObtenerDineroEnCaja().ToString();
+            //}
             
         }
 
         private void btnTurnosReservados_Click(object sender, EventArgs e)
         {
-            listviewMainMenu.Clear();
+            //listviewMainMenu.Clear();
 
-            this.listviewMainMenu.Columns.Add("Nro Doc",100);
-            this.listviewMainMenu.Columns.Add("Apellido", 140);
-            this.listviewMainMenu.Columns.Add("Nombre", 140);
-            this.listviewMainMenu.Columns.Add("Hora", 100);
-            this.listviewMainMenu.Columns.Add("Empleado", 100);
-            this.listviewMainMenu.Columns.Add("Cancha", 100);
-            this.listviewMainMenu.Columns.Add("Tipo turno", 100);
-            this.listviewMainMenu.Columns.Add("Estado", 100);
+            //this.listviewMainMenu.Columns.Add("Nro Doc",100);
+            //this.listviewMainMenu.Columns.Add("Apellido", 140);
+            //this.listviewMainMenu.Columns.Add("Nombre", 140);
+            //this.listviewMainMenu.Columns.Add("Hora", 100);
+            //this.listviewMainMenu.Columns.Add("Empleado", 100);
+            //this.listviewMainMenu.Columns.Add("Cancha", 100);
+            //this.listviewMainMenu.Columns.Add("Tipo turno", 100);
+            //this.listviewMainMenu.Columns.Add("Estado", 100);
 
-            var llenarLista = ManejadorTurnos.ListarTurnosHoy();
+            //var llenarLista = ManejadorTurnos.ListarTurnosHoy();
 
-            foreach (var item in llenarLista)
-            {
-                var listViewItem = new ListViewItem
-                {
-                    Tag = item.Nro_Doc,
-                    Text = item.Nro_Doc.ToString()
-                };
-                listViewItem.SubItems.Add(item.Cliente.Apellido);
-                listViewItem.SubItems.Add(item.Cliente.Nombre);
-                listViewItem.SubItems.Add(item.Hora.ToString()); //ver el formato Hora!
-                listViewItem.SubItems.Add(item.Empleado.Nombre);
-                listViewItem.SubItems.Add(item.Cancha.Descripcion);
-                listViewItem.SubItems.Add(item.Tipos_Turno.Descripcion);
-                listViewItem.SubItems.Add(item.Estado_Turno.Descripcion);
-                if (item.Estado ==2)
-                {
-                    listViewItem.BackColor = Color.FromArgb(170, 211, 215);
-                }
-                if (item.Estado==1 && DateTime.Now.TimeOfDay > item.Hora)
-                {
-                    listViewItem.BackColor = Color.FromArgb(102, 186, 223);
-                    listViewItem.ForeColor = Color.White;
-                }
+            //foreach (var item in llenarLista)
+            //{
+            //    var listViewItem = new ListViewItem
+            //    {
+            //        Tag = item.Nro_Doc,
+            //        Text = item.Nro_Doc.ToString()
+            //    };
+            //    listViewItem.SubItems.Add(item.Cliente.Apellido);
+            //    listViewItem.SubItems.Add(item.Cliente.Nombre);
+            //    listViewItem.SubItems.Add(item.Hora.ToString()); //ver el formato Hora!
+            //    listViewItem.SubItems.Add(item.Empleado.Nombre);
+            //    listViewItem.SubItems.Add(item.Cancha.Descripcion);
+            //    listViewItem.SubItems.Add(item.Tipos_Turno.Descripcion);
+            //    listViewItem.SubItems.Add(item.Estado_Turno.Descripcion);
+            //    if (item.Estado ==2)
+            //    {
+            //        listViewItem.BackColor = Color.FromArgb(170, 211, 215);
+            //    }
+            //    if (item.Estado==1 && DateTime.Now.TimeOfDay > item.Hora)
+            //    {
+            //        listViewItem.BackColor = Color.FromArgb(102, 186, 223);
+            //        listViewItem.ForeColor = Color.White;
+            //    }
 
-                this.listviewMainMenu.Items.Add(listViewItem);
-                }
+            //    this.listviewMainMenu.Items.Add(listViewItem);
+            //    }
         }
 
         private void btnListaEspera_Click(object sender, EventArgs e)
         {
-            listviewMainMenu.Clear();
-            this.listviewMainMenu.Columns.Add("Nro Doc", 120);
-            this.listviewMainMenu.Columns.Add("Nombre", 100);
-            this.listviewMainMenu.Columns.Add("Apellido", 140);
-            this.listviewMainMenu.Columns.Add("Celular", 140);
-            this.listviewMainMenu.Columns.Add("Hora", 100);
-            this.listviewMainMenu.Columns.Add("Empleado", 100);
+            //listviewMainMenu.Clear();
+            //this.listviewMainMenu.Columns.Add("Nro Doc", 120);
+            //this.listviewMainMenu.Columns.Add("Nombre", 100);
+            //this.listviewMainMenu.Columns.Add("Apellido", 140);
+            //this.listviewMainMenu.Columns.Add("Celular", 140);
+            //this.listviewMainMenu.Columns.Add("Hora", 100);
+            //this.listviewMainMenu.Columns.Add("Empleado", 100);
 
-            var llenarLista = ManejadorListaDeEspera.MostrarListaDeEsperaHoy();
-            foreach (var item in llenarLista)
-            {
-                var listViewItem = new ListViewItem
-                {
-                    Tag = item.Nro_Doc,
-                    Text = item.Nro_Doc.ToString()
-                };
+            //var llenarLista = ManejadorListaDeEspera.MostrarListaDeEsperaHoy();
+            //foreach (var item in llenarLista)
+            //{
+            //    var listViewItem = new ListViewItem
+            //    {
+            //        Tag = item.Nro_Doc,
+            //        Text = item.Nro_Doc.ToString()
+            //    };
 
-                listViewItem.SubItems.Add(item.Cliente.Nombre);
-                listViewItem.SubItems.Add(item.Cliente.Apellido);
-                listViewItem.SubItems.Add(item.Cliente.Celular.ToString());
-                listViewItem.SubItems.Add(item.Hora.ToString());
-                listViewItem.SubItems.Add(item.Caja.Empleado.Nombre);
+            //    listViewItem.SubItems.Add(item.Cliente.Nombre);
+            //    listViewItem.SubItems.Add(item.Cliente.Apellido);
+            //    listViewItem.SubItems.Add(item.Cliente.Celular.ToString());
+            //    listViewItem.SubItems.Add(item.Hora.ToString());
+            //    listViewItem.SubItems.Add(item.Caja.Empleado.Nombre);
 
-                this.listviewMainMenu.Items.Add(listViewItem);
-            }
+            //    this.listviewMainMenu.Items.Add(listViewItem);
+            //}
         }
 
-       
+        private void frmMainMenu_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                //var obtenerTotalHorasConectado = (DateTime.Now.TimeOfDay-this.nuevaCaja.Hora_Inicio).TotalHours;
+                if (MessageBox.Show("Se cerrara la sesion."+"Tiempo conectado:", "Sistema", MessageBoxButtons.YesNo,MessageBoxIcon.Information) == DialogResult.Yes)
+                {
+                    
+                }
+                else
+                {
+                    e.Cancel = true;
+                }
+            }
+
+                if (e.CloseReason == CloseReason.WindowsShutDown)
+            {
+
+            }
+        
+        }
     }
 }

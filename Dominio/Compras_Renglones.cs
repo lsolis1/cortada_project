@@ -14,12 +14,10 @@ namespace Dominio
     
     public partial class Compras_Renglones
     {
-        public int Nro_Comprobante { get; set; }
-        public short Tipo_Comprobante { get; set; }
-        public string CUIT_Proveedor { get; set; }
-        public string Punto_Venta_Comp { get; set; }
-        public short Nro_Linea_Producto { get; set; }
+        public int id_comprasRenglones { get; set; }
+        public int id_compra { get; set; }
         public int Cod_Producto { get; set; }
+        public short Nro_Linea_Producto { get; set; }
         public short Cantidad { get; set; }
         public Nullable<short> Porcentaje_Desc { get; set; }
         public Nullable<int> Importe_Desc { get; set; }
@@ -27,5 +25,6 @@ namespace Dominio
         public int Importe_Total { get; set; }
     
         public virtual Compra Compra { get; set; }
+        public virtual Producto Producto { get; set; }
     }
 }
