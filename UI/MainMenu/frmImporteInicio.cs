@@ -10,6 +10,8 @@ using System.Windows.Forms;
 
 using MaterialSkin.Controls;
 using MaterialSkin;
+using LogicaDeNegocio;
+using System.Globalization;
 
 namespace UI.MainMenu
 {
@@ -47,7 +49,20 @@ namespace UI.MainMenu
             errorProvider.Clear();
             if (VerificarMonto(txtMontoInicio.Text,txtRepetirMonto.Text))
             {
-                this.DialogResult = DialogResult.OK;
+                decimal monto;
+                var cultureInfo = new System.Globalization.CultureInfo("es-AR");
+                var importe_inicio = decimal.TryParse(txtMontoInicio.Text,NumberStyles.Currency,cultureInfo, out monto);
+                if (importe_inicio)
+                {
+                    SesionCaja.importe_actual = Math.Abs(monto);
+                    SesionCaja.importe_inicio = Math.Abs(monto);
+                    this.DialogResult = DialogResult.OK;
+                }
+                else
+                {
+                    errorProvider.SetError(lblDinero,"El monto ingresado es incorrecto,ingrese un formato correcto.");
+                }
+                
             }
             else
             {
@@ -55,13 +70,7 @@ namespace UI.MainMenu
             }
         }
 
-        public string getMontoInicial
-        {
-            get
-            {
-                return txtMontoInicio.Text;
-            }
-        }
+
     }
 
 }

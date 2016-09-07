@@ -10,16 +10,18 @@ namespace LogicaDeNegocio
     {
         public static byte id_empleado { get; set; }
 
-        public static decimal monto_inicial { get; set; }
-
         public static string nombre_apellido { get; set; }
 
-        //public static Caja Caja { get; set; }
+        //public static SesionCaja SesionCaja { get; set; }
     }
 
-    //protected static class Caja 
-    //{ 
-    
-    //}
+    public static class SesionCaja
+    {
+        public static DateTime fecha_sesion { get; set; }
+        public static TimeSpan hora_inicio { get; set; }
+        public static decimal importe_inicio { get; set; }
+        public static decimal importe_actual { get; set; }
+    }
+
 }
 

@@ -36,7 +36,11 @@ namespace UI
             //divider colors
             coloresDividers();
 
+            //inicio la caja
+            SesionCaja.fecha_sesion = DateTime.Now.Date;
+            SesionCaja.hora_inicio = DateTime.Now.TimeOfDay;
             //Agrego una nueva caja
+            /*
             Caja nuevaCaja = new Caja
             {
                 Nro_Empleado = Sesion.id_empleado,
@@ -45,10 +49,8 @@ namespace UI
                 Importe_Inicio= Sesion.monto_inicial
             };
             ManejadorCaja manejador_caja = new ManejadorCaja();
-            manejador_caja.CargarCaja(nuevaCaja);
+            manejador_caja.CargarCaja(nuevaCaja);*/
 
-            //mostrar dinero en caja
-            lblDinero.Text = "$" + ManejadorCaja.ObtenerDineroEnCaja().ToString();
         }
 
 
@@ -81,6 +83,10 @@ namespace UI
             btnAdmin.FlatAppearance.BorderColor = Color.FromArgb(51, 51, 51);
             btnTema.FlatAppearance.BorderColor = Color.FromArgb(51, 51, 51);
         }
+        private void frmMainMenu_Activated(object sender, EventArgs e)
+        {
+            lblDinero.Text = "$" + SesionCaja.importe_actual.ToString();
+        }
 
 
         private void btnClientes_Click(object sender, EventArgs e)
@@ -91,13 +97,8 @@ namespace UI
 
         private void btnModificarDinero_Click(object sender, EventArgs e)
         {
-            //frmModificarDinero modificarDinero = new frmModificarDinero();
-            //modificarDinero.ShowDialog();
-            //if (modificarDinero.DialogResult== DialogResult.OK)
-            //{
-            //    lblDinero.Text = "$"+ManejadorCaja.ObtenerDineroEnCaja().ToString();
-            //}
-            
+            frmModificarDinero modificarDinero = new frmModificarDinero();
+            modificarDinero.ShowDialog();   
         }
 
         private void btnTurnosReservados_Click(object sender, EventArgs e)
@@ -174,12 +175,24 @@ namespace UI
 
         private void frmMainMenu_FormClosing(object sender, FormClosingEventArgs e)
         {
+            Caja nuevaCaja = new Caja();
             if (e.CloseReason == CloseReason.UserClosing)
             {
-                //var obtenerTotalHorasConectado = (DateTime.Now.TimeOfDay-this.nuevaCaja.Hora_Inicio).TotalHours;
-                if (MessageBox.Show("Se cerrara la sesion."+"Tiempo conectado:", "Sistema", MessageBoxButtons.YesNo,MessageBoxIcon.Information) == DialogResult.Yes)
+                var obtenerTotalHorasConectado = (DateTime.Now.TimeOfDay- SesionCaja.hora_inicio).ToString(@"hh\:mm\:ss");
+                if (MessageBox.Show("Se cerrara la sesion." + Environment.NewLine + "Tiempo conectado: " + obtenerTotalHorasConectado+ Environment.NewLine + "Saldo final: "+SesionCaja.importe_actual.ToString(), "Sistema", MessageBoxButtons.YesNo,MessageBoxIcon.Information) == DialogResult.Yes)
                 {
-                    
+                    nuevaCaja = new Caja
+                    {
+                        Nro_Empleado = Sesion.id_empleado,
+                        Fecha = SesionCaja.fecha_sesion,
+                        Hora_Inicio = SesionCaja.hora_inicio,
+                        Hora_Fin = DateTime.Now.TimeOfDay,
+                        Importe_Inicio = SesionCaja.importe_inicio,
+                        Importe_Retiro = SesionCaja.importe_actual
+                        
+                    };
+                    ManejadorCaja cerrarCaja = new ManejadorCaja();
+                    cerrarCaja.CargarCaja(nuevaCaja);
                 }
                 else
                 {
@@ -187,11 +200,24 @@ namespace UI
                 }
             }
 
-                if (e.CloseReason == CloseReason.WindowsShutDown)
+            if (e.CloseReason == CloseReason.WindowsShutDown)
             {
+                nuevaCaja = new Caja
+                {
+                    Nro_Empleado = Sesion.id_empleado,
+                    Fecha = SesionCaja.fecha_sesion,
+                    Hora_Inicio = SesionCaja.hora_inicio,
+                    Hora_Fin = DateTime.Now.TimeOfDay,
+                    Importe_Inicio = SesionCaja.importe_inicio,
+                    Importe_Retiro = SesionCaja.importe_actual
 
+                };
+                ManejadorCaja cerrarCaja = new ManejadorCaja();
+                cerrarCaja.CargarCaja(nuevaCaja);
             }
         
         }
+
+     
     }
 }

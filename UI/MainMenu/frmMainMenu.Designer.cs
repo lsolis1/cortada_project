@@ -564,6 +564,7 @@
             this.Name = "frmMainMenu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Menu principal - LA CORTADA";
+            this.Activated += new System.EventHandler(this.frmMainMenu_Activated);
             this.Deactivate += new System.EventHandler(this.frmMainMenu_Deactivate);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMainMenu_FormClosing);
             this.panel1.ResumeLayout(false);

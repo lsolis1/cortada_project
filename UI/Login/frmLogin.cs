@@ -11,7 +11,6 @@ using System.Windows.Forms;
 //using
 using MaterialSkin;
 using MaterialSkin.Controls;
-using Dominio;
 using LogicaDeNegocio;
 
 namespace UI.Login
@@ -41,8 +40,8 @@ namespace UI.Login
             if (login != null)
             {
                 this.DialogResult = DialogResult.OK;
-                Sesion.nombre_apellido = login.Empleado.Apellido + ", " + login.Empleado.Nombre;
-                Sesion.monto_inicial = 0;
+                Sesion.nombre_apellido = login.Empleado.Apellido + " " + login.Empleado.Nombre;
+                SesionCaja.importe_inicio = 0;
                 Sesion.id_empleado = login.Nro_Empleado;
             }
             else
@@ -55,23 +54,6 @@ namespace UI.Login
         {
             VerificarLogin();
         }
-
-        public string getUsuario {
-            get
-            {
-                return txtUser.Text;
-            }
-            
-        }
-
-
-        public string getPassword {
-            get
-            {
-                return txtPassword.Text;
-            }
-         }
-
 
         private void txtPassword_KeyPress(object sender, KeyPressEventArgs e)
         {
