@@ -14,11 +14,11 @@ namespace Dominio
     
     public partial class Lista_Espera
     {
-        public byte Tipo_Doc { get; set; }
-        public int Nro_Doc { get; set; }
+        public int id_listaEspera { get; set; }
+        public int id_cliente { get; set; }
+        public int Nro_Movimiento { get; set; }
         public System.DateTime Fecha { get; set; }
         public System.TimeSpan Hora { get; set; }
-        public int Nro_Movimiento { get; set; }
         public Nullable<System.DateTime> Fecha_baja { get; set; }
     
         public virtual Caja Caja { get; set; }

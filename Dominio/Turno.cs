@@ -14,20 +14,19 @@ namespace Dominio
     
     public partial class Turno
     {
-        public byte Tipo_Doc { get; set; }
-        public int Nro_Doc { get; set; }
-        public System.DateTime Fecha { get; set; }
-        public System.TimeSpan Hora { get; set; }
+        public int id_turno { get; set; }
+        public int id_cliente { get; set; }
         public byte Nro_Empleado { get; set; }
         public byte Cod_Cancha { get; set; }
         public byte Tipo_turno { get; set; }
+        public System.DateTime Fecha { get; set; }
+        public System.TimeSpan Hora { get; set; }
         public byte Estado { get; set; }
     
         public virtual Cancha Cancha { get; set; }
         public virtual Cliente Cliente { get; set; }
         public virtual Empleado Empleado { get; set; }
         public virtual Estado_Turno Estado_Turno { get; set; }
-        public virtual Tipos_Documento Tipos_Documento { get; set; }
         public virtual Tipos_Turno Tipos_Turno { get; set; }
     }
 }

@@ -58,12 +58,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Clientes\frmClientes.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Clientes\frmClientes.Designer.cs">
-      <DependentUpon>frmClientes.cs</DependentUpon>
-    </Compile>
     <Compile Include="Controlador.cs" />
     <Compile Include="Login\frmLogin.cs">
       <SubType>Form</SubType>
@@ -71,17 +65,17 @@
     <Compile Include="Login\frmLogin.Designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="MainMenu\frmImporteInicio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainMenu\frmImporteInicio.Designer.cs">
+      <DependentUpon>frmImporteInicio.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainMenu\frmModificarDinero.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MainMenu\frmModificarDinero.Designer.cs">
       <DependentUpon>frmModificarDinero.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Turnos\frmTurnos.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Turnos\frmTurnos.Designer.cs">
-      <DependentUpon>frmTurnos.cs</DependentUpon>
     </Compile>
     <Compile Include="MainMenu\frmMainMenu.cs">
       <SubType>Form</SubType>
@@ -91,11 +85,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Clientes\frmClientes.resx">
-      <DependentUpon>frmClientes.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Login\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainMenu\frmImporteInicio.resx">
+      <DependentUpon>frmImporteInicio.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainMenu\frmMainMenu.resx">
       <DependentUpon>frmMainMenu.cs</DependentUpon>
@@ -112,9 +106,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Turnos\frmTurnos.resx">
-      <DependentUpon>frmTurnos.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -138,6 +129,9 @@
       <Project>{79543b6c-7f67-4292-810b-9634ee8bdad9}</Project>
       <Name>LogicaDeNegocio</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Turnos\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -10,13 +10,13 @@ namespace LogicaDeNegocio
 {
     public class ManejadorCanchas
     {
-        public static List<Cancha> ListarCanchas()
-        {
-            using (var db = new DB_LaCortadaEntities())
-            {
-                return db.Canchas.ToList();
-            }
-        }
+        //public static List<Cancha> ListarCanchas()
+        //{
+        //    using (var db = new DB_LaCortadaEntities())
+        //    {
+        //        return db.Canchas.ToList();
+        //    }
+        //}
 
 
     }

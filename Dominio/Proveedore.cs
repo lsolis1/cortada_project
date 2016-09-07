@@ -21,14 +21,15 @@ namespace Dominio
             this.Productos = new HashSet<Producto>();
         }
     
+        public int id_proveedor { get; set; }
         public string CUIT_Proveedor { get; set; }
         public string Nombre { get; set; }
         public string Telefono { get; set; }
         public string Mail { get; set; }
         public string Domicilio { get; set; }
         public short Cod_Postal { get; set; }
-        public byte Cod_Provincnia { get; set; }
     
+        public virtual Ciudade Ciudade { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Compra> Compras { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

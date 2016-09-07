@@ -20,11 +20,12 @@ namespace Dominio
             this.Compras_Renglones = new HashSet<Compras_Renglones>();
         }
     
-        public string CUIT_Proveedor { get; set; }
-        public int Nro_Comprobante { get; set; }
+        public int id_compra { get; set; }
+        public int id_proveedor { get; set; }
         public short Tipo_Comprobante { get; set; }
-        public string Punto_Venta_Comp { get; set; }
         public int Nro_Movimiento { get; set; }
+        public int Nro_Comprobante { get; set; }
+        public string Punto_Venta_Comp { get; set; }
         public System.DateTime Fecha { get; set; }
         public short Porcentaje_Descuento { get; set; }
         public decimal Importe_Descuento { get; set; }

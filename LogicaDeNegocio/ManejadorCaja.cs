@@ -9,74 +9,39 @@ namespace LogicaDeNegocio
 {
     public class ManejadorCaja
     {
-
-        private static int ObtenerUltimoMovimiento()
-        {
-            var db = new DB_LaCortadaEntities();
-            return db.Cajas.Max(x => x.Nro_Movimiento);
-        }
-        public static decimal ObtenerDineroEnCaja()
-        {
-            var db = new DB_LaCortadaEntities();
-            var ultimo_nro_movimiento = ObtenerUltimoMovimiento();
-            var obtener_datosUltimoMovimiento = db.Cajas.SingleOrDefault(x=> x.Nro_Movimiento == ultimo_nro_movimiento);
-            if (obtener_datosUltimoMovimiento !=null)
-            {
-                return obtener_datosUltimoMovimiento.Importe_Inicio;
-            }
-            else
-            {
-                return 0000;
-            }
-
-        }
-
-
-
-        public bool AgregarDineroCaja(decimal monto)
+        public void CargarCaja(Caja caja)
         {
             using (var db = new DB_LaCortadaEntities())
             {
-                //controlar que la variable monto sea un numero
-                var ultimo_nro_movimiento = ObtenerUltimoMovimiento();
-                var ultimaCaja = db.Cajas.FirstOrDefault(x=> x.Nro_Movimiento == ultimo_nro_movimiento);
-
-                if (ultimaCaja == null) {
-                    return false;
-                }
-                else
-                {
-                    ultimaCaja.Importe_Inicio = ultimaCaja.Importe_Inicio + monto;
-                    db.SaveChanges();
-                    return true;
-                }
+                db.Cajas.Add(caja);
+                db.SaveChanges();
             }
         }
 
-        public bool QuitarDineroCaja(decimal monto)
+        public void ModificarCaja(Caja caja)
         {
+
+        }
+        
+        public static string ObtenerDineroEnCaja()
+        {
+            //obtener importe de inicio de la ultima caja.
             using (var db = new DB_LaCortadaEntities())
             {
-                //controlar que la variable monto sea un numero
-                var ultimo_nro_movimiento = ObtenerUltimoMovimiento();
-                var ultimaCaja = db.Cajas.FirstOrDefault(x => x.Nro_Movimiento == ultimo_nro_movimiento);
-                if (monto>ultimaCaja.Importe_Inicio)
+                var ultimaNroMovimiento = db.Cajas.Max(x=>x.Nro_Movimiento);
+                var obtenerDinero = db.Cajas.FirstOrDefault(x=>x.Nro_Movimiento == ultimaNroMovimiento);
+                if (obtenerDinero != null)
                 {
-                    return false;
-                }
-                else if (monto == ultimaCaja.Importe_Inicio)
-                {
-                    return false;
+                    return obtenerDinero.Importe_Inicio.ToString();
                 }
                 else
                 {
-                    ultimaCaja.Importe_Inicio = ultimaCaja.Importe_Inicio - monto;
-                    db.SaveChanges();
-                    return true;
+                    return "error";
                 }
                 
             }
         }
+
 
     }
 }

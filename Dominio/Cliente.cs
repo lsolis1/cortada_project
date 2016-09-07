@@ -22,15 +22,15 @@ namespace Dominio
             this.Ventas = new HashSet<Venta>();
         }
     
+        public int id_cliente { get; set; }
         public byte Tipo_Doc { get; set; }
-        public int Nro_Doc { get; set; }
+        public long Nro_Doc { get; set; }
         public string Nombre { get; set; }
         public string Apellido { get; set; }
         public string Mail { get; set; }
         public string Celular { get; set; }
         public string Domicilio { get; set; }
         public short Cod_Postal { get; set; }
-        public byte Cod_Provincia { get; set; }
     
         public virtual Ciudade Ciudade { get; set; }
         public virtual Tipos_Documento Tipos_Documento { get; set; }

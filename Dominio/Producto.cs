@@ -17,11 +17,12 @@ namespace Dominio
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Producto()
         {
+            this.Compras_Renglones = new HashSet<Compras_Renglones>();
             this.Ventas_Lineas = new HashSet<Ventas_Lineas>();
         }
     
         public int Cod_Producto { get; set; }
-        public string CUIT_Proveedor { get; set; }
+        public int id_proveedor { get; set; }
         public int Cod_Marca { get; set; }
         public string Nombre { get; set; }
         public Nullable<decimal> Precio_Venta { get; set; }
@@ -29,6 +30,8 @@ namespace Dominio
         public int Stock { get; set; }
         public Nullable<short> Stock_minimo { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Compras_Renglones> Compras_Renglones { get; set; }
         public virtual Marca Marca { get; set; }
         public virtual Proveedore Proveedore { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

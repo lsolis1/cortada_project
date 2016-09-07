@@ -19,6 +19,7 @@ namespace Dominio
         {
             this.Clientes = new HashSet<Cliente>();
             this.Empleados = new HashSet<Empleado>();
+            this.Proveedores = new HashSet<Proveedore>();
         }
     
         public short Cod_Postal { get; set; }
@@ -30,5 +31,7 @@ namespace Dominio
         public virtual ICollection<Cliente> Clientes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Empleado> Empleados { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Proveedore> Proveedores { get; set; }
     }
 }

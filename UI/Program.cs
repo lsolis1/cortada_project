@@ -6,6 +6,7 @@ using System.Windows.Forms;
 
 using UI.Login;
 using LogicaDeNegocio;
+using UI.MainMenu;
 
 namespace UI
 {
@@ -19,16 +20,20 @@ namespace UI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new frmMainMenu());
-            //Application.Run(new frmLogin());
 
             frmLogin nuevoLogin = new frmLogin();
-            if (nuevoLogin.ShowDialog()==DialogResult.OK)
+            if (nuevoLogin.ShowDialog() == DialogResult.OK)
             {
                 //obtenemos el nombre,apellido y lo mandamos al main
-                ManejadorEmpleados manejador_empleado = new ManejadorEmpleados();
-                
-                Application.Run(new frmMainMenu(manejador_empleado.ObtenerNombreApellido(nuevoLogin.getUsuario,nuevoLogin.getPassword)));
+                frmImporteInicio frmImporteInicio = new frmImporteInicio();
+                if (frmImporteInicio.ShowDialog() == DialogResult.OK)
+                {
+                    ManejadorEmpleados manejador_empleado = new ManejadorEmpleados();
+
+                    Application.Run(new frmMainMenu());
+
+                }
+
             }
             else
             {
