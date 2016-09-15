@@ -31,6 +31,7 @@ namespace Dominio
         public string Celular { get; set; }
         public string Domicilio { get; set; }
         public short Cod_Postal { get; set; }
+        public Nullable<System.DateTime> Fecha_Baja { get; set; }
     
         public virtual Ciudade Ciudade { get; set; }
         public virtual Tipos_Documento Tipos_Documento { get; set; }

@@ -10,14 +10,10 @@ using System.Windows.Forms;
 
 namespace UI
 {
-    public class Controlador
+    public  static class Controlador
     {
-        public Controlador()
-        {
 
-        }
-
-        public bool SoloNumeros(string _cadena)
+        public  static bool SoloNumeros(string _cadena)
         {
             //convertimos la cadena en un charArray y lo recorremos.
             var comprobarCadena = _cadena.ToCharArray();
@@ -47,7 +43,7 @@ namespace UI
 
         }
         //asdasd
-        public bool SoloLetras(string _cadena)
+        public static bool SoloLetras(string _cadena)
         {
             var ComprobarCadena = _cadena.ToCharArray();
             var bandera = 0;
@@ -75,7 +71,7 @@ namespace UI
         }
 
 
-        public bool SoloLetrasYnumeros(string _cadena)
+        public static bool SoloLetrasYnumeros(string _cadena)
         {
             var ComprobarCadena = _cadena.ToCharArray();
             var bandera = 0;
@@ -102,7 +98,7 @@ namespace UI
         }
 
         //1 espacio por palabra (keyPress)
-        public void EspaciosKeyPress(KeyPressEventArgs _letra, object sender)
+        public static void EspaciosKeyPress(KeyPressEventArgs _letra, object sender)
         {
             TextBox tb = (TextBox)sender;
             if ((_letra.KeyChar == ' ') && (tb.Text.Length > 0))
@@ -114,7 +110,7 @@ namespace UI
 
 
         //controlar que los txtBox tengan valores
-        public bool TxtconValores(string _cadena)
+        public static bool TxtconValores(string _cadena)
         {
             if (!string.IsNullOrWhiteSpace(_cadena))
             {

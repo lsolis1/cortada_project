@@ -16,6 +16,7 @@ using UI.Login;
 using LogicaDeNegocio;
 using Dominio;
 using UI.MainMenu;
+using UI.Clientes;
 
 namespace UI
 {
@@ -39,17 +40,10 @@ namespace UI
             //inicio la caja
             SesionCaja.fecha_sesion = DateTime.Now.Date;
             SesionCaja.hora_inicio = DateTime.Now.TimeOfDay;
-            //Agrego una nueva caja
-            /*
-            Caja nuevaCaja = new Caja
-            {
-                Nro_Empleado = Sesion.id_empleado,
-                Fecha=DateTime.Now.Date,
-                Hora_Inicio=DateTime.Now.TimeOfDay,
-                Importe_Inicio= Sesion.monto_inicial
-            };
-            ManejadorCaja manejador_caja = new ManejadorCaja();
-            manejador_caja.CargarCaja(nuevaCaja);*/
+
+            //cargo tipos docs
+            ManejadorDNI manejador_dni = new ManejadorDNI();
+            manejador_dni.ListarDocumentos();
 
         }
 
@@ -91,6 +85,8 @@ namespace UI
 
         private void btnClientes_Click(object sender, EventArgs e)
         {
+            frmClientes form_clientes = new frmClientes();
+            form_clientes.ShowDialog();
             //frmClientes formularioClientes = new frmClientes();
             //formularioClientes.ShowDialog();
         }

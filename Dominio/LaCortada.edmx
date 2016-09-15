@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="LaCortadaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="LaCortadaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Cajas">
           <Key>
             <PropertyRef Name="Nro_Movimiento" />
@@ -45,6 +45,7 @@
           <Property Name="Celular" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Domicilio" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="Cod_Postal" Type="smallint" Nullable="false" />
+          <Property Name="Fecha_Baja" Type="datetime" />
         </EntityType>
         <EntityType Name="Compras">
           <Key>
@@ -685,8 +686,7 @@
             <End Role="Ventas" EntitySet="Ventas" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="LaCortadaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -744,6 +744,7 @@
           <NavigationProperty Name="Lista_Espera" Relationship="Self.FK_Lista_Espera_Clientes" FromRole="Clientes" ToRole="Lista_Espera" />
           <NavigationProperty Name="Turnos" Relationship="Self.FK_Turnos_Clientes" FromRole="Clientes" ToRole="Turnos" />
           <NavigationProperty Name="Ventas" Relationship="Self.FK_Ventas_Clientes" FromRole="Clientes" ToRole="Ventas" />
+          <Property Name="Fecha_Baja" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="Compra">
           <Key>
@@ -1463,6 +1464,7 @@
           <EntitySetMapping Name="Clientes">
             <EntityTypeMapping TypeName="LaCortadaModel.Cliente">
               <MappingFragment StoreEntitySet="Clientes">
+                <ScalarProperty Name="Fecha_Baja" ColumnName="Fecha_Baja" />
                 <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
                 <ScalarProperty Name="Tipo_Doc" ColumnName="Tipo_Doc" />
                 <ScalarProperty Name="Nro_Doc" ColumnName="Nro_Doc" />

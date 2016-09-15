@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using Dominio;
+
 namespace LogicaDeNegocio
 {
     public static class Sesion
@@ -21,6 +23,11 @@ namespace LogicaDeNegocio
         public static TimeSpan hora_inicio { get; set; }
         public static decimal importe_inicio { get; set; }
         public static decimal importe_actual { get; set; }
+    }
+
+    public static class TipoDocSesion
+    {
+        public static List<Tipos_Documento> getSetTipoDoc { get; set; }
     }
 
 }
