@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Dominio;
+using System.Data.Entity;
 
 namespace LogicaDeNegocio
 {
@@ -28,6 +29,24 @@ namespace LogicaDeNegocio
             }
         }
 
+        public void borrarCliente(Cliente cliente)
+        {
+            using (var db = new DB_LaCortadaEntities())
+            {
+                db.Entry(cliente).State = EntityState.Deleted;
+                db.SaveChanges();
+            }
+        }
+
+        public void ModificarCliente(Cliente cliente)
+        {
+            using (var db = new DB_LaCortadaEntities())
+            {
+                //cliente.Tipo_Doc = Convert.ToByte(db.Tipos_Documento.Single(x=> x.Tipo_Doc == cliente.Tipo_Doc));
+                //cliente.Cod_Postal = Convert.ToSByte(db.Ciudades.Single(x=> x.Cod_Postal == cliente.Cod_Postal));
+                db.Entry(cliente).State = EntityState.Modified;
+            }
+        }
 
     }
 }

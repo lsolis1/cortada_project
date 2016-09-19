@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 using MaterialSkin.Controls;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace UI
 {
@@ -122,6 +123,16 @@ namespace UI
             }
         }
 
+        public static void PintarRowsListView(ListView list_view)
+        {
+            for (int i = 0; i < list_view.Items.Count; i++)
+            {
+                if (list_view.Items[i].Index % 2 == 0)
+                {
+                    list_view.Items[i].BackColor = Color.FromArgb(243, 239, 239);
+                }
+            }
+        }
 
     
     }

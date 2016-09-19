@@ -159,6 +159,7 @@
             this.Controls.Add(this.materialDivider1);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.groupBox1);
+            this.MaximizeBox = false;
             this.Name = "frmModificarDinero";
             this.ShowInTaskbar = false;
             this.Sizable = false;

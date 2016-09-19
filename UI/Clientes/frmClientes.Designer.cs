@@ -28,10 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmClientes));
             this.selectorClientes = new MaterialSkin.Controls.MaterialTabSelector();
             this.tabClientes = new MaterialSkin.Controls.MaterialTabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtRefrescar = new MaterialSkin.Controls.MaterialFlatButton();
             this.btnAgregarCliente = new MaterialSkin.Controls.MaterialRaisedButton();
             this.txtCodigoPostal = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.txtDomicilio = new MaterialSkin.Controls.MaterialSingleLineTextField();
@@ -42,18 +44,22 @@
             this.comboTipoDoc = new System.Windows.Forms.ComboBox();
             this.txtNombre = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.tabConsultar = new System.Windows.Forms.TabPage();
-            this.txtRefrescar = new MaterialSkin.Controls.MaterialFlatButton();
-            this.listClientes = new System.Windows.Forms.ListView();
             this.btnConsultar = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.listClientes = new System.Windows.Forms.ListView();
+            this.menuStrip = new MaterialSkin.Controls.MaterialContextMenuStrip();
+            this.editarItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.eliminarItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabClientes.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabConsultar.SuspendLayout();
+            this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // selectorClientes
             // 
             this.selectorClientes.BaseTabControl = this.tabClientes;
+            this.selectorClientes.Cursor = System.Windows.Forms.Cursors.Hand;
             this.selectorClientes.Depth = 0;
             this.selectorClientes.Location = new System.Drawing.Point(-2, 64);
             this.selectorClientes.MouseState = MaterialSkin.MouseState.HOVER;
@@ -80,7 +86,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1020, 598);
+            this.tabPage1.Size = new System.Drawing.Size(1020, 619);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Agregar";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -103,6 +109,24 @@
             this.groupBox1.Size = new System.Drawing.Size(537, 508);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
+            // 
+            // txtRefrescar
+            // 
+            this.txtRefrescar.AutoSize = true;
+            this.txtRefrescar.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.txtRefrescar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.txtRefrescar.Depth = 0;
+            this.txtRefrescar.Icon = null;
+            this.txtRefrescar.Location = new System.Drawing.Point(131, 463);
+            this.txtRefrescar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.txtRefrescar.MouseState = MaterialSkin.MouseState.HOVER;
+            this.txtRefrescar.Name = "txtRefrescar";
+            this.txtRefrescar.Primary = false;
+            this.txtRefrescar.Size = new System.Drawing.Size(148, 36);
+            this.txtRefrescar.TabIndex = 1;
+            this.txtRefrescar.Text = "Refrescar campos";
+            this.txtRefrescar.UseVisualStyleBackColor = true;
+            this.txtRefrescar.Click += new System.EventHandler(this.txtRefrescar_Click);
             // 
             // btnAgregarCliente
             // 
@@ -268,36 +292,6 @@
             this.tabConsultar.UseVisualStyleBackColor = true;
             this.tabConsultar.Enter += new System.EventHandler(this.tabConsultar_Enter);
             // 
-            // txtRefrescar
-            // 
-            this.txtRefrescar.AutoSize = true;
-            this.txtRefrescar.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.txtRefrescar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.txtRefrescar.Depth = 0;
-            this.txtRefrescar.Icon = null;
-            this.txtRefrescar.Location = new System.Drawing.Point(131, 463);
-            this.txtRefrescar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.txtRefrescar.MouseState = MaterialSkin.MouseState.HOVER;
-            this.txtRefrescar.Name = "txtRefrescar";
-            this.txtRefrescar.Primary = false;
-            this.txtRefrescar.Size = new System.Drawing.Size(148, 36);
-            this.txtRefrescar.TabIndex = 1;
-            this.txtRefrescar.Text = "Refrescar campos";
-            this.txtRefrescar.UseVisualStyleBackColor = true;
-            this.txtRefrescar.Click += new System.EventHandler(this.txtRefrescar_Click);
-            // 
-            // listClientes
-            // 
-            this.listClientes.Font = new System.Drawing.Font("Open Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listClientes.FullRowSelect = true;
-            this.listClientes.GridLines = true;
-            this.listClientes.Location = new System.Drawing.Point(9, 60);
-            this.listClientes.Name = "listClientes";
-            this.listClientes.Size = new System.Drawing.Size(999, 507);
-            this.listClientes.TabIndex = 0;
-            this.listClientes.UseCompatibleStateImageBehavior = false;
-            this.listClientes.View = System.Windows.Forms.View.Details;
-            // 
             // btnConsultar
             // 
             this.btnConsultar.AutoSize = true;
@@ -316,6 +310,47 @@
             this.btnConsultar.UseVisualStyleBackColor = true;
             this.btnConsultar.Click += new System.EventHandler(this.btnConsultar_Click);
             // 
+            // listClientes
+            // 
+            this.listClientes.ContextMenuStrip = this.menuStrip;
+            this.listClientes.Font = new System.Drawing.Font("Open Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listClientes.FullRowSelect = true;
+            this.listClientes.GridLines = true;
+            this.listClientes.Location = new System.Drawing.Point(9, 60);
+            this.listClientes.Name = "listClientes";
+            this.listClientes.Size = new System.Drawing.Size(999, 507);
+            this.listClientes.TabIndex = 0;
+            this.listClientes.UseCompatibleStateImageBehavior = false;
+            this.listClientes.View = System.Windows.Forms.View.Details;
+            // 
+            // menuStrip
+            // 
+            this.menuStrip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.menuStrip.Depth = 0;
+            this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.editarItem,
+            this.eliminarItem});
+            this.menuStrip.MouseState = MaterialSkin.MouseState.HOVER;
+            this.menuStrip.Name = "menuStrip";
+            this.menuStrip.Size = new System.Drawing.Size(118, 48);
+            this.menuStrip.Opening += new System.ComponentModel.CancelEventHandler(this.menuStrip_Opening);
+            // 
+            // editarItem
+            // 
+            this.editarItem.Name = "editarItem";
+            this.editarItem.Size = new System.Drawing.Size(117, 22);
+            this.editarItem.Text = "Editar";
+            this.editarItem.Click += new System.EventHandler(this.editarItem_Click);
+            // 
+            // eliminarItem
+            // 
+            this.eliminarItem.Image = ((System.Drawing.Image)(resources.GetObject("eliminarItem.Image")));
+            this.eliminarItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.eliminarItem.Name = "eliminarItem";
+            this.eliminarItem.Size = new System.Drawing.Size(117, 22);
+            this.eliminarItem.Text = "Eliminar";
+            this.eliminarItem.Click += new System.EventHandler(this.eliminarItem_Click);
+            // 
             // frmClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -327,12 +362,14 @@
             this.Name = "frmClientes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CLIENTES";
+            this.Deactivate += new System.EventHandler(this.frmClientes_Deactivate);
             this.tabClientes.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.tabConsultar.ResumeLayout(false);
             this.tabConsultar.PerformLayout();
+            this.menuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -356,5 +393,8 @@
         private MaterialSkin.Controls.MaterialFlatButton txtRefrescar;
         private System.Windows.Forms.ListView listClientes;
         private MaterialSkin.Controls.MaterialRaisedButton btnConsultar;
+        private MaterialSkin.Controls.MaterialContextMenuStrip menuStrip;
+        private System.Windows.Forms.ToolStripMenuItem editarItem;
+        private System.Windows.Forms.ToolStripMenuItem eliminarItem;
     }
 }
