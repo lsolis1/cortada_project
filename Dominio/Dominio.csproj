@@ -90,6 +90,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>LaCortada.edmx</DependentUpon>
     </Compile>
+    <Compile Include="ListarCliente.cs">
+      <DependentUpon>LaCortada.tt</DependentUpon>
+    </Compile>
     <Compile Include="Lista_Espera.cs">
       <DependentUpon>LaCortada.tt</DependentUpon>
     </Compile>
@@ -132,7 +135,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <EntityDeploy Include="LaCortada.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>LaCortada.Designer.cs</LastGenOutput>

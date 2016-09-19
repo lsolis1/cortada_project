@@ -58,9 +58,7 @@
             this.lblDinero = new System.Windows.Forms.Label();
             this.btnTurnosReservados = new MaterialSkin.Controls.MaterialFlatButton();
             this.btnListaEspera = new MaterialSkin.Controls.MaterialFlatButton();
-            this.btnCerrarSesion = new MaterialSkin.Controls.MaterialFlatButton();
-            this.divider9 = new MaterialSkin.Controls.MaterialDivider();
-            this.divider8 = new MaterialSkin.Controls.MaterialDivider();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
@@ -70,6 +68,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureAvatar)).BeginInit();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -384,16 +383,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(239)))));
+            this.panel2.Controls.Add(this.panel3);
             this.panel2.Controls.Add(this.listviewMainMenu);
-            this.panel2.Controls.Add(this.pictureAvatar);
-            this.panel2.Controls.Add(this.btnModificarDinero);
-            this.panel2.Controls.Add(this.lblUser);
             this.panel2.Controls.Add(this.lblDinero);
-            this.panel2.Controls.Add(this.btnTurnosReservados);
-            this.panel2.Controls.Add(this.btnListaEspera);
-            this.panel2.Controls.Add(this.btnCerrarSesion);
-            this.panel2.Controls.Add(this.divider9);
-            this.panel2.Controls.Add(this.divider8);
             this.panel2.Location = new System.Drawing.Point(283, 63);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(966, 688);
@@ -407,7 +399,7 @@
             this.listviewMainMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(247)))), ((int)(((byte)(243)))));
             this.listviewMainMenu.Font = new System.Drawing.Font("Segoe UI Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listviewMainMenu.FullRowSelect = true;
-            this.listviewMainMenu.Location = new System.Drawing.Point(12, 75);
+            this.listviewMainMenu.Location = new System.Drawing.Point(13, 84);
             this.listviewMainMenu.MultiSelect = false;
             this.listviewMainMenu.Name = "listviewMainMenu";
             this.listviewMainMenu.Size = new System.Drawing.Size(942, 443);
@@ -419,7 +411,7 @@
             // 
             this.pictureAvatar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
             this.pictureAvatar.Image = ((System.Drawing.Image)(resources.GetObject("pictureAvatar.Image")));
-            this.pictureAvatar.Location = new System.Drawing.Point(3, 6);
+            this.pictureAvatar.Location = new System.Drawing.Point(3, 5);
             this.pictureAvatar.Name = "pictureAvatar";
             this.pictureAvatar.Size = new System.Drawing.Size(64, 42);
             this.pictureAvatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -431,10 +423,11 @@
             this.btnModificarDinero.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnModificarDinero.AutoSize = true;
             this.btnModificarDinero.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnModificarDinero.BackColor = System.Drawing.Color.Transparent;
             this.btnModificarDinero.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnModificarDinero.Depth = 0;
             this.btnModificarDinero.Icon = null;
-            this.btnModificarDinero.Location = new System.Drawing.Point(284, 6);
+            this.btnModificarDinero.Location = new System.Drawing.Point(413, 6);
             this.btnModificarDinero.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnModificarDinero.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnModificarDinero.Name = "btnModificarDinero";
@@ -442,7 +435,7 @@
             this.btnModificarDinero.Size = new System.Drawing.Size(196, 36);
             this.btnModificarDinero.TabIndex = 8;
             this.btnModificarDinero.Text = "modificar dinero de caja";
-            this.btnModificarDinero.UseVisualStyleBackColor = true;
+            this.btnModificarDinero.UseVisualStyleBackColor = false;
             this.btnModificarDinero.Click += new System.EventHandler(this.btnModificarDinero_Click);
             // 
             // lblUser
@@ -450,7 +443,7 @@
             this.lblUser.AutoSize = true;
             this.lblUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
             this.lblUser.Font = new System.Drawing.Font("Segoe UI Light", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUser.Location = new System.Drawing.Point(66, 12);
+            this.lblUser.Location = new System.Drawing.Point(73, 11);
             this.lblUser.Name = "lblUser";
             this.lblUser.Size = new System.Drawing.Size(136, 30);
             this.lblUser.TabIndex = 7;
@@ -476,7 +469,7 @@
             this.btnTurnosReservados.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnTurnosReservados.Depth = 0;
             this.btnTurnosReservados.Icon = null;
-            this.btnTurnosReservados.Location = new System.Drawing.Point(649, 6);
+            this.btnTurnosReservados.Location = new System.Drawing.Point(778, 6);
             this.btnTurnosReservados.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnTurnosReservados.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnTurnosReservados.Name = "btnTurnosReservados";
@@ -495,7 +488,7 @@
             this.btnListaEspera.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnListaEspera.Depth = 0;
             this.btnListaEspera.Icon = null;
-            this.btnListaEspera.Location = new System.Drawing.Point(488, 6);
+            this.btnListaEspera.Location = new System.Drawing.Point(617, 6);
             this.btnListaEspera.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnListaEspera.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnListaEspera.Name = "btnListaEspera";
@@ -506,51 +499,20 @@
             this.btnListaEspera.UseVisualStyleBackColor = true;
             this.btnListaEspera.Click += new System.EventHandler(this.btnListaEspera_Click);
             // 
-            // btnCerrarSesion
+            // panel3
             // 
-            this.btnCerrarSesion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCerrarSesion.AutoSize = true;
-            this.btnCerrarSesion.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnCerrarSesion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(239)))));
-            this.btnCerrarSesion.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCerrarSesion.Depth = 0;
-            this.btnCerrarSesion.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCerrarSesion.Icon = null;
-            this.btnCerrarSesion.Location = new System.Drawing.Point(841, 6);
-            this.btnCerrarSesion.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.btnCerrarSesion.MouseState = MaterialSkin.MouseState.HOVER;
-            this.btnCerrarSesion.Name = "btnCerrarSesion";
-            this.btnCerrarSesion.Primary = false;
-            this.btnCerrarSesion.Size = new System.Drawing.Size(115, 36);
-            this.btnCerrarSesion.TabIndex = 2;
-            this.btnCerrarSesion.Text = "cerrar sesion";
-            this.btnCerrarSesion.UseVisualStyleBackColor = false;
-            // 
-            // divider9
-            // 
-            this.divider9.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.divider9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.divider9.Depth = 0;
-            this.divider9.Location = new System.Drawing.Point(-3, 51);
-            this.divider9.MouseState = MaterialSkin.MouseState.HOVER;
-            this.divider9.Name = "divider9";
-            this.divider9.Size = new System.Drawing.Size(969, 1);
-            this.divider9.TabIndex = 1;
-            this.divider9.Text = "materialDivider2";
-            // 
-            // divider8
-            // 
-            this.divider8.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.divider8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.divider8.Depth = 0;
-            this.divider8.Location = new System.Drawing.Point(0, 0);
-            this.divider8.MouseState = MaterialSkin.MouseState.HOVER;
-            this.divider8.Name = "divider8";
-            this.divider8.Size = new System.Drawing.Size(966, 52);
-            this.divider8.TabIndex = 0;
-            this.divider8.Text = "materialDivider2";
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.panel3.Controls.Add(this.pictureAvatar);
+            this.panel3.Controls.Add(this.lblUser);
+            this.panel3.Controls.Add(this.btnModificarDinero);
+            this.panel3.Controls.Add(this.btnTurnosReservados);
+            this.panel3.Controls.Add(this.btnListaEspera);
+            this.panel3.Location = new System.Drawing.Point(0, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(966, 52);
+            this.panel3.TabIndex = 11;
             // 
             // frmMainMenu
             // 
@@ -577,6 +539,8 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureAvatar)).EndInit();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -605,9 +569,6 @@
         private MaterialSkin.Controls.MaterialDivider divider6;
         private MaterialSkin.Controls.MaterialDivider divider7;
         private System.Windows.Forms.Panel panel2;
-        private MaterialSkin.Controls.MaterialDivider divider8;
-        private MaterialSkin.Controls.MaterialDivider divider9;
-        private MaterialSkin.Controls.MaterialFlatButton btnCerrarSesion;
         private MaterialSkin.Controls.MaterialFlatButton btnListaEspera;
         private MaterialSkin.Controls.MaterialFlatButton btnTurnosReservados;
         private System.Windows.Forms.Label lblDinero;
@@ -615,6 +576,7 @@
         private MaterialSkin.Controls.MaterialFlatButton btnModificarDinero;
         private System.Windows.Forms.PictureBox pictureAvatar;
         private System.Windows.Forms.ListView listviewMainMenu;
+        private System.Windows.Forms.Panel panel3;
     }
 }
 

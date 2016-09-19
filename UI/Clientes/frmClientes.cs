@@ -13,6 +13,7 @@ using MaterialSkin.Controls;
 using LogicaDeNegocio;
 using Dominio;
 
+
 namespace UI.Clientes
 {
     public partial class frmClientes : MaterialForm
@@ -153,18 +154,12 @@ namespace UI.Clientes
             }
 
             //pintar los rows pares
-            for (int i = 0; i < listClientes.Items.Count; i++)
-            {
-                if (listClientes.Items[i].Index % 2 == 0)
-                {
-                    listClientes.Items[i].BackColor = Color.FromArgb(243, 239, 239);
-                }
-            }
+            Controlador.PintarRowsListView(listClientes);
+
         }
         private void tabConsultar_Enter(object sender, EventArgs e)
         {
             ListarListClientes();
-           
         }
 
         private void btnConsultar_Click(object sender, EventArgs e)
@@ -173,6 +168,49 @@ namespace UI.Clientes
             ListarListClientes();
         }
 
+        private void menuStrip_Opening(object sender, CancelEventArgs e)
+        {
+            if (this.listClientes.SelectedItems.Count > 0)
+            {
+                this.editarItem.Enabled = true;
+                this.eliminarItem.Enabled = true;
+            }else
+            {
+                this.editarItem.Enabled = false;
+                this.eliminarItem.Enabled = false;
+            }
+        }
+
+        private void eliminarItem_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("¿Esta seguro?","Sistema",MessageBoxButtons.YesNo,MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                ManejadorClientes manejadorCliente = new ManejadorClientes();
+                var cliente = (Cliente)this.listClientes.SelectedItems[0].Tag;
+                //manejadorCliente.borrarCliente(cliente);
+                listClientes.Clear();
+                ListarListClientes();
+            }
+
+        }
+
+        private void editarItem_Click(object sender, EventArgs e)
+        {
+            ModificarCliente modificar_cliente = new ModificarCliente((Cliente)listClientes.SelectedItems[0].Tag);
+            modificar_cliente.ShowDialog();
+            if (DialogResult == DialogResult.OK)
+            {
+                ListarListClientes();
+            }
+
+        }
+
         #endregion
+
+        private void frmClientes_Deactivate(object sender, EventArgs e)
+        {
+            
+            //main_menu.resetarEstilos();
+        }
     }
 }

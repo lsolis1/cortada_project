@@ -53,6 +53,7 @@
         <AssociationConnector Association="LaCortadaModel.FK_Ventas_Tipo_Comprobante" ManuallyRouted="false" />
         <AssociationConnector Association="LaCortadaModel.FK_Turnos_Tipos_Turno" ManuallyRouted="false" />
         <AssociationConnector Association="LaCortadaModel.FK_Ventas_Lineas_Ventas" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="LaCortadaModel.ListarCliente" Width="1.5" PointX="5.75" PointY="1.5" FillColor="255, 192, 128" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

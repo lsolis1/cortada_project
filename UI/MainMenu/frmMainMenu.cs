@@ -57,8 +57,8 @@ namespace UI
                 divider5.BackColor = Color.Black;
                 divider6.BackColor = Color.Black;
                 divider7.BackColor = Color.Black;
-                divider8.BackColor = Color.FromArgb(229, 229, 229);
-                divider9.BackColor = Color.FromArgb(110, 0, 0, 0);
+                //divider8.BackColor = Color.FromArgb(229, 229, 229);
+                //divider9.BackColor = Color.FromArgb(110, 0, 0, 0);
             }
 
         private void btnTurnos_Click(object sender, EventArgs e)
@@ -69,6 +69,10 @@ namespace UI
 
         private void frmMainMenu_Deactivate(object sender, EventArgs e)
         {
+            resetarEstilos();
+        }
+        public void resetarEstilos()
+        {
             coloresDividers();
             btnTurnos.FlatAppearance.BorderColor = Color.FromArgb(51, 51, 51);
             btnClientes.FlatAppearance.BorderColor = Color.FromArgb(51, 51, 51);
@@ -77,8 +81,10 @@ namespace UI
             btnAdmin.FlatAppearance.BorderColor = Color.FromArgb(51, 51, 51);
             btnTema.FlatAppearance.BorderColor = Color.FromArgb(51, 51, 51);
         }
+
         private void frmMainMenu_Activated(object sender, EventArgs e)
         {
+            resetarEstilos();
             lblDinero.Text = "$" + SesionCaja.importe_actual.ToString();
         }
 
@@ -87,6 +93,7 @@ namespace UI
         {
             frmClientes form_clientes = new frmClientes();
             form_clientes.ShowDialog();
+            
             //frmClientes formularioClientes = new frmClientes();
             //formularioClientes.ShowDialog();
         }
@@ -214,6 +221,6 @@ namespace UI
         
         }
 
-     
+ 
     }
 }

@@ -231,6 +231,24 @@
           <Property Name="Importe_Descuento" Type="int" />
           <Property Name="Importe_Total" Type="int" Nullable="false" />
         </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'LaCortada.dbo.ListarClientes' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="ListarClientes">
+          <Key>
+            <PropertyRef Name="id_cliente" />
+          </Key>
+          <Property Name="id_cliente" Type="int" Nullable="false" />
+          <Property Name="Tipo_Doc" Type="tinyint" Nullable="false" />
+          <Property Name="Nro_Doc" Type="bigint" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Apellido" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="Mail" Type="nvarchar" MaxLength="30" />
+          <Property Name="Celular" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Domicilio" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Cod_Postal" Type="smallint" Nullable="false" />
+          <Property Name="Fecha_Baja" Type="datetime" />
+          <Property Name="NombreCiudad" Type="nvarchar" MaxLength="25" />
+        </EntityType>
         <Association Name="FK_Cajas_Empleados">
           <End Role="Empleados" Type="Self.Empleados" Multiplicity="1" />
           <End Role="Cajas" Type="Self.Cajas" Multiplicity="*" />
@@ -577,6 +595,21 @@
           <EntitySet Name="Turnos" EntityType="Self.Turnos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Ventas" EntityType="Self.Ventas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Ventas_Lineas" EntityType="Self.Ventas_Lineas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ListarClientes" EntityType="Self.ListarClientes" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ListarClientes].[id_cliente] AS [id_cliente], 
+    [ListarClientes].[Tipo_Doc] AS [Tipo_Doc], 
+    [ListarClientes].[Nro_Doc] AS [Nro_Doc], 
+    [ListarClientes].[Nombre] AS [Nombre], 
+    [ListarClientes].[Apellido] AS [Apellido], 
+    [ListarClientes].[Mail] AS [Mail], 
+    [ListarClientes].[Celular] AS [Celular], 
+    [ListarClientes].[Domicilio] AS [Domicilio], 
+    [ListarClientes].[Cod_Postal] AS [Cod_Postal], 
+    [ListarClientes].[Fecha_Baja] AS [Fecha_Baja], 
+    [ListarClientes].[NombreCiudad] AS [NombreCiudad]
+    FROM [dbo].[ListarClientes] AS [ListarClientes]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK_Cajas_Empleados" Association="Self.FK_Cajas_Empleados">
             <End Role="Empleados" EntitySet="Empleados" />
             <End Role="Cajas" EntitySet="Cajas" />
@@ -1424,7 +1457,24 @@
             <End Role="Ventas" EntitySet="Ventas" />
             <End Role="Ventas_Lineas" EntitySet="Ventas_Lineas" />
           </AssociationSet>
+          <EntitySet Name="ListarClientes" EntityType="LaCortadaModel.ListarCliente" />
         </EntityContainer>
+        <EntityType Name="ListarCliente">
+          <Key>
+            <PropertyRef Name="id_cliente" />
+          </Key>
+          <Property Name="id_cliente" Type="Int32" Nullable="false" />
+          <Property Name="Tipo_Doc" Type="Byte" Nullable="false" />
+          <Property Name="Nro_Doc" Type="Int64" Nullable="false" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Apellido" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Mail" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Celular" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Domicilio" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Cod_Postal" Type="Int16" Nullable="false" />
+          <Property Name="Fecha_Baja" Type="DateTime" Precision="3" />
+          <Property Name="NombreCiudad" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1675,6 +1725,23 @@
                 <ScalarProperty Name="Porcentaje_Descuento" ColumnName="Porcentaje_Descuento" />
                 <ScalarProperty Name="Importe_Descuento" ColumnName="Importe_Descuento" />
                 <ScalarProperty Name="Importe_Total" ColumnName="Importe_Total" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ListarClientes">
+            <EntityTypeMapping TypeName="LaCortadaModel.ListarCliente">
+              <MappingFragment StoreEntitySet="ListarClientes">
+                <ScalarProperty Name="NombreCiudad" ColumnName="NombreCiudad" />
+                <ScalarProperty Name="Fecha_Baja" ColumnName="Fecha_Baja" />
+                <ScalarProperty Name="Cod_Postal" ColumnName="Cod_Postal" />
+                <ScalarProperty Name="Domicilio" ColumnName="Domicilio" />
+                <ScalarProperty Name="Celular" ColumnName="Celular" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Nro_Doc" ColumnName="Nro_Doc" />
+                <ScalarProperty Name="Tipo_Doc" ColumnName="Tipo_Doc" />
+                <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
