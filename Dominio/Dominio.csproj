@@ -69,6 +69,15 @@
     <Compile Include="Compras_Renglones.cs">
       <DependentUpon>LaCortada.tt</DependentUpon>
     </Compile>
+    <Compile Include="Configuracion.cs">
+      <DependentUpon>LaCortada.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Dias_atencion.cs">
+      <DependentUpon>LaCortada.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Dias_cancelados.cs">
+      <DependentUpon>LaCortada.tt</DependentUpon>
+    </Compile>
     <Compile Include="Empleado.cs">
       <DependentUpon>LaCortada.tt</DependentUpon>
     </Compile>
@@ -89,9 +98,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>LaCortada.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="ListarCliente.cs">
-      <DependentUpon>LaCortada.tt</DependentUpon>
     </Compile>
     <Compile Include="Lista_Espera.cs">
       <DependentUpon>LaCortada.tt</DependentUpon>
@@ -125,6 +131,9 @@
       <DependentUpon>LaCortada.tt</DependentUpon>
     </Compile>
     <Compile Include="Turno.cs">
+      <DependentUpon>LaCortada.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Turnos_fijos.cs">
       <DependentUpon>LaCortada.tt</DependentUpon>
     </Compile>
     <Compile Include="Venta.cs">

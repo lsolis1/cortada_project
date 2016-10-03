@@ -79,6 +79,35 @@
           <Property Name="Porcentaje_IVA" Type="smallint" Nullable="false" />
           <Property Name="Importe_Total" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="Configuracion">
+          <Key>
+            <PropertyRef Name="id_configuracion" />
+          </Key>
+          <Property Name="id_configuracion" Type="smallint" Nullable="false" />
+          <Property Name="nombre_compejo" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="direccion" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="telefono" Type="nvarchar" MaxLength="40" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Dias_atencion">
+          <Key>
+            <PropertyRef Name="id_dia" />
+          </Key>
+          <Property Name="id_dia" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre_dia" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="hora_mañana" Type="time" Precision="0" />
+          <Property Name="fin_hora_mañana" Type="time" Precision="0" />
+          <Property Name="hora_tarde" Type="time" Precision="0" Nullable="false" />
+          <Property Name="fin_hora_tarde" Type="time" Precision="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Dias_cancelados">
+          <Key>
+            <PropertyRef Name="id_feriado" />
+          </Key>
+          <Property Name="id_feriado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fecha_feriado" Type="date" Nullable="false" />
+          <Property Name="motivo" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="cancelar" Type="datetime" />
+        </EntityType>
         <EntityType Name="Empleados">
           <Key>
             <PropertyRef Name="Nro_Empleado" />
@@ -93,6 +122,7 @@
           <Property Name="Mail" Type="nvarchar" MaxLength="35" />
           <Property Name="Domicilio" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="Cod_Postal" Type="smallint" Nullable="false" />
+          <Property Name="Fecha_Baja" Type="datetime" />
         </EntityType>
         <EntityType Name="Estado_Turno">
           <Key>
@@ -204,6 +234,19 @@
           <Property Name="Hora" Type="time" Precision="7" Nullable="false" />
           <Property Name="Estado" Type="tinyint" Nullable="false" />
         </EntityType>
+        <EntityType Name="Turnos_fijos">
+          <Key>
+            <PropertyRef Name="id_turno_fijo" />
+          </Key>
+          <Property Name="id_turno_fijo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cod_Cancha" Type="tinyint" Nullable="false" />
+          <Property Name="Nro_Empleado" Type="tinyint" Nullable="false" />
+          <Property Name="id_cliente" Type="int" Nullable="false" />
+          <Property Name="id_dia" Type="tinyint" Nullable="false" />
+          <Property Name="hora" Type="time" Precision="7" Nullable="false" />
+          <Property Name="Fecha_inicio" Type="date" Nullable="false" />
+          <Property Name="Fecha_fin" Type="date" />
+        </EntityType>
         <EntityType Name="Ventas">
           <Key>
             <PropertyRef Name="id_venta" />
@@ -230,24 +273,6 @@
           <Property Name="Porcentaje_Descuento" Type="smallint" />
           <Property Name="Importe_Descuento" Type="int" />
           <Property Name="Importe_Total" Type="int" Nullable="false" />
-        </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'LaCortada.dbo.ListarClientes' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
-        <EntityType Name="ListarClientes">
-          <Key>
-            <PropertyRef Name="id_cliente" />
-          </Key>
-          <Property Name="id_cliente" Type="int" Nullable="false" />
-          <Property Name="Tipo_Doc" Type="tinyint" Nullable="false" />
-          <Property Name="Nro_Doc" Type="bigint" Nullable="false" />
-          <Property Name="Nombre" Type="nvarchar" MaxLength="20" Nullable="false" />
-          <Property Name="Apellido" Type="nvarchar" MaxLength="15" Nullable="false" />
-          <Property Name="Mail" Type="nvarchar" MaxLength="30" />
-          <Property Name="Celular" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Domicilio" Type="nvarchar" MaxLength="20" Nullable="false" />
-          <Property Name="Cod_Postal" Type="smallint" Nullable="false" />
-          <Property Name="Fecha_Baja" Type="datetime" />
-          <Property Name="NombreCiudad" Type="nvarchar" MaxLength="25" />
         </EntityType>
         <Association Name="FK_Cajas_Empleados">
           <End Role="Empleados" Type="Self.Empleados" Multiplicity="1" />
@@ -501,6 +526,54 @@ advertencia 6002: La tabla o vista 'LaCortada.dbo.ListarClientes' no tiene defin
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Turnos_fijos_Canchas">
+          <End Role="Canchas" Type="Self.Canchas" Multiplicity="1" />
+          <End Role="Turnos_fijos" Type="Self.Turnos_fijos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Canchas">
+              <PropertyRef Name="Cod_Cancha" />
+            </Principal>
+            <Dependent Role="Turnos_fijos">
+              <PropertyRef Name="Cod_Cancha" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Turnos_fijos_Clientes">
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="1" />
+          <End Role="Turnos_fijos" Type="Self.Turnos_fijos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clientes">
+              <PropertyRef Name="id_cliente" />
+            </Principal>
+            <Dependent Role="Turnos_fijos">
+              <PropertyRef Name="id_cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Turnos_fijos_Dias_atencion">
+          <End Role="Dias_atencion" Type="Self.Dias_atencion" Multiplicity="1" />
+          <End Role="Turnos_fijos" Type="Self.Turnos_fijos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dias_atencion">
+              <PropertyRef Name="id_dia" />
+            </Principal>
+            <Dependent Role="Turnos_fijos">
+              <PropertyRef Name="id_dia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Turnos_fijos_Empleados">
+          <End Role="Empleados" Type="Self.Empleados" Multiplicity="1" />
+          <End Role="Turnos_fijos" Type="Self.Turnos_fijos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleados">
+              <PropertyRef Name="Nro_Empleado" />
+            </Principal>
+            <Dependent Role="Turnos_fijos">
+              <PropertyRef Name="Nro_Empleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Turnos_Tipos_Turno">
           <End Role="Tipos_Turno" Type="Self.Tipos_Turno" Multiplicity="1" />
           <End Role="Turnos" Type="Self.Turnos" Multiplicity="*" />
@@ -580,6 +653,9 @@ advertencia 6002: La tabla o vista 'LaCortada.dbo.ListarClientes' no tiene defin
           <EntitySet Name="Clientes" EntityType="Self.Clientes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Compras" EntityType="Self.Compras" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Compras_Renglones" EntityType="Self.Compras_Renglones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Configuracion" EntityType="Self.Configuracion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Dias_atencion" EntityType="Self.Dias_atencion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Dias_cancelados" EntityType="Self.Dias_cancelados" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Empleados" EntityType="Self.Empleados" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Estado_Turno" EntityType="Self.Estado_Turno" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Lista_Espera" EntityType="Self.Lista_Espera" Schema="dbo" store:Type="Tables" />
@@ -593,23 +669,9 @@ advertencia 6002: La tabla o vista 'LaCortada.dbo.ListarClientes' no tiene defin
           <EntitySet Name="Tipos_Documento" EntityType="Self.Tipos_Documento" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tipos_Turno" EntityType="Self.Tipos_Turno" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Turnos" EntityType="Self.Turnos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Turnos_fijos" EntityType="Self.Turnos_fijos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Ventas" EntityType="Self.Ventas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Ventas_Lineas" EntityType="Self.Ventas_Lineas" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="ListarClientes" EntityType="Self.ListarClientes" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [ListarClientes].[id_cliente] AS [id_cliente], 
-    [ListarClientes].[Tipo_Doc] AS [Tipo_Doc], 
-    [ListarClientes].[Nro_Doc] AS [Nro_Doc], 
-    [ListarClientes].[Nombre] AS [Nombre], 
-    [ListarClientes].[Apellido] AS [Apellido], 
-    [ListarClientes].[Mail] AS [Mail], 
-    [ListarClientes].[Celular] AS [Celular], 
-    [ListarClientes].[Domicilio] AS [Domicilio], 
-    [ListarClientes].[Cod_Postal] AS [Cod_Postal], 
-    [ListarClientes].[Fecha_Baja] AS [Fecha_Baja], 
-    [ListarClientes].[NombreCiudad] AS [NombreCiudad]
-    FROM [dbo].[ListarClientes] AS [ListarClientes]</DefiningQuery>
-          </EntitySet>
           <AssociationSet Name="FK_Cajas_Empleados" Association="Self.FK_Cajas_Empleados">
             <End Role="Empleados" EntitySet="Empleados" />
             <End Role="Cajas" EntitySet="Cajas" />
@@ -694,6 +756,22 @@ advertencia 6002: La tabla o vista 'LaCortada.dbo.ListarClientes' no tiene defin
             <End Role="Estado_Turno" EntitySet="Estado_Turno" />
             <End Role="Turnos" EntitySet="Turnos" />
           </AssociationSet>
+          <AssociationSet Name="FK_Turnos_fijos_Canchas" Association="Self.FK_Turnos_fijos_Canchas">
+            <End Role="Canchas" EntitySet="Canchas" />
+            <End Role="Turnos_fijos" EntitySet="Turnos_fijos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Turnos_fijos_Clientes" Association="Self.FK_Turnos_fijos_Clientes">
+            <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="Turnos_fijos" EntitySet="Turnos_fijos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Turnos_fijos_Dias_atencion" Association="Self.FK_Turnos_fijos_Dias_atencion">
+            <End Role="Dias_atencion" EntitySet="Dias_atencion" />
+            <End Role="Turnos_fijos" EntitySet="Turnos_fijos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Turnos_fijos_Empleados" Association="Self.FK_Turnos_fijos_Empleados">
+            <End Role="Empleados" EntitySet="Empleados" />
+            <End Role="Turnos_fijos" EntitySet="Turnos_fijos" />
+          </AssociationSet>
           <AssociationSet Name="FK_Turnos_Tipos_Turno" Association="Self.FK_Turnos_Tipos_Turno">
             <End Role="Tipos_Turno" EntitySet="Tipos_Turno" />
             <End Role="Turnos" EntitySet="Turnos" />
@@ -746,6 +824,7 @@ advertencia 6002: La tabla o vista 'LaCortada.dbo.ListarClientes' no tiene defin
           <Property Name="Cod_Cancha" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Descripcion" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Turnos" Relationship="Self.FK_Turnos_Canchas" FromRole="Canchas" ToRole="Turnos" />
+          <NavigationProperty Name="Turnos_fijos" Relationship="LaCortadaModel.FK_Turnos_fijos_Canchas" FromRole="Cancha" ToRole="Turnos_fijos" />
         </EntityType>
         <EntityType Name="Ciudade">
           <Key>
@@ -778,6 +857,7 @@ advertencia 6002: La tabla o vista 'LaCortada.dbo.ListarClientes' no tiene defin
           <NavigationProperty Name="Turnos" Relationship="Self.FK_Turnos_Clientes" FromRole="Clientes" ToRole="Turnos" />
           <NavigationProperty Name="Ventas" Relationship="Self.FK_Ventas_Clientes" FromRole="Clientes" ToRole="Ventas" />
           <Property Name="Fecha_Baja" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Turnos_fijos" Relationship="LaCortadaModel.FK_Turnos_fijos_Clientes" FromRole="Cliente" ToRole="Turnos_fijos" />
         </EntityType>
         <EntityType Name="Compra">
           <Key>
@@ -836,6 +916,8 @@ advertencia 6002: La tabla o vista 'LaCortada.dbo.ListarClientes' no tiene defin
           <NavigationProperty Name="Tipos_Documento" Relationship="Self.FK_Empleados_Tipos_Documento" FromRole="Empleados" ToRole="Tipos_Documento" />
           <NavigationProperty Name="Logins" Relationship="Self.FK_Login_Empleados" FromRole="Empleados" ToRole="Login" />
           <NavigationProperty Name="Turnos" Relationship="Self.FK_Turnos_Empleados" FromRole="Empleados" ToRole="Turnos" />
+          <Property Name="Fecha_Baja" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Turnos_fijos" Relationship="LaCortadaModel.FK_Turnos_fijos_Empleados" FromRole="Empleado" ToRole="Turnos_fijos" />
         </EntityType>
         <EntityType Name="Estado_Turno">
           <Key>
@@ -1457,24 +1539,122 @@ advertencia 6002: La tabla o vista 'LaCortada.dbo.ListarClientes' no tiene defin
             <End Role="Ventas" EntitySet="Ventas" />
             <End Role="Ventas_Lineas" EntitySet="Ventas_Lineas" />
           </AssociationSet>
-          <EntitySet Name="ListarClientes" EntityType="LaCortadaModel.ListarCliente" />
+          <EntitySet Name="Configuracions" EntityType="LaCortadaModel.Configuracion" />
+          <EntitySet Name="Dias_atencion" EntityType="LaCortadaModel.Dias_atencion" />
+          <EntitySet Name="Dias_cancelados" EntityType="LaCortadaModel.Dias_cancelados" />
+          <EntitySet Name="Turnos_fijos" EntityType="LaCortadaModel.Turnos_fijos" />
+          <AssociationSet Name="FK_Turnos_fijos_Canchas" Association="LaCortadaModel.FK_Turnos_fijos_Canchas">
+            <End Role="Cancha" EntitySet="Canchas" />
+            <End Role="Turnos_fijos" EntitySet="Turnos_fijos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Turnos_fijos_Clientes" Association="LaCortadaModel.FK_Turnos_fijos_Clientes">
+            <End Role="Cliente" EntitySet="Clientes" />
+            <End Role="Turnos_fijos" EntitySet="Turnos_fijos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Turnos_fijos_Dias_atencion" Association="LaCortadaModel.FK_Turnos_fijos_Dias_atencion">
+            <End Role="Dias_atencion" EntitySet="Dias_atencion" />
+            <End Role="Turnos_fijos" EntitySet="Turnos_fijos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Turnos_fijos_Empleados" Association="LaCortadaModel.FK_Turnos_fijos_Empleados">
+            <End Role="Empleado" EntitySet="Empleados" />
+            <End Role="Turnos_fijos" EntitySet="Turnos_fijos" />
+          </AssociationSet>
         </EntityContainer>
-        <EntityType Name="ListarCliente">
+        <EntityType Name="Configuracion">
           <Key>
-            <PropertyRef Name="id_cliente" />
+            <PropertyRef Name="id_configuracion" />
           </Key>
-          <Property Name="id_cliente" Type="Int32" Nullable="false" />
-          <Property Name="Tipo_Doc" Type="Byte" Nullable="false" />
-          <Property Name="Nro_Doc" Type="Int64" Nullable="false" />
-          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="Apellido" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
-          <Property Name="Mail" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="Celular" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Domicilio" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="Cod_Postal" Type="Int16" Nullable="false" />
-          <Property Name="Fecha_Baja" Type="DateTime" Precision="3" />
-          <Property Name="NombreCiudad" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="id_configuracion" Type="Int16" Nullable="false" />
+          <Property Name="nombre_compejo" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="direccion" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="telefono" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
         </EntityType>
+        <EntityType Name="Dias_atencion">
+          <Key>
+            <PropertyRef Name="id_dia" />
+          </Key>
+          <Property Name="id_dia" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre_dia" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="hora_mañana" Type="Time" Precision="0" />
+          <Property Name="fin_hora_mañana" Type="Time" Precision="0" />
+          <Property Name="hora_tarde" Type="Time" Nullable="false" Precision="0" />
+          <Property Name="fin_hora_tarde" Type="Time" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Turnos_fijos" Relationship="LaCortadaModel.FK_Turnos_fijos_Dias_atencion" FromRole="Dias_atencion" ToRole="Turnos_fijos" />
+        </EntityType>
+        <EntityType Name="Dias_cancelados">
+          <Key>
+            <PropertyRef Name="id_feriado" />
+          </Key>
+          <Property Name="id_feriado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fecha_feriado" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="motivo" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="cancelar" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Turnos_fijos">
+          <Key>
+            <PropertyRef Name="id_turno_fijo" />
+          </Key>
+          <Property Name="id_turno_fijo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cod_Cancha" Type="Byte" Nullable="false" />
+          <Property Name="Nro_Empleado" Type="Byte" Nullable="false" />
+          <Property Name="id_cliente" Type="Int32" Nullable="false" />
+          <Property Name="id_dia" Type="Byte" Nullable="false" />
+          <Property Name="hora" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="Fecha_inicio" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Fecha_fin" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Cancha" Relationship="LaCortadaModel.FK_Turnos_fijos_Canchas" FromRole="Turnos_fijos" ToRole="Cancha" />
+          <NavigationProperty Name="Cliente" Relationship="LaCortadaModel.FK_Turnos_fijos_Clientes" FromRole="Turnos_fijos" ToRole="Cliente" />
+          <NavigationProperty Name="Dias_atencion" Relationship="LaCortadaModel.FK_Turnos_fijos_Dias_atencion" FromRole="Turnos_fijos" ToRole="Dias_atencion" />
+          <NavigationProperty Name="Empleado" Relationship="LaCortadaModel.FK_Turnos_fijos_Empleados" FromRole="Turnos_fijos" ToRole="Empleado" />
+        </EntityType>
+        <Association Name="FK_Turnos_fijos_Canchas">
+          <End Type="LaCortadaModel.Cancha" Role="Cancha" Multiplicity="1" />
+          <End Type="LaCortadaModel.Turnos_fijos" Role="Turnos_fijos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cancha">
+              <PropertyRef Name="Cod_Cancha" />
+            </Principal>
+            <Dependent Role="Turnos_fijos">
+              <PropertyRef Name="Cod_Cancha" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Turnos_fijos_Clientes">
+          <End Type="LaCortadaModel.Cliente" Role="Cliente" Multiplicity="1" />
+          <End Type="LaCortadaModel.Turnos_fijos" Role="Turnos_fijos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="id_cliente" />
+            </Principal>
+            <Dependent Role="Turnos_fijos">
+              <PropertyRef Name="id_cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Turnos_fijos_Dias_atencion">
+          <End Type="LaCortadaModel.Dias_atencion" Role="Dias_atencion" Multiplicity="1" />
+          <End Type="LaCortadaModel.Turnos_fijos" Role="Turnos_fijos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dias_atencion">
+              <PropertyRef Name="id_dia" />
+            </Principal>
+            <Dependent Role="Turnos_fijos">
+              <PropertyRef Name="id_dia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Turnos_fijos_Empleados">
+          <End Type="LaCortadaModel.Empleado" Role="Empleado" Multiplicity="1" />
+          <End Type="LaCortadaModel.Turnos_fijos" Role="Turnos_fijos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="Nro_Empleado" />
+            </Principal>
+            <Dependent Role="Turnos_fijos">
+              <PropertyRef Name="Nro_Empleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1564,6 +1744,7 @@ advertencia 6002: La tabla o vista 'LaCortada.dbo.ListarClientes' no tiene defin
           <EntitySetMapping Name="Empleados">
             <EntityTypeMapping TypeName="LaCortadaModel.Empleado">
               <MappingFragment StoreEntitySet="Empleados">
+                <ScalarProperty Name="Fecha_Baja" ColumnName="Fecha_Baja" />
                 <ScalarProperty Name="Nro_Empleado" ColumnName="Nro_Empleado" />
                 <ScalarProperty Name="Nro_Doc" ColumnName="Nro_Doc" />
                 <ScalarProperty Name="Tipo_Doc" ColumnName="Tipo_Doc" />
@@ -1728,20 +1909,49 @@ advertencia 6002: La tabla o vista 'LaCortada.dbo.ListarClientes' no tiene defin
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ListarClientes">
-            <EntityTypeMapping TypeName="LaCortadaModel.ListarCliente">
-              <MappingFragment StoreEntitySet="ListarClientes">
-                <ScalarProperty Name="NombreCiudad" ColumnName="NombreCiudad" />
-                <ScalarProperty Name="Fecha_Baja" ColumnName="Fecha_Baja" />
-                <ScalarProperty Name="Cod_Postal" ColumnName="Cod_Postal" />
-                <ScalarProperty Name="Domicilio" ColumnName="Domicilio" />
-                <ScalarProperty Name="Celular" ColumnName="Celular" />
-                <ScalarProperty Name="Mail" ColumnName="Mail" />
-                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="Nro_Doc" ColumnName="Nro_Doc" />
-                <ScalarProperty Name="Tipo_Doc" ColumnName="Tipo_Doc" />
+          <EntitySetMapping Name="Configuracions">
+            <EntityTypeMapping TypeName="LaCortadaModel.Configuracion">
+              <MappingFragment StoreEntitySet="Configuracion">
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="nombre_compejo" ColumnName="nombre_compejo" />
+                <ScalarProperty Name="id_configuracion" ColumnName="id_configuracion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Dias_atencion">
+            <EntityTypeMapping TypeName="LaCortadaModel.Dias_atencion">
+              <MappingFragment StoreEntitySet="Dias_atencion">
+                <ScalarProperty Name="fin_hora_tarde" ColumnName="fin_hora_tarde" />
+                <ScalarProperty Name="hora_tarde" ColumnName="hora_tarde" />
+                <ScalarProperty Name="fin_hora_mañana" ColumnName="fin_hora_mañana" />
+                <ScalarProperty Name="hora_mañana" ColumnName="hora_mañana" />
+                <ScalarProperty Name="nombre_dia" ColumnName="nombre_dia" />
+                <ScalarProperty Name="id_dia" ColumnName="id_dia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Dias_cancelados">
+            <EntityTypeMapping TypeName="LaCortadaModel.Dias_cancelados">
+              <MappingFragment StoreEntitySet="Dias_cancelados">
+                <ScalarProperty Name="cancelar" ColumnName="cancelar" />
+                <ScalarProperty Name="motivo" ColumnName="motivo" />
+                <ScalarProperty Name="fecha_feriado" ColumnName="fecha_feriado" />
+                <ScalarProperty Name="id_feriado" ColumnName="id_feriado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Turnos_fijos">
+            <EntityTypeMapping TypeName="LaCortadaModel.Turnos_fijos">
+              <MappingFragment StoreEntitySet="Turnos_fijos">
+                <ScalarProperty Name="Fecha_fin" ColumnName="Fecha_fin" />
+                <ScalarProperty Name="Fecha_inicio" ColumnName="Fecha_inicio" />
+                <ScalarProperty Name="hora" ColumnName="hora" />
+                <ScalarProperty Name="id_dia" ColumnName="id_dia" />
                 <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
+                <ScalarProperty Name="Nro_Empleado" ColumnName="Nro_Empleado" />
+                <ScalarProperty Name="Cod_Cancha" ColumnName="Cod_Cancha" />
+                <ScalarProperty Name="id_turno_fijo" ColumnName="id_turno_fijo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

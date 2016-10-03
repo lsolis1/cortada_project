@@ -14,7 +14,7 @@ namespace LogicaDeNegocio
         public static List<Turno> ListarTurnosHoy()
         {
             var db = new DB_LaCortadaEntities();
-            //listar los turnos de hoy con el estado Pendiente (1)
+            //listar los turnos de hoy.
             var turnos =  db.Turnos.Where(x => x.Fecha == DateTime.Today).ToList();
             return turnos.OrderByDescending(x=> x.Hora).ToList();
         }

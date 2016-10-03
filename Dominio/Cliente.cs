@@ -20,6 +20,7 @@ namespace Dominio
             this.Lista_Espera = new HashSet<Lista_Espera>();
             this.Turnos = new HashSet<Turno>();
             this.Ventas = new HashSet<Venta>();
+            this.Turnos_fijos = new HashSet<Turnos_fijos>();
         }
     
         public int id_cliente { get; set; }
@@ -41,5 +42,7 @@ namespace Dominio
         public virtual ICollection<Turno> Turnos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Venta> Ventas { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Turnos_fijos> Turnos_fijos { get; set; }
     }
 }

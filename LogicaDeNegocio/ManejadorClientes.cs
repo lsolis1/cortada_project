@@ -11,21 +11,56 @@ namespace LogicaDeNegocio
 {
     public class ManejadorClientes
     {
-        public void agregarCliente(Cliente cliente)
+        public bool agregarCliente(Cliente cliente)
         {
             using (var db = new DB_LaCortadaEntities())
             {
+                if (db.Ciudades.FirstOrDefault(x=>x.Cod_Postal==cliente.Cod_Postal)==null)
+                {
+                    return false;
+                }
                 db.Clientes.Add(cliente);
                 db.SaveChanges();
+                return true;
             }
         }
 
-        public List<Cliente> ListarClientes()
+        //listar cliente
+        public List<Cliente> ListarClientes(string textoBusquedaApellido,string textoBusquedaNombre)
         {
             using (var db= new DB_LaCortadaEntities())
             {
-                var obtener_clientes = db.Clientes.OrderBy(x=>x.id_cliente);
-                return obtener_clientes.ToList();
+                if (!String.IsNullOrEmpty(textoBusquedaApellido)&& !String.IsNullOrWhiteSpace(textoBusquedaApellido) && String.IsNullOrEmpty(textoBusquedaNombre)
+                    && String.IsNullOrWhiteSpace(textoBusquedaNombre))
+                {
+                    var obtener_clientes = db.Clientes.Include(x => x.Ciudade).Where(x=> x.Apellido.ToLower().Contains(textoBusquedaApellido.ToLower()));
+                    return obtener_clientes.ToList();
+                }else if (String.IsNullOrEmpty(textoBusquedaApellido) && String.IsNullOrWhiteSpace(textoBusquedaApellido) && !String.IsNullOrEmpty(textoBusquedaNombre)
+                    && !String.IsNullOrWhiteSpace(textoBusquedaNombre))
+                {
+                    var obtener_clientes = db.Clientes.Include(x => x.Ciudade).Where(x => x.Nombre.ToLower().Contains(textoBusquedaNombre.ToLower()));
+                    return obtener_clientes.ToList();
+                }else if (!String.IsNullOrEmpty(textoBusquedaApellido)&& !String.IsNullOrWhiteSpace(textoBusquedaApellido) && !String.IsNullOrEmpty(textoBusquedaNombre)
+                    && !String.IsNullOrWhiteSpace(textoBusquedaNombre))
+                {
+                    var obtener_clientes = db.Clientes.Include(x => x.Ciudade).Where(x => x.Apellido.ToLower().Contains(textoBusquedaApellido.ToLower()))
+                        .Where(x=>x.Nombre.ToLower().Contains(textoBusquedaNombre.ToLower()));
+                    return obtener_clientes.ToList();
+                }
+                else
+                {
+                    var obtener_clientes = db.Clientes.Include(x => x.Ciudade).OrderBy(x => x.id_cliente);
+                    return obtener_clientes.ToList();
+                }
+                //var obtener_clientes = db.Clientes.Include(x => x.Ciudade).OrderBy(x => x.id_cliente);
+                //return obtener_clientes.ToList();
+
+
+                //var obtener_clientes = db.Clientes.Include(x => x.Ciudade).Where(x=> x.Apellido.ToLower().Contains(textoBusquedaApellido.ToLower()));
+                //return obtener_clientes.ToList();
+
+
+
             }
         }
 
@@ -42,9 +77,10 @@ namespace LogicaDeNegocio
         {
             using (var db = new DB_LaCortadaEntities())
             {
-                //cliente.Tipo_Doc = Convert.ToByte(db.Tipos_Documento.Single(x=> x.Tipo_Doc == cliente.Tipo_Doc));
-                //cliente.Cod_Postal = Convert.ToSByte(db.Ciudades.Single(x=> x.Cod_Postal == cliente.Cod_Postal));
+                cliente.Tipos_Documento = db.Tipos_Documento.SingleOrDefault(x=> x.Tipo_Doc == cliente.Tipo_Doc);
+                cliente.Ciudade = db.Ciudades.SingleOrDefault(x=> x.Cod_Postal == cliente.Cod_Postal);
                 db.Entry(cliente).State = EntityState.Modified;
+                db.SaveChanges();
             }
         }
 

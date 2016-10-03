@@ -30,5 +30,10 @@ namespace LogicaDeNegocio
         public static List<Tipos_Documento> getSetTipoDoc { get; set; }
     }
 
+    public static class DatosComplejo
+    {
+        public static Configuracion getDatos { get; set; }
+    }
+
 }
 

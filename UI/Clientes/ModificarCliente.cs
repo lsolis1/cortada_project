@@ -16,6 +16,7 @@ namespace UI.Clientes
 {
     public partial class ModificarCliente : MaterialForm
     {
+        ManejadorCiudades manejador_ciudades = new ManejadorCiudades();
         private Cliente cliente_actual;
         public ModificarCliente(Cliente cliente)
         {
@@ -37,6 +38,10 @@ namespace UI.Clientes
             comboTipoDoc.ValueMember = "Tipo_Doc";
             comboTipoDoc.DisplayMember = "Descripcion";
 
+            //cargar provincias y ciudades
+            CargarProvincia();
+            CargarCiudades();
+
             LlenarCampos();
         }
 
@@ -49,7 +54,7 @@ namespace UI.Clientes
             cliente_actual.Mail = txtMail.Text;
             cliente_actual.Celular = txtCelular.Text;
             cliente_actual.Domicilio = txtDomicilio.Text;
-            cliente_actual.Cod_Postal = Convert.ToInt16(txtCodPostal.Text);
+            cliente_actual.Cod_Postal = (short)comboCiudades.SelectedValue;
             if (checkDarDeAlta.Checked ==true)
             {
                 cliente_actual.Fecha_Baja = null;
@@ -65,7 +70,25 @@ namespace UI.Clientes
             txtMail.Text = cliente_actual.Mail;
             txtCelular.Text = cliente_actual.Celular;
             txtDomicilio.Text = cliente_actual.Domicilio;
-            txtCodPostal.Text = cliente_actual.Cod_Postal.ToString();
+            comboProvincias.SelectedValue = cliente_actual.Ciudade.Cod_Provincia;
+            comboCiudades.SelectedValue = cliente_actual.Cod_Postal;
+        }
+        private void CargarProvincia()
+        {
+            comboProvincias.DataSource = manejador_ciudades.ListarProvincias();
+            comboProvincias.DisplayMember = "Nombre";
+            comboProvincias.ValueMember = "Cod_Provincia";
+        }
+        private void CargarCiudades()
+        {
+            byte provincia;
+            bool parseOK = byte.TryParse(comboProvincias.SelectedValue.ToString(), out provincia);
+            if (parseOK)
+            {
+                comboCiudades.DataSource = manejador_ciudades.ListarCiudades(Convert.ToByte(comboProvincias.SelectedValue));
+                comboCiudades.DisplayMember = "Nombre";
+                comboCiudades.ValueMember = "Cod_Postal";
+            }
         }
 
         private void btnGuardarCambios_Click(object sender, EventArgs e)
@@ -76,6 +99,11 @@ namespace UI.Clientes
             MessageBox.Show("Cliente modificado", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
             DialogResult = DialogResult.OK;
             this.Close();
+        }
+
+        private void comboProvincias_SelectedValueChanged(object sender, EventArgs e)
+        {
+            CargarCiudades();
         }
     }
 }

@@ -18,6 +18,7 @@ namespace Dominio
         public Cancha()
         {
             this.Turnos = new HashSet<Turno>();
+            this.Turnos_fijos = new HashSet<Turnos_fijos>();
         }
     
         public byte Cod_Cancha { get; set; }
@@ -25,5 +26,7 @@ namespace Dominio
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Turno> Turnos { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Turnos_fijos> Turnos_fijos { get; set; }
     }
 }

@@ -18,6 +18,7 @@ namespace UI.Clientes
 {
     public partial class frmClientes : MaterialForm
     {
+        ManejadorCiudades manejador_ciudades = new ManejadorCiudades();
         public frmClientes()
         {
             InitializeComponent();
@@ -25,9 +26,13 @@ namespace UI.Clientes
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
             materialSkinManager.ColorScheme = new ColorScheme(Primary.Teal600, Primary.Teal700, Primary.Teal500, Accent.DeepOrange100, TextShade.WHITE);
+            
 
             cargarCombo();
             comboTipoDoc.SelectedItem = 1;
+            CargarProvincias();
+            CargarCiudades();
+            comboCiudades.SelectedIndex = 1;
         }
 
         private void cargarCombo()
@@ -37,6 +42,28 @@ namespace UI.Clientes
             comboTipoDoc.ValueMember = "Tipo_Doc";
         }
 
+        private void CargarProvincias()
+        {
+            comboProvincias.DataSource = manejador_ciudades.ListarProvincias();
+            comboProvincias.DisplayMember = "Nombre";
+            comboProvincias.ValueMember = "Cod_Provincia";
+        }
+
+        private void CargarCiudades()
+        {
+            byte provincia;
+            bool parseOK = byte.TryParse(comboProvincias.SelectedValue.ToString(), out provincia);
+            if (parseOK)
+            {
+                comboCiudades.DataSource = manejador_ciudades.ListarCiudades(Convert.ToByte(comboProvincias.SelectedValue));
+                comboCiudades.DisplayMember = "Nombre";
+                comboCiudades.ValueMember = "Cod_Postal";
+            }
+        }
+        private void comboProvincias_SelectedValueChanged(object sender, EventArgs e)
+        {
+            CargarCiudades();
+        }
         private void LimpiarCampos()
         {
             comboTipoDoc.SelectedItem = 1;
@@ -46,13 +73,14 @@ namespace UI.Clientes
             txtCelular.Text = "";
             txtMail.Text = "";
             txtDomicilio.Text = "";
-            txtCodigoPostal.Text = "";
+            comboProvincias.SelectedIndex = 0;
+            comboCiudades.SelectedIndex = 1;
         }
 
         private void btnAgregarCliente_Click(object sender, EventArgs e)
         {
-            if (txtNroDoc.Text != "" && txtNombre.Text != "" && txtApellido.Text != "" && txtCelular.Text != "" && txtDomicilio.Text != ""
-                && txtCodigoPostal.Text != "")
+            errorProvider.Clear();
+            if (txtNroDoc.Text != "" && txtNombre.Text != "" && txtApellido.Text != "" && txtCelular.Text != "" && txtDomicilio.Text != "")
             {
                 Cliente cargar_cliente = new Cliente
                 {
@@ -63,13 +91,20 @@ namespace UI.Clientes
                     Mail = txtMail.Text,
                     Celular = txtCelular.Text,
                     Domicilio = txtDomicilio.Text,
-                    Cod_Postal = Convert.ToInt16(txtCodigoPostal.Text),
+                    Cod_Postal = (short)comboCiudades.SelectedValue,
                 };
                 ManejadorClientes nuevoCliente = new ManejadorClientes();
-                nuevoCliente.agregarCliente(cargar_cliente);
-                MessageBox.Show("Cliente " + txtNombre.Text + " " + txtApellido.Text + " agregado correctamente","Sistema",MessageBoxButtons.OK
-                    ,MessageBoxIcon.Information);
-                LimpiarCampos();
+                if (nuevoCliente.agregarCliente(cargar_cliente)==true)
+                {
+                    MessageBox.Show("Cliente " + txtNombre.Text + " " + txtApellido.Text + " agregado correctamente", "Sistema", MessageBoxButtons.OK
+                    , MessageBoxIcon.Information);
+                    LimpiarCampos();
+                }
+                else
+                {
+                    MessageBox.Show("oops!");
+                }
+                
             }
             else
             {
@@ -118,12 +153,17 @@ namespace UI.Clientes
         {
             LimpiarCampos();
         }
+        private void btnAgregarCiudad_Click(object sender, EventArgs e)
+        {
+            frmAgregarCiudades agregarCiudades = new frmAgregarCiudades();
+            agregarCiudades.ShowDialog();
+        }
 
 
         //TAB CONSULTAR!
         #region TAB_CONSULTAR
 
-        private void ListarListClientes()
+        private void ListarListClientes(string textoBusquedaApellido = null,string textoBusquedaNombre = null)
         {
             listClientes.Clear();
             ManejadorClientes obtenerClientes = new ManejadorClientes();
@@ -136,26 +176,78 @@ namespace UI.Clientes
             this.listClientes.Columns.Add("Localidad", 100,HorizontalAlignment.Center);
 
             //trae una lista de Cliente
-            var llenar_Lista = obtenerClientes.ListarClientes();
-
-            foreach (var item in llenar_Lista)
+            var llenar_Lista = obtenerClientes.ListarClientes(textoBusquedaApellido, textoBusquedaNombre); //textoBusqueda
+            var lista_solo_clientes_activos = llenar_Lista.FindAll(x => x.Fecha_Baja == null).ToList();
+            if (this.checkClientesEliminados.Checked==true)
             {
-                var listViewItem = new ListViewItem
+                    foreach (var item in llenar_Lista)
+                    {
+                        var listViewItem = new ListViewItem
+                        {
+                            Tag = item,
+                            Text = item.Nro_Doc.ToString()
+                        };
+                        listViewItem.SubItems.Add(item.Nombre);
+                        listViewItem.SubItems.Add(item.Apellido);
+                        listViewItem.SubItems.Add(item.Celular);
+                        listViewItem.SubItems.Add(item.Domicilio);
+                        listViewItem.SubItems.Add(item.Ciudade.Nombre); //disposed error
+                        listClientes.Items.Add(listViewItem);
+                        if (item.Fecha_Baja != null)
+                        {
+                            listViewItem.BackColor = Color.FromArgb(219, 92, 92);
+                            listViewItem.ForeColor = Color.FromArgb(240, 240, 240);
+                        }
+                        
+                    }
+            }
+            else if(this.checkClientesEliminados.Checked==false)
+            {
+                foreach (var item in lista_solo_clientes_activos)
                 {
-                    Tag = item,
-                    Text = item.Nro_Doc.ToString()
-                };
-                listViewItem.SubItems.Add(item.Nombre);
-                listViewItem.SubItems.Add(item.Apellido);
-                listViewItem.SubItems.Add(item.Celular);
-                listViewItem.SubItems.Add(item.Domicilio);
-                //listViewItem.SubItems.Add(item.Ciudade.Nombre); disposed error
-                listClientes.Items.Add(listViewItem);
+
+                    var listViewItem = new ListViewItem
+                    {
+                        Tag = item,
+                        Text = item.Nro_Doc.ToString()
+                    };
+                    
+                    listViewItem.SubItems.Add(item.Nombre);
+                    listViewItem.SubItems.Add(item.Apellido);
+                    listViewItem.SubItems.Add(item.Celular);
+                    listViewItem.SubItems.Add(item.Domicilio);
+                    listViewItem.SubItems.Add(item.Ciudade.Nombre); //disposed error
+                    listClientes.Items.Add(listViewItem);
+                }
+                Controlador.PintarRowsListView(listClientes);
             }
 
-            //pintar los rows pares
-            Controlador.PintarRowsListView(listClientes);
+        }
 
+        private void verificarTextoBusqueda()
+        {
+            if (String.IsNullOrWhiteSpace(txtBuscarCliente.Text))
+            {
+                txtBuscarCliente.Text = "";
+            }
+            else if (String.IsNullOrWhiteSpace(txtBuscarClienteNombre.Text))
+            {
+                txtBuscarClienteNombre.Text = "";
+            }
+            ListarListClientes(txtBuscarCliente.Text, txtBuscarClienteNombre.Text);
+        }
+        private void txtBuscarCliente_TextChanged(object sender, EventArgs e)
+        {
+            verificarTextoBusqueda();
+        }
+
+        private void txtBuscarClienteNombre_TextChanged(object sender, EventArgs e)
+        {
+            verificarTextoBusqueda();
+        }
+        private void checkClientesEliminados_CheckedChanged(object sender, EventArgs e)
+        {
+            ListarListClientes();
         }
         private void tabConsultar_Enter(object sender, EventArgs e)
         {
@@ -187,9 +279,17 @@ namespace UI.Clientes
             {
                 ManejadorClientes manejadorCliente = new ManejadorClientes();
                 var cliente = (Cliente)this.listClientes.SelectedItems[0].Tag;
-                //manejadorCliente.borrarCliente(cliente);
-                listClientes.Clear();
-                ListarListClientes();
+                if (cliente.Fecha_Baja ==null)
+                {
+                    cliente.Fecha_Baja = DateTime.Now;
+                    manejadorCliente.ModificarCliente(cliente);
+                    ListarListClientes();
+                }
+                else
+                {
+                    MessageBox.Show("Este cliente ya se encuentra eliminado", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+               
             }
 
         }
@@ -198,19 +298,20 @@ namespace UI.Clientes
         {
             ModificarCliente modificar_cliente = new ModificarCliente((Cliente)listClientes.SelectedItems[0].Tag);
             modificar_cliente.ShowDialog();
-            if (DialogResult == DialogResult.OK)
+            if (modificar_cliente.DialogResult == DialogResult.OK)
             {
                 ListarListClientes();
             }
 
         }
 
+
+
+
+
+
         #endregion
 
-        private void frmClientes_Deactivate(object sender, EventArgs e)
-        {
-            
-            //main_menu.resetarEstilos();
-        }
+      
     }
 }

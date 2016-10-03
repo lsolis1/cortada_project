@@ -28,14 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmClientes));
             this.selectorClientes = new MaterialSkin.Controls.MaterialTabSelector();
             this.tabClientes = new MaterialSkin.Controls.MaterialTabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnAgregarCiudad = new MaterialSkin.Controls.MaterialFlatButton();
             this.txtRefrescar = new MaterialSkin.Controls.MaterialFlatButton();
             this.btnAgregarCliente = new MaterialSkin.Controls.MaterialRaisedButton();
-            this.txtCodigoPostal = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.txtDomicilio = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.txtMail = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.txtCelular = new MaterialSkin.Controls.MaterialSingleLineTextField();
@@ -44,16 +45,25 @@
             this.comboTipoDoc = new System.Windows.Forms.ComboBox();
             this.txtNombre = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.tabConsultar = new System.Windows.Forms.TabPage();
+            this.txtBuscarClienteNombre = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.txtBuscarCliente = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.checkClientesEliminados = new MaterialSkin.Controls.MaterialCheckBox();
             this.btnConsultar = new MaterialSkin.Controls.MaterialRaisedButton();
             this.listClientes = new System.Windows.Forms.ListView();
             this.menuStrip = new MaterialSkin.Controls.MaterialContextMenuStrip();
             this.editarItem = new System.Windows.Forms.ToolStripMenuItem();
             this.eliminarItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.comboProvincias = new System.Windows.Forms.ComboBox();
+            this.comboCiudades = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.tabClientes.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabConsultar.SuspendLayout();
             this.menuStrip.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // selectorClientes
@@ -94,9 +104,13 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.comboCiudades);
+            this.groupBox1.Controls.Add(this.btnAgregarCiudad);
+            this.groupBox1.Controls.Add(this.comboProvincias);
             this.groupBox1.Controls.Add(this.txtRefrescar);
             this.groupBox1.Controls.Add(this.btnAgregarCliente);
-            this.groupBox1.Controls.Add(this.txtCodigoPostal);
             this.groupBox1.Controls.Add(this.txtDomicilio);
             this.groupBox1.Controls.Add(this.txtMail);
             this.groupBox1.Controls.Add(this.txtCelular);
@@ -104,11 +118,28 @@
             this.groupBox1.Controls.Add(this.txtNroDoc);
             this.groupBox1.Controls.Add(this.comboTipoDoc);
             this.groupBox1.Controls.Add(this.txtNombre);
-            this.groupBox1.Location = new System.Drawing.Point(230, 48);
+            this.groupBox1.Location = new System.Drawing.Point(247, 42);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(537, 508);
+            this.groupBox1.Size = new System.Drawing.Size(537, 539);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
+            // 
+            // btnAgregarCiudad
+            // 
+            this.btnAgregarCiudad.AutoSize = true;
+            this.btnAgregarCiudad.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnAgregarCiudad.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAgregarCiudad.Depth = 0;
+            this.btnAgregarCiudad.Icon = ((System.Drawing.Image)(resources.GetObject("btnAgregarCiudad.Icon")));
+            this.btnAgregarCiudad.Location = new System.Drawing.Point(479, 414);
+            this.btnAgregarCiudad.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnAgregarCiudad.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnAgregarCiudad.Name = "btnAgregarCiudad";
+            this.btnAgregarCiudad.Primary = false;
+            this.btnAgregarCiudad.Size = new System.Drawing.Size(36, 36);
+            this.btnAgregarCiudad.TabIndex = 10;
+            this.btnAgregarCiudad.UseVisualStyleBackColor = true;
+            this.btnAgregarCiudad.Click += new System.EventHandler(this.btnAgregarCiudad_Click);
             // 
             // txtRefrescar
             // 
@@ -117,13 +148,13 @@
             this.txtRefrescar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.txtRefrescar.Depth = 0;
             this.txtRefrescar.Icon = null;
-            this.txtRefrescar.Location = new System.Drawing.Point(131, 463);
+            this.txtRefrescar.Location = new System.Drawing.Point(147, 496);
             this.txtRefrescar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.txtRefrescar.MouseState = MaterialSkin.MouseState.HOVER;
             this.txtRefrescar.Name = "txtRefrescar";
             this.txtRefrescar.Primary = false;
             this.txtRefrescar.Size = new System.Drawing.Size(148, 36);
-            this.txtRefrescar.TabIndex = 1;
+            this.txtRefrescar.TabIndex = 10;
             this.txtRefrescar.Text = "Refrescar campos";
             this.txtRefrescar.UseVisualStyleBackColor = true;
             this.txtRefrescar.Click += new System.EventHandler(this.txtRefrescar_Click);
@@ -135,34 +166,16 @@
             this.btnAgregarCliente.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAgregarCliente.Depth = 0;
             this.btnAgregarCliente.Icon = null;
-            this.btnAgregarCliente.Location = new System.Drawing.Point(302, 463);
+            this.btnAgregarCliente.Location = new System.Drawing.Point(302, 496);
             this.btnAgregarCliente.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnAgregarCliente.Name = "btnAgregarCliente";
             this.btnAgregarCliente.Primary = true;
             this.btnAgregarCliente.Size = new System.Drawing.Size(132, 36);
-            this.btnAgregarCliente.TabIndex = 1;
+            this.btnAgregarCliente.TabIndex = 9;
             this.btnAgregarCliente.Text = "AGREGAR CLIENTE";
             this.btnAgregarCliente.UseCustomBackColor = false;
             this.btnAgregarCliente.UseVisualStyleBackColor = true;
             this.btnAgregarCliente.Click += new System.EventHandler(this.btnAgregarCliente_Click);
-            // 
-            // txtCodigoPostal
-            // 
-            this.txtCodigoPostal.Depth = 0;
-            this.txtCodigoPostal.Hint = "Codigo postal";
-            this.txtCodigoPostal.Location = new System.Drawing.Point(182, 415);
-            this.txtCodigoPostal.MaxLength = 5;
-            this.txtCodigoPostal.MouseState = MaterialSkin.MouseState.HOVER;
-            this.txtCodigoPostal.Name = "txtCodigoPostal";
-            this.txtCodigoPostal.PasswordChar = '\0';
-            this.txtCodigoPostal.SelectedText = "";
-            this.txtCodigoPostal.SelectionLength = 0;
-            this.txtCodigoPostal.SelectionStart = 0;
-            this.txtCodigoPostal.Size = new System.Drawing.Size(158, 23);
-            this.txtCodigoPostal.TabIndex = 7;
-            this.txtCodigoPostal.TabStop = false;
-            this.txtCodigoPostal.UseSystemPasswordChar = false;
-            this.txtCodigoPostal.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCodigoPostal_KeyPress);
             // 
             // txtDomicilio
             // 
@@ -177,7 +190,7 @@
             this.txtDomicilio.SelectionLength = 0;
             this.txtDomicilio.SelectionStart = 0;
             this.txtDomicilio.Size = new System.Drawing.Size(343, 23);
-            this.txtDomicilio.TabIndex = 6;
+            this.txtDomicilio.TabIndex = 7;
             this.txtDomicilio.TabStop = false;
             this.txtDomicilio.UseSystemPasswordChar = false;
             // 
@@ -194,7 +207,7 @@
             this.txtMail.SelectionLength = 0;
             this.txtMail.SelectionStart = 0;
             this.txtMail.Size = new System.Drawing.Size(343, 23);
-            this.txtMail.TabIndex = 5;
+            this.txtMail.TabIndex = 6;
             this.txtMail.TabStop = false;
             this.txtMail.UseSystemPasswordChar = false;
             // 
@@ -211,7 +224,7 @@
             this.txtCelular.SelectionLength = 0;
             this.txtCelular.SelectionStart = 0;
             this.txtCelular.Size = new System.Drawing.Size(343, 23);
-            this.txtCelular.TabIndex = 4;
+            this.txtCelular.TabIndex = 5;
             this.txtCelular.TabStop = false;
             this.txtCelular.UseSystemPasswordChar = false;
             // 
@@ -228,7 +241,7 @@
             this.txtApellido.SelectionLength = 0;
             this.txtApellido.SelectionStart = 0;
             this.txtApellido.Size = new System.Drawing.Size(343, 23);
-            this.txtApellido.TabIndex = 3;
+            this.txtApellido.TabIndex = 4;
             this.txtApellido.TabStop = false;
             this.txtApellido.UseSystemPasswordChar = false;
             this.txtApellido.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtApellido_KeyPress);
@@ -274,13 +287,17 @@
             this.txtNombre.SelectionLength = 0;
             this.txtNombre.SelectionStart = 0;
             this.txtNombre.Size = new System.Drawing.Size(343, 23);
-            this.txtNombre.TabIndex = 0;
+            this.txtNombre.TabIndex = 3;
             this.txtNombre.TabStop = false;
             this.txtNombre.UseSystemPasswordChar = false;
             this.txtNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNombre_KeyPress);
             // 
             // tabConsultar
             // 
+            this.tabConsultar.BackColor = System.Drawing.Color.White;
+            this.tabConsultar.Controls.Add(this.txtBuscarClienteNombre);
+            this.tabConsultar.Controls.Add(this.txtBuscarCliente);
+            this.tabConsultar.Controls.Add(this.checkClientesEliminados);
             this.tabConsultar.Controls.Add(this.btnConsultar);
             this.tabConsultar.Controls.Add(this.listClientes);
             this.tabConsultar.Location = new System.Drawing.Point(4, 22);
@@ -289,8 +306,61 @@
             this.tabConsultar.Size = new System.Drawing.Size(1020, 619);
             this.tabConsultar.TabIndex = 1;
             this.tabConsultar.Text = "CONSULTAR";
-            this.tabConsultar.UseVisualStyleBackColor = true;
             this.tabConsultar.Enter += new System.EventHandler(this.tabConsultar_Enter);
+            // 
+            // txtBuscarClienteNombre
+            // 
+            this.txtBuscarClienteNombre.Depth = 0;
+            this.txtBuscarClienteNombre.Hint = "Nombre";
+            this.txtBuscarClienteNombre.Location = new System.Drawing.Point(208, 23);
+            this.txtBuscarClienteNombre.MaxLength = 32767;
+            this.txtBuscarClienteNombre.MouseState = MaterialSkin.MouseState.HOVER;
+            this.txtBuscarClienteNombre.Name = "txtBuscarClienteNombre";
+            this.txtBuscarClienteNombre.PasswordChar = '\0';
+            this.txtBuscarClienteNombre.SelectedText = "";
+            this.txtBuscarClienteNombre.SelectionLength = 0;
+            this.txtBuscarClienteNombre.SelectionStart = 0;
+            this.txtBuscarClienteNombre.Size = new System.Drawing.Size(210, 23);
+            this.txtBuscarClienteNombre.TabIndex = 5;
+            this.txtBuscarClienteNombre.TabStop = false;
+            this.txtBuscarClienteNombre.UseSystemPasswordChar = false;
+            this.txtBuscarClienteNombre.TextChanged += new System.EventHandler(this.txtBuscarClienteNombre_TextChanged);
+            // 
+            // txtBuscarCliente
+            // 
+            this.txtBuscarCliente.Depth = 0;
+            this.txtBuscarCliente.Hint = "Apellido";
+            this.txtBuscarCliente.Location = new System.Drawing.Point(451, 23);
+            this.txtBuscarCliente.MaxLength = 32767;
+            this.txtBuscarCliente.MouseState = MaterialSkin.MouseState.HOVER;
+            this.txtBuscarCliente.Name = "txtBuscarCliente";
+            this.txtBuscarCliente.PasswordChar = '\0';
+            this.txtBuscarCliente.SelectedText = "";
+            this.txtBuscarCliente.SelectionLength = 0;
+            this.txtBuscarCliente.SelectionStart = 0;
+            this.txtBuscarCliente.Size = new System.Drawing.Size(210, 23);
+            this.txtBuscarCliente.TabIndex = 4;
+            this.txtBuscarCliente.TabStop = false;
+            this.txtBuscarCliente.UseSystemPasswordChar = false;
+            this.txtBuscarCliente.TextChanged += new System.EventHandler(this.txtBuscarCliente_TextChanged);
+            // 
+            // checkClientesEliminados
+            // 
+            this.checkClientesEliminados.AutoSize = true;
+            this.checkClientesEliminados.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.checkClientesEliminados.Depth = 0;
+            this.checkClientesEliminados.Font = new System.Drawing.Font("Roboto", 10F);
+            this.checkClientesEliminados.Location = new System.Drawing.Point(9, 16);
+            this.checkClientesEliminados.Margin = new System.Windows.Forms.Padding(0);
+            this.checkClientesEliminados.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.checkClientesEliminados.MouseState = MaterialSkin.MouseState.HOVER;
+            this.checkClientesEliminados.Name = "checkClientesEliminados";
+            this.checkClientesEliminados.Ripple = true;
+            this.checkClientesEliminados.Size = new System.Drawing.Size(151, 30);
+            this.checkClientesEliminados.TabIndex = 3;
+            this.checkClientesEliminados.Text = "Clientes eliminados";
+            this.checkClientesEliminados.UseVisualStyleBackColor = true;
+            this.checkClientesEliminados.CheckedChanged += new System.EventHandler(this.checkClientesEliminados_CheckedChanged);
             // 
             // btnConsultar
             // 
@@ -351,6 +421,53 @@
             this.eliminarItem.Text = "Eliminar";
             this.eliminarItem.Click += new System.EventHandler(this.eliminarItem_Click);
             // 
+            // errorProvider
+            // 
+            this.errorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.errorProvider.ContainerControl = this;
+            this.errorProvider.Icon = ((System.Drawing.Icon)(resources.GetObject("errorProvider.Icon")));
+            // 
+            // comboProvincias
+            // 
+            this.comboProvincias.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.comboProvincias.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboProvincias.FormattingEnabled = true;
+            this.comboProvincias.Location = new System.Drawing.Point(116, 423);
+            this.comboProvincias.Name = "comboProvincias";
+            this.comboProvincias.Size = new System.Drawing.Size(121, 21);
+            this.comboProvincias.TabIndex = 1;
+            this.comboProvincias.SelectedValueChanged += new System.EventHandler(this.comboProvincias_SelectedValueChanged);
+            // 
+            // comboCiudades
+            // 
+            this.comboCiudades.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.comboCiudades.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboCiudades.FormattingEnabled = true;
+            this.comboCiudades.Location = new System.Drawing.Point(351, 423);
+            this.comboCiudades.Name = "comboCiudades";
+            this.comboCiudades.Size = new System.Drawing.Size(121, 21);
+            this.comboCiudades.TabIndex = 2;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(40, 423);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(70, 21);
+            this.label1.TabIndex = 11;
+            this.label1.Text = "Provincia";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(272, 423);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(73, 21);
+            this.label2.TabIndex = 12;
+            this.label2.Text = "Localidad";
+            // 
             // frmClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -362,7 +479,6 @@
             this.Name = "frmClientes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CLIENTES";
-            this.Deactivate += new System.EventHandler(this.frmClientes_Deactivate);
             this.tabClientes.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
@@ -370,6 +486,7 @@
             this.tabConsultar.ResumeLayout(false);
             this.tabConsultar.PerformLayout();
             this.menuStrip.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -382,7 +499,6 @@
         private System.Windows.Forms.TabPage tabConsultar;
         private System.Windows.Forms.GroupBox groupBox1;
         private MaterialSkin.Controls.MaterialSingleLineTextField txtNombre;
-        private MaterialSkin.Controls.MaterialSingleLineTextField txtCodigoPostal;
         private MaterialSkin.Controls.MaterialSingleLineTextField txtDomicilio;
         private MaterialSkin.Controls.MaterialSingleLineTextField txtMail;
         private MaterialSkin.Controls.MaterialSingleLineTextField txtCelular;
@@ -396,5 +512,14 @@
         private MaterialSkin.Controls.MaterialContextMenuStrip menuStrip;
         private System.Windows.Forms.ToolStripMenuItem editarItem;
         private System.Windows.Forms.ToolStripMenuItem eliminarItem;
+        private MaterialSkin.Controls.MaterialCheckBox checkClientesEliminados;
+        private MaterialSkin.Controls.MaterialSingleLineTextField txtBuscarCliente;
+        private MaterialSkin.Controls.MaterialSingleLineTextField txtBuscarClienteNombre;
+        private System.Windows.Forms.ErrorProvider errorProvider;
+        private MaterialSkin.Controls.MaterialFlatButton btnAgregarCiudad;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox comboCiudades;
+        private System.Windows.Forms.ComboBox comboProvincias;
     }
 }

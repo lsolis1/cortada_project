@@ -51,14 +51,16 @@
             this.btnTurnos = new System.Windows.Forms.Button();
             this.materialDivider1 = new MaterialSkin.Controls.MaterialDivider();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.listviewMainMenu = new System.Windows.Forms.ListView();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.pictureAvatar = new System.Windows.Forms.PictureBox();
-            this.btnModificarDinero = new MaterialSkin.Controls.MaterialFlatButton();
             this.lblUser = new System.Windows.Forms.Label();
-            this.lblDinero = new System.Windows.Forms.Label();
+            this.btnModificarDinero = new MaterialSkin.Controls.MaterialFlatButton();
             this.btnTurnosReservados = new MaterialSkin.Controls.MaterialFlatButton();
             this.btnListaEspera = new MaterialSkin.Controls.MaterialFlatButton();
-            this.panel3 = new System.Windows.Forms.Panel();
+            this.listviewMainMenu = new System.Windows.Forms.ListView();
+            this.lblDinero = new System.Windows.Forms.Label();
+            this.lblTelefonoComplejo = new System.Windows.Forms.Label();
+            this.lblDireccion = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
@@ -67,8 +69,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureAvatar)).BeginInit();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureAvatar)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -216,6 +218,7 @@
             this.btnAdmin.Text = "            ADMINISTRADOR";
             this.btnAdmin.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAdmin.UseVisualStyleBackColor = true;
+            this.btnAdmin.Click += new System.EventHandler(this.btnAdmin_Click);
             // 
             // pictureBox4
             // 
@@ -391,21 +394,20 @@
             this.panel2.Size = new System.Drawing.Size(966, 688);
             this.panel2.TabIndex = 2;
             // 
-            // listviewMainMenu
+            // panel3
             // 
-            this.listviewMainMenu.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.listviewMainMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(247)))), ((int)(((byte)(243)))));
-            this.listviewMainMenu.Font = new System.Drawing.Font("Segoe UI Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listviewMainMenu.FullRowSelect = true;
-            this.listviewMainMenu.Location = new System.Drawing.Point(13, 84);
-            this.listviewMainMenu.MultiSelect = false;
-            this.listviewMainMenu.Name = "listviewMainMenu";
-            this.listviewMainMenu.Size = new System.Drawing.Size(942, 443);
-            this.listviewMainMenu.TabIndex = 10;
-            this.listviewMainMenu.UseCompatibleStateImageBehavior = false;
-            this.listviewMainMenu.View = System.Windows.Forms.View.Details;
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.panel3.Controls.Add(this.pictureAvatar);
+            this.panel3.Controls.Add(this.lblUser);
+            this.panel3.Controls.Add(this.btnModificarDinero);
+            this.panel3.Controls.Add(this.btnTurnosReservados);
+            this.panel3.Controls.Add(this.btnListaEspera);
+            this.panel3.Location = new System.Drawing.Point(0, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(966, 52);
+            this.panel3.TabIndex = 11;
             // 
             // pictureAvatar
             // 
@@ -417,6 +419,17 @@
             this.pictureAvatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureAvatar.TabIndex = 9;
             this.pictureAvatar.TabStop = false;
+            // 
+            // lblUser
+            // 
+            this.lblUser.AutoSize = true;
+            this.lblUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.lblUser.Font = new System.Drawing.Font("Segoe UI Light", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUser.Location = new System.Drawing.Point(73, 11);
+            this.lblUser.Name = "lblUser";
+            this.lblUser.Size = new System.Drawing.Size(136, 30);
+            this.lblUser.TabIndex = 7;
+            this.lblUser.Text = "Lucas Ferrero";
             // 
             // btnModificarDinero
             // 
@@ -437,29 +450,6 @@
             this.btnModificarDinero.Text = "modificar dinero de caja";
             this.btnModificarDinero.UseVisualStyleBackColor = false;
             this.btnModificarDinero.Click += new System.EventHandler(this.btnModificarDinero_Click);
-            // 
-            // lblUser
-            // 
-            this.lblUser.AutoSize = true;
-            this.lblUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.lblUser.Font = new System.Drawing.Font("Segoe UI Light", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUser.Location = new System.Drawing.Point(73, 11);
-            this.lblUser.Name = "lblUser";
-            this.lblUser.Size = new System.Drawing.Size(136, 30);
-            this.lblUser.TabIndex = 7;
-            this.lblUser.Text = "Lucas Ferrero";
-            // 
-            // lblDinero
-            // 
-            this.lblDinero.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblDinero.AutoSize = true;
-            this.lblDinero.Font = new System.Drawing.Font("Segoe UI Light", 60F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDinero.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.lblDinero.Location = new System.Drawing.Point(656, 579);
-            this.lblDinero.Name = "lblDinero";
-            this.lblDinero.Size = new System.Drawing.Size(299, 106);
-            this.lblDinero.TabIndex = 6;
-            this.lblDinero.Text = "$dinero";
             // 
             // btnTurnosReservados
             // 
@@ -499,20 +489,57 @@
             this.btnListaEspera.UseVisualStyleBackColor = true;
             this.btnListaEspera.Click += new System.EventHandler(this.btnListaEspera_Click);
             // 
-            // panel3
+            // listviewMainMenu
             // 
-            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.listviewMainMenu.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.panel3.Controls.Add(this.pictureAvatar);
-            this.panel3.Controls.Add(this.lblUser);
-            this.panel3.Controls.Add(this.btnModificarDinero);
-            this.panel3.Controls.Add(this.btnTurnosReservados);
-            this.panel3.Controls.Add(this.btnListaEspera);
-            this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(966, 52);
-            this.panel3.TabIndex = 11;
+            this.listviewMainMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(247)))), ((int)(((byte)(243)))));
+            this.listviewMainMenu.Font = new System.Drawing.Font("Segoe UI Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listviewMainMenu.FullRowSelect = true;
+            this.listviewMainMenu.Location = new System.Drawing.Point(13, 84);
+            this.listviewMainMenu.MultiSelect = false;
+            this.listviewMainMenu.Name = "listviewMainMenu";
+            this.listviewMainMenu.Size = new System.Drawing.Size(942, 443);
+            this.listviewMainMenu.TabIndex = 10;
+            this.listviewMainMenu.UseCompatibleStateImageBehavior = false;
+            this.listviewMainMenu.View = System.Windows.Forms.View.Details;
+            // 
+            // lblDinero
+            // 
+            this.lblDinero.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblDinero.AutoSize = true;
+            this.lblDinero.Font = new System.Drawing.Font("Segoe UI Light", 60F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDinero.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.lblDinero.Location = new System.Drawing.Point(656, 579);
+            this.lblDinero.Name = "lblDinero";
+            this.lblDinero.Size = new System.Drawing.Size(299, 106);
+            this.lblDinero.TabIndex = 6;
+            this.lblDinero.Text = "$dinero";
+            // 
+            // lblTelefonoComplejo
+            // 
+            this.lblTelefonoComplejo.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.lblTelefonoComplejo.AutoSize = true;
+            this.lblTelefonoComplejo.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.lblTelefonoComplejo.Font = new System.Drawing.Font("Segoe UI Light", 11F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTelefonoComplejo.Location = new System.Drawing.Point(624, 753);
+            this.lblTelefonoComplejo.Name = "lblTelefonoComplejo";
+            this.lblTelefonoComplejo.Size = new System.Drawing.Size(65, 20);
+            this.lblTelefonoComplejo.TabIndex = 12;
+            this.lblTelefonoComplejo.Text = "Telefono:";
+            // 
+            // lblDireccion
+            // 
+            this.lblDireccion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblDireccion.AutoSize = true;
+            this.lblDireccion.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.lblDireccion.Font = new System.Drawing.Font("Segoe UI Light", 11F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDireccion.Location = new System.Drawing.Point(1, 754);
+            this.lblDireccion.Name = "lblDireccion";
+            this.lblDireccion.Size = new System.Drawing.Size(68, 20);
+            this.lblDireccion.TabIndex = 13;
+            this.lblDireccion.Text = "Direccion:";
             // 
             // frmMainMenu
             // 
@@ -520,6 +547,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1249, 774);
+            this.Controls.Add(this.lblDireccion);
+            this.Controls.Add(this.lblTelefonoComplejo);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.materialDivider1);
             this.Controls.Add(this.panel1);
@@ -538,10 +567,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureAvatar)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureAvatar)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -577,6 +607,8 @@
         private System.Windows.Forms.PictureBox pictureAvatar;
         private System.Windows.Forms.ListView listviewMainMenu;
         private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Label lblTelefonoComplejo;
+        private System.Windows.Forms.Label lblDireccion;
     }
 }
 

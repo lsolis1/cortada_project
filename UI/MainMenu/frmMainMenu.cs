@@ -17,12 +17,13 @@ using LogicaDeNegocio;
 using Dominio;
 using UI.MainMenu;
 using UI.Clientes;
+using UI.Administrador;
 
 namespace UI
 {
     public partial class frmMainMenu : MaterialForm
     {
-
+        ConfiguracionComplejo configuracion_complejo = new ConfiguracionComplejo();
         public frmMainMenu()
         {
             InitializeComponent();
@@ -45,6 +46,14 @@ namespace UI
             ManejadorDNI manejador_dni = new ManejadorDNI();
             manejador_dni.ListarDocumentos();
 
+            //verificar si es admin
+            if (Sesion.id_empleado != 4)
+            {
+                btnAdmin.Enabled = false;
+            }
+
+            //datos del complejo
+            ObtenerDatosComplejo();
         }
 
 
@@ -86,8 +95,17 @@ namespace UI
         {
             resetarEstilos();
             lblDinero.Text = "$" + SesionCaja.importe_actual.ToString();
-        }
 
+            //datos complejo
+            ObtenerDatosComplejo();
+        }
+        private void ObtenerDatosComplejo()
+        {
+            configuracion_complejo.getDatosComplejo();
+            this.Text = "Menu Principal - " + DatosComplejo.getDatos.nombre_compejo.ToUpper();
+            this.lblTelefonoComplejo.Text = "Telefono: " + DatosComplejo.getDatos.telefono;
+            this.lblDireccion.Text = "Direccion: " + DatosComplejo.getDatos.direccion;
+        }
 
         private void btnClientes_Click(object sender, EventArgs e)
         {
@@ -106,45 +124,46 @@ namespace UI
 
         private void btnTurnosReservados_Click(object sender, EventArgs e)
         {
-            //listviewMainMenu.Clear();
+            listviewMainMenu.Clear();
 
-            //this.listviewMainMenu.Columns.Add("Nro Doc",100);
-            //this.listviewMainMenu.Columns.Add("Apellido", 140);
-            //this.listviewMainMenu.Columns.Add("Nombre", 140);
-            //this.listviewMainMenu.Columns.Add("Hora", 100);
-            //this.listviewMainMenu.Columns.Add("Empleado", 100);
-            //this.listviewMainMenu.Columns.Add("Cancha", 100);
-            //this.listviewMainMenu.Columns.Add("Tipo turno", 100);
-            //this.listviewMainMenu.Columns.Add("Estado", 100);
+            this.listviewMainMenu.Columns.Add("Cancha", 100);
+            this.listviewMainMenu.Columns.Add("Apellido", 140);
+            this.listviewMainMenu.Columns.Add("Nombre", 140);
+            this.listviewMainMenu.Columns.Add("Hora", 100);
+            this.listviewMainMenu.Columns.Add("Empleado", 100);
+            this.listviewMainMenu.Columns.Add("Tipo turno", 100);
+            this.listviewMainMenu.Columns.Add("Estado", 100);
 
-            //var llenarLista = ManejadorTurnos.ListarTurnosHoy();
+            var llenarLista = ManejadorTurnos.ListarTurnosHoy();
 
-            //foreach (var item in llenarLista)
-            //{
-            //    var listViewItem = new ListViewItem
-            //    {
-            //        Tag = item.Nro_Doc,
-            //        Text = item.Nro_Doc.ToString()
-            //    };
-            //    listViewItem.SubItems.Add(item.Cliente.Apellido);
-            //    listViewItem.SubItems.Add(item.Cliente.Nombre);
-            //    listViewItem.SubItems.Add(item.Hora.ToString()); //ver el formato Hora!
-            //    listViewItem.SubItems.Add(item.Empleado.Nombre);
-            //    listViewItem.SubItems.Add(item.Cancha.Descripcion);
-            //    listViewItem.SubItems.Add(item.Tipos_Turno.Descripcion);
-            //    listViewItem.SubItems.Add(item.Estado_Turno.Descripcion);
-            //    if (item.Estado ==2)
-            //    {
-            //        listViewItem.BackColor = Color.FromArgb(170, 211, 215);
-            //    }
-            //    if (item.Estado==1 && DateTime.Now.TimeOfDay > item.Hora)
-            //    {
-            //        listViewItem.BackColor = Color.FromArgb(102, 186, 223);
-            //        listViewItem.ForeColor = Color.White;
-            //    }
+            foreach (var item in llenarLista)
+            {
+                var listViewItem = new ListViewItem
+                {
+                    Tag = item,
+                    Text = item.Cancha.Descripcion
+                };
+                listViewItem.SubItems.Add(item.Cliente.Apellido);
+                listViewItem.SubItems.Add(item.Cliente.Nombre);
+                listViewItem.SubItems.Add(item.Hora.ToString()); //ver el formato Hora!
+                listViewItem.SubItems.Add(item.Empleado.Nombre);
+                listViewItem.SubItems.Add(item.Tipos_Turno.Descripcion);
+                listViewItem.SubItems.Add(item.Estado_Turno.Descripcion);
+                //Pintamos los rows que tienen el estado Jugado del dia de hoy.
+                if (item.Estado == 13)
+                {
+                    listViewItem.BackColor = Color.FromArgb(170, 211, 215);
+                }
+                //El estado en Pendiente y la hora en la que se juega es mayor a la actual lo cual significa que el turno esta siendo
+                //jugado en este momento pero no finalizo!
+                if (item.Estado == 14 && DateTime.Now.TimeOfDay > item.Hora)
+                {
+                    listViewItem.BackColor = Color.FromArgb(102, 186, 223);
+                    listViewItem.ForeColor = Color.White;
+                }
 
-            //    this.listviewMainMenu.Items.Add(listViewItem);
-            //    }
+                this.listviewMainMenu.Items.Add(listViewItem);
+            }
         }
 
         private void btnListaEspera_Click(object sender, EventArgs e)
@@ -221,6 +240,10 @@ namespace UI
         
         }
 
- 
+        private void btnAdmin_Click(object sender, EventArgs e)
+        {
+            frmAdministrador formAdmin = new frmAdministrador();
+            formAdmin.ShowDialog();
+        }
     }
 }

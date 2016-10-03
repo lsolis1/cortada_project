@@ -31,7 +31,6 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.checkDarDeAlta = new MaterialSkin.Controls.MaterialCheckBox();
             this.txtMail = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.txtCodPostal = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.txtDomicilio = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.txtCelular = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.txtApellido = new MaterialSkin.Controls.MaterialSingleLineTextField();
@@ -40,23 +39,30 @@
             this.comboTipoDoc = new System.Windows.Forms.ComboBox();
             this.btnGuardarCambios = new MaterialSkin.Controls.MaterialRaisedButton();
             this.materialDivider1 = new MaterialSkin.Controls.MaterialDivider();
+            this.comboProvincias = new System.Windows.Forms.ComboBox();
+            this.comboCiudades = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.comboCiudades);
             this.groupBox1.Controls.Add(this.checkDarDeAlta);
+            this.groupBox1.Controls.Add(this.comboProvincias);
             this.groupBox1.Controls.Add(this.txtMail);
-            this.groupBox1.Controls.Add(this.txtCodPostal);
             this.groupBox1.Controls.Add(this.txtDomicilio);
             this.groupBox1.Controls.Add(this.txtCelular);
             this.groupBox1.Controls.Add(this.txtApellido);
             this.groupBox1.Controls.Add(this.txtNombre);
             this.groupBox1.Controls.Add(this.txtDocumento);
             this.groupBox1.Controls.Add(this.comboTipoDoc);
-            this.groupBox1.Location = new System.Drawing.Point(124, 87);
+            this.groupBox1.Location = new System.Drawing.Point(161, 92);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(511, 321);
+            this.groupBox1.Size = new System.Drawing.Size(455, 367);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
@@ -65,7 +71,7 @@
             this.checkDarDeAlta.AutoSize = true;
             this.checkDarDeAlta.Depth = 0;
             this.checkDarDeAlta.Font = new System.Drawing.Font("Roboto", 10F);
-            this.checkDarDeAlta.Location = new System.Drawing.Point(187, 265);
+            this.checkDarDeAlta.Location = new System.Drawing.Point(187, 324);
             this.checkDarDeAlta.Margin = new System.Windows.Forms.Padding(0);
             this.checkDarDeAlta.MouseLocation = new System.Drawing.Point(-1, -1);
             this.checkDarDeAlta.MouseState = MaterialSkin.MouseState.HOVER;
@@ -80,7 +86,7 @@
             // 
             this.txtMail.Depth = 0;
             this.txtMail.Hint = "Mail";
-            this.txtMail.Location = new System.Drawing.Point(234, 203);
+            this.txtMail.Location = new System.Drawing.Point(21, 203);
             this.txtMail.MaxLength = 32767;
             this.txtMail.MouseState = MaterialSkin.MouseState.HOVER;
             this.txtMail.Name = "txtMail";
@@ -88,27 +94,10 @@
             this.txtMail.SelectedText = "";
             this.txtMail.SelectionLength = 0;
             this.txtMail.SelectionStart = 0;
-            this.txtMail.Size = new System.Drawing.Size(173, 23);
+            this.txtMail.Size = new System.Drawing.Size(408, 23);
             this.txtMail.TabIndex = 7;
             this.txtMail.TabStop = false;
             this.txtMail.UseSystemPasswordChar = false;
-            // 
-            // txtCodPostal
-            // 
-            this.txtCodPostal.Depth = 0;
-            this.txtCodPostal.Hint = "Codigo postal";
-            this.txtCodPostal.Location = new System.Drawing.Point(21, 203);
-            this.txtCodPostal.MaxLength = 32767;
-            this.txtCodPostal.MouseState = MaterialSkin.MouseState.HOVER;
-            this.txtCodPostal.Name = "txtCodPostal";
-            this.txtCodPostal.PasswordChar = '\0';
-            this.txtCodPostal.SelectedText = "";
-            this.txtCodPostal.SelectionLength = 0;
-            this.txtCodPostal.SelectionStart = 0;
-            this.txtCodPostal.Size = new System.Drawing.Size(173, 23);
-            this.txtCodPostal.TabIndex = 6;
-            this.txtCodPostal.TabStop = false;
-            this.txtCodPostal.UseSystemPasswordChar = false;
             // 
             // txtDomicilio
             // 
@@ -122,7 +111,7 @@
             this.txtDomicilio.SelectedText = "";
             this.txtDomicilio.SelectionLength = 0;
             this.txtDomicilio.SelectionStart = 0;
-            this.txtDomicilio.Size = new System.Drawing.Size(173, 23);
+            this.txtDomicilio.Size = new System.Drawing.Size(195, 23);
             this.txtDomicilio.TabIndex = 5;
             this.txtDomicilio.TabStop = false;
             this.txtDomicilio.UseSystemPasswordChar = false;
@@ -156,7 +145,7 @@
             this.txtApellido.SelectedText = "";
             this.txtApellido.SelectionLength = 0;
             this.txtApellido.SelectionStart = 0;
-            this.txtApellido.Size = new System.Drawing.Size(173, 23);
+            this.txtApellido.Size = new System.Drawing.Size(195, 23);
             this.txtApellido.TabIndex = 3;
             this.txtApellido.TabStop = false;
             this.txtApellido.UseSystemPasswordChar = false;
@@ -212,7 +201,7 @@
             this.btnGuardarCambios.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnGuardarCambios.Depth = 0;
             this.btnGuardarCambios.Icon = null;
-            this.btnGuardarCambios.Location = new System.Drawing.Point(641, 443);
+            this.btnGuardarCambios.Location = new System.Drawing.Point(645, 490);
             this.btnGuardarCambios.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnGuardarCambios.Name = "btnGuardarCambios";
             this.btnGuardarCambios.Primary = true;
@@ -227,18 +216,57 @@
             // 
             this.materialDivider1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialDivider1.Depth = 0;
-            this.materialDivider1.Location = new System.Drawing.Point(-1, 435);
+            this.materialDivider1.Location = new System.Drawing.Point(-1, 482);
             this.materialDivider1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialDivider1.Name = "materialDivider1";
             this.materialDivider1.Size = new System.Drawing.Size(790, 1);
             this.materialDivider1.TabIndex = 2;
             this.materialDivider1.Text = "materialDivider1";
             // 
+            // comboProvincias
+            // 
+            this.comboProvincias.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboProvincias.FormattingEnabled = true;
+            this.comboProvincias.Location = new System.Drawing.Point(83, 263);
+            this.comboProvincias.Name = "comboProvincias";
+            this.comboProvincias.Size = new System.Drawing.Size(121, 21);
+            this.comboProvincias.TabIndex = 3;
+            this.comboProvincias.SelectedValueChanged += new System.EventHandler(this.comboProvincias_SelectedValueChanged);
+            // 
+            // comboCiudades
+            // 
+            this.comboCiudades.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboCiudades.FormattingEnabled = true;
+            this.comboCiudades.Location = new System.Drawing.Point(308, 263);
+            this.comboCiudades.Name = "comboCiudades";
+            this.comboCiudades.Size = new System.Drawing.Size(121, 21);
+            this.comboCiudades.TabIndex = 4;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(12, 263);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(70, 21);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "Provincia";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(230, 263);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(73, 21);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "Localidad";
+            // 
             // ModificarCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(786, 483);
+            this.ClientSize = new System.Drawing.Size(786, 529);
             this.Controls.Add(this.materialDivider1);
             this.Controls.Add(this.btnGuardarCambios);
             this.Controls.Add(this.groupBox1);
@@ -257,7 +285,6 @@
 
         private System.Windows.Forms.GroupBox groupBox1;
         private MaterialSkin.Controls.MaterialSingleLineTextField txtMail;
-        private MaterialSkin.Controls.MaterialSingleLineTextField txtCodPostal;
         private MaterialSkin.Controls.MaterialSingleLineTextField txtDomicilio;
         private MaterialSkin.Controls.MaterialSingleLineTextField txtCelular;
         private MaterialSkin.Controls.MaterialSingleLineTextField txtApellido;
@@ -267,5 +294,9 @@
         private MaterialSkin.Controls.MaterialCheckBox checkDarDeAlta;
         private MaterialSkin.Controls.MaterialRaisedButton btnGuardarCambios;
         private MaterialSkin.Controls.MaterialDivider materialDivider1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox comboCiudades;
+        private System.Windows.Forms.ComboBox comboProvincias;
     }
 }
